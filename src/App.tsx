@@ -13,105 +13,46 @@ import {
   Search,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import {
-  Header,
-  Hero,
-  Sidebar,
-  PracticeCard,
-  PracticeSummaryModal,
-} from './components/SENACComponents';
-import { PRACTICES } from './data/practicesAdapter';
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { Sidebar } from './components/Sidebar';
+import { PracticeCard } from './components/PracticeCard';
+import { PracticeSummaryModal } from './components/PracticeSummaryModal';
+import { usePractices } from './hooks/usePractices';
 import type { Practice } from './types';
 import logoSenacLabs from './logo_senac_labs.png';
 
 export default function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
-  const [sortBy, setSortBy] = useState('recentes');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedYears, setSelectedYears] = useState<number[]>([]);
-  const [selectedODS, setSelectedODS] = useState<number[]>([]);
-  const [selectedCEPs, setSelectedCEPs] = useState<string[]>([]);
   const [selectedPractice, setSelectedPractice] = useState<Practice | null>(null);
 
-  const filteredPractices = PRACTICES.filter((practice) => {
-    const query = searchQuery.toLowerCase().trim();
-
-    const searchableText = [
-      practice.title,
-      practice.instructor,
-      practice.pedagogicalGuidance,
-      practice.unit,
-      practice.segment,
-      practice.competencyElements,
-      practice.learningSituation,
-      practice.formativeBrands.join(' '),
-      practice.odsDetails
-        .map((ods) => `${ods.numero} ${ods.nome} ${ods.tag}`)
-        .join(' '),
-      practice.tags.join(' '),
-    ]
-      .join(' ')
-      .toLowerCase();
-
-    const matchesSearch = query === '' || searchableText.includes(query);
-
-    const matchesYear =
-      selectedYears.length === 0 || selectedYears.includes(practice.year);
-
-    const matchesODS =
-      selectedODS.length === 0 ||
-      practice.ods.some((id) => selectedODS.includes(id));
-
-    const matchesCEP =
-      selectedCEPs.length === 0 || selectedCEPs.includes(practice.unit);
-
-    return matchesSearch && matchesYear && matchesODS && matchesCEP;
-  });
-
-  const sortedPractices = [...filteredPractices].sort((a, b) => {
-    if (sortBy === 'az') return a.title.localeCompare(b.title);
-    if (sortBy === 'antigas') return a.year - b.year;
-    return b.year - a.year;
-  });
-
-  const activeFiltersCount =
-    selectedYears.length + selectedODS.length + selectedCEPs.length;
-
-  const handleYearChange = (year: number) => {
-    setSelectedYears((prev) =>
-      prev.includes(year) ? prev.filter((y) => y !== year) : [...prev, year]
-    );
-  };
-
-  const handleODSChange = (id: number) => {
-    setSelectedODS((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
-    );
-  };
-
-  const handleCEPChange = (cep: string) => {
-    setSelectedCEPs((prev) =>
-      prev.includes(cep) ? prev.filter((c) => c !== cep) : [...prev, cep]
-    );
-  };
-
-  const clearAllFilters = () => {
-    setSearchQuery('');
-    setSelectedYears([]);
-    setSelectedODS([]);
-    setSelectedCEPs([]);
-  };
+  const {
+    sortBy,
+    setSortBy,
+    searchQuery,
+    setSearchQuery,
+    selectedYears,
+    selectedODS,
+    selectedCEPs,
+    selectedSegments,
+    selectedBrands,
+    sortedPractices,
+    activeFiltersCount,
+    handleYearChange,
+    handleODSChange,
+    handleCEPChange,
+    handleSegmentChange,
+    handleBrandChange,
+    clearAllFilters,
+  } = usePractices();
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
       <Header onOpenMenu={() => setNavMenuOpen(true)} />
 
       <main className="flex-grow">
-        <Hero
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
+        <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
         <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
           {/* Mobile Filter Trigger */}
@@ -149,6 +90,10 @@ export default function App() {
                 onODSChange={handleODSChange}
                 selectedCEPs={selectedCEPs}
                 onCEPChange={handleCEPChange}
+                selectedSegments={selectedSegments}
+                onSegmentChange={handleSegmentChange}
+                selectedBrands={selectedBrands}
+                onBrandChange={handleBrandChange}
               />
             </div>
 
@@ -191,7 +136,7 @@ export default function App() {
                     <div className="relative">
                       <select
                         value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value)}
+                        onChange={(e) => setSortBy(e.target.value as 'recentes' | 'antigas' | 'az')}
                         className="appearance-none bg-gray-50 border border-transparent hover:border-gray-200 py-2 pl-3 pr-10 rounded-xl text-sm font-bold text-senac-blue focus:outline-none focus:ring-2 focus:ring-senac-blue/10 cursor-pointer transition-all"
                       >
                         <option value="recentes">Mais Recentes</option>
@@ -418,6 +363,10 @@ export default function App() {
                   onODSChange={handleODSChange}
                   selectedCEPs={selectedCEPs}
                   onCEPChange={handleCEPChange}
+                  selectedSegments={selectedSegments}
+                  onSegmentChange={handleSegmentChange}
+                  selectedBrands={selectedBrands}
+                  onBrandChange={handleBrandChange}
                 />
               </div>
 
