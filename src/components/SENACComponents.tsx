@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ODS_DATA, type Practice } from '../types';
+import { printPracticePdf } from '../utils/pdfPrint';
 
 // --- Header Component ---
 export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
@@ -385,6 +386,22 @@ export const PracticeCard = ({
   practice: Practice;
   onReadSummary?: () => void;
 }) => {
+  const handleDownloadPdf = async () => {
+    try {
+      await printPracticePdf({
+        year: practice.year,
+        initialPage: practice.pages.initial,
+        situationPage: practice.pages.situation,
+        title: practice.title,
+      });
+    } catch (error) {
+      console.error(error);
+      alert(
+        'Não foi possível gerar o PDF desta prática. Verifique se o PDF original está disponível em public/pdfs.'
+      );
+    }
+  };
+
   return (
     <motion.div
       layout
@@ -465,6 +482,7 @@ export const PracticeCard = ({
 
         <button
           type="button"
+          onClick={handleDownloadPdf}
           className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-senac-blue text-white font-bold text-xs hover:bg-senac-blue/90 shadow-md shadow-senac-blue/20 transition-all group"
         >
           <Download
@@ -487,6 +505,22 @@ export const PracticeSummaryModal = ({
   onClose: () => void;
 }) => {
   if (!practice) return null;
+
+  const handleDownloadPdf = async () => {
+    try {
+      await printPracticePdf({
+        year: practice.year,
+        initialPage: practice.pages.initial,
+        situationPage: practice.pages.situation,
+        title: practice.title,
+      });
+    } catch (error) {
+      console.error(error);
+      alert(
+        'Não foi possível gerar o PDF desta prática. Verifique se o PDF original está disponível em public/pdfs.'
+      );
+    }
+  };
 
   const previewText =
     practice.learningSituation.length > 1200
@@ -614,9 +648,23 @@ export const PracticeSummaryModal = ({
                 Resumo da situação de aprendizagem
               </h3>
 
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line text-justify">
                 {previewText || 'Resumo não informado.'}
               </p>
+
+              {practice.learningSituation.length > 1200 && (
+                <p className="mt-3 text-sm font-semibold text-senac-blue">
+                  Para ler mais,{' '}
+                  <button
+                    type="button"
+                    onClick={handleDownloadPdf}
+                    className="underline underline-offset-2 font-black hover:text-senac-orange transition-colors"
+                  >
+                    baixe o PDF
+                  </button>
+                  .
+                </p>
+              )}
             </section>
 
             <section>
@@ -624,7 +672,7 @@ export const PracticeSummaryModal = ({
                 Elementos de competência
               </h3>
 
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              <p className="text-gray-700 leading-relaxed whitespace-pre-line text-justify">
                 {practice.competencyElements || 'Não informado.'}
               </p>
             </section>
@@ -653,7 +701,9 @@ const SummaryInfoBox = ({
     <p className="text-[10px] uppercase tracking-widest font-black text-gray-400 mb-1">
       {title}
     </p>
-    <p className="font-bold text-gray-800">{value || 'Não informado.'}</p>
+    <p className="font-bold text-gray-800 text-justify">
+      {value || 'Não informado.'}
+    </p>
   </div>
 );
 
