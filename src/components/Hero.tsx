@@ -63,12 +63,6 @@ export const Hero = ({
             )}
           </div>
 
-          <button
-            type="button"
-            className="bg-senac-blue hover:bg-[#003366] text-white px-10 rounded-xl font-bold text-lg transition-all shadow-lg shadow-senac-blue/20"
-          >
-            Pesquisar
-          </button>
         </div>
       </motion.div>
     </div>
