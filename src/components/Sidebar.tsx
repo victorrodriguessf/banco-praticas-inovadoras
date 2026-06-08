@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Filter, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ODS_DATA } from '../types';
 
 const CheckIcon = ({ className }: { className?: string }) => (
   <svg
@@ -93,12 +92,24 @@ const FilterSection = ({
   );
 };
 
+const BRANDS = [
+  { label: 'Prática de inclusão' },
+  { label: 'Aprendizagem integradora' },
+  { label: 'Prática de fomento à inclusão' },
+  { label: 'Impacto social', placeholder: true },
+  { label: 'Conexão com o mercado', placeholder: true },
+  { label: 'Autonomia digital' },
+  { label: 'Atitude sustentável' },
+  { label: 'Atitude criativa e empreendedora' },
+  { label: 'Comunicação e colaboração' },
+  { label: 'Domínio técnico-científico' },
+  { label: 'Visão crítica' },
+];
+
 interface SidebarProps {
   isMobile?: boolean;
   selectedYears: number[];
   onYearChange: (y: number) => void;
-  selectedODS: number[];
-  onODSChange: (id: number) => void;
   selectedCEPs: string[];
   onCEPChange: (c: string) => void;
   selectedSegments: string[];
@@ -111,114 +122,75 @@ export const Sidebar = ({
   isMobile = false,
   selectedYears,
   onYearChange,
-  selectedODS,
-  onODSChange,
   selectedCEPs,
   onCEPChange,
   selectedSegments,
   onSegmentChange,
   selectedBrands,
   onBrandChange,
-}: SidebarProps) => {
-  const [showAllODS, setShowAllODS] = useState(false);
+}: SidebarProps) => (
+  <aside
+    className={`${
+      isMobile
+        ? 'p-6'
+        : 'w-72 flex-shrink-0 sticky top-28 h-[calc(100vh-140px)] overflow-y-auto pr-4'
+    }`}
+  >
+    <div className="flex items-center gap-2 mb-8 text-senac-blue bg-blue-50/50 p-3 rounded-xl border border-blue-100">
+      <Filter className="text-senac-orange" size={20} />
+      <h2 className="font-black text-xs uppercase tracking-[0.2em]">
+        Refinar Busca
+      </h2>
+    </div>
 
-  const visibleODS = showAllODS
-    ? Array.from({ length: 17 }, (_, index) => index + 1)
-    : [1, 2, 3, 4];
+    <FilterSection title="Ano do Edital">
+      {[2025, 2024, 2023, 2022].map((year) => (
+        <Checkbox
+          key={year}
+          id={`year-${year}`}
+          label={year.toString()}
+          checked={selectedYears.includes(year)}
+          onChange={() => onYearChange(year)}
+        />
+      ))}
+    </FilterSection>
 
-  return (
-    <aside
-      className={`${
-        isMobile
-          ? 'p-6'
-          : 'w-72 flex-shrink-0 sticky top-28 h-[calc(100vh-140px)] overflow-y-auto pr-4'
-      }`}
-    >
-      <div className="flex items-center gap-2 mb-8 text-senac-blue bg-blue-50/50 p-3 rounded-xl border border-blue-100">
-        <Filter className="text-senac-orange" size={20} />
-        <h2 className="font-black text-xs uppercase tracking-[0.2em]">
-          Refinar Busca
-        </h2>
-      </div>
+    <FilterSection title="Marcas Formativas">
+      {BRANDS.map(({ label, placeholder }) => (
+        <Checkbox
+          key={label}
+          id={`brand-${label}`}
+          label={label}
+          checked={selectedBrands.includes(label)}
+          onChange={placeholder ? undefined : () => onBrandChange(label)}
+        />
+      ))}
+    </FilterSection>
 
-      <FilterSection title="Ano do Edital">
-        {[2025, 2024, 2023, 2022].map((year) => (
+    <FilterSection title="Unidade (CEP)">
+      {['Alecrim', 'Assú', 'Barreira Roxa', 'Caicó', 'Centro', 'Mossoró', 'Zona Norte', 'Zona Sul'].map(
+        (cep) => (
           <Checkbox
-            key={year}
-            id={`year-${year}`}
-            label={year.toString()}
-            checked={selectedYears.includes(year)}
-            onChange={() => onYearChange(year)}
+            key={cep}
+            id={`cep-${cep}`}
+            label={cep}
+            checked={selectedCEPs.includes(cep)}
+            onChange={() => onCEPChange(cep)}
           />
-        ))}
-      </FilterSection>
+        )
+      )}
+    </FilterSection>
 
-      <FilterSection title="Objetivos da ONU (ODS)">
-        {visibleODS.map((id) => (
-          <Checkbox
-            key={id}
-            id={`ods-${id}`}
-            label={`ODS ${id} - ${ODS_DATA[id]?.label || 'Objetivo não informado'}`}
-            checked={selectedODS.includes(id)}
-            onChange={() => onODSChange(id)}
-          />
-        ))}
-
-        <button
-          type="button"
-          onClick={() => setShowAllODS((prev) => !prev)}
-          className="text-[10px] font-black uppercase tracking-widest text-senac-orange hover:underline pt-2"
-        >
-          {showAllODS ? 'Mostrar menos ODS' : 'Ver todos os 17 ODS'}
-        </button>
-      </FilterSection>
-
-      <FilterSection title="Unidade (CEP)">
-        {['Alecrim', 'Centro', 'Zona Sul', 'Zona Norte', 'Barreira Roxa'].map(
-          (cep) => (
-            <Checkbox
-              key={cep}
-              id={`cep-${cep}`}
-              label={cep}
-              checked={selectedCEPs.includes(cep)}
-              onChange={() => onCEPChange(cep)}
-            />
-          )
-        )}
-
-        <button
-          type="button"
-          className="text-[10px] font-black uppercase tracking-widest text-senac-orange hover:underline pt-2"
-        >
-          Ver pólos do interior
-        </button>
-      </FilterSection>
-
-      <FilterSection title="Eixo / Segmento">
-        {['Gestão', 'TI', 'Saúde', 'Turismo'].map((seg) => (
-          <Checkbox
-            key={seg}
-            id={`seg-${seg}`}
-            label={seg}
-            checked={selectedSegments.includes(seg)}
-            onChange={() => onSegmentChange(seg)}
-          />
-        ))}
-      </FilterSection>
-
-      <FilterSection title="Marcas Formativas">
-        {['Autonomia Digital', 'Atitude Sustentável', 'Visão Crítica'].map(
-          (brand) => (
-            <Checkbox
-              key={brand}
-              id={`brand-${brand}`}
-              label={brand}
-              checked={selectedBrands.includes(brand)}
-              onChange={() => onBrandChange(brand)}
-            />
-          )
-        )}
-      </FilterSection>
-    </aside>
-  );
-};
+    <FilterSection title="Eixo / Segmento">
+      {['Gestão', 'TI', 'Saúde', 'Turismo'].map((seg) => (
+        <Checkbox
+          key={seg}
+          id={`seg-${seg}`}
+          label={seg}
+          checked={selectedSegments.includes(seg)}
+          onChange={() => onSegmentChange(seg)}
+        />
+      ))}
+    </FilterSection>
+  </aside>
+);

@@ -1,13 +1,39 @@
 import { useState, useMemo } from 'react';
 import { PRACTICES } from '../data/practicesAdapter';
+import type { Practice } from '../types';
 
 type SortBy = 'recentes' | 'antigas' | 'az';
+
+const BRAND_MATCHERS: Record<string, (p: Practice) => boolean> = {
+  'Prática de inclusão': (p) => p.inclusivePractice,
+  'Aprendizagem integradora': (p) => p.integrativeLearning,
+  'Prática de fomento à inclusão': (p) => p.inclusionPromotionPractice,
+  'Impacto social': () => false,
+  'Conexão com o mercado': () => false,
+  'Autonomia digital': (p) =>
+    p.formativeBrands.some((b) => b.toLowerCase() === 'autonomia digital'),
+  'Atitude sustentável': (p) =>
+    p.formativeBrands.some((b) => b.toLowerCase() === 'atitude sustentável'),
+  'Atitude criativa e empreendedora': (p) =>
+    p.formativeBrands.some(
+      (b) => b.toLowerCase() === 'atitude criativa e empreendedora'
+    ),
+  'Comunicação e colaboração': (p) =>
+    p.formativeBrands.some(
+      (b) => b.toLowerCase() === 'comunicação e colaboração'
+    ),
+  'Domínio técnico-científico': (p) =>
+    p.formativeBrands.some(
+      (b) => b.toLowerCase() === 'domínio técnico-científico'
+    ),
+  'Visão crítica': (p) =>
+    p.formativeBrands.some((b) => b.toLowerCase() === 'visão crítica'),
+};
 
 export function usePractices() {
   const [sortBy, setSortBy] = useState<SortBy>('recentes');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYears, setSelectedYears] = useState<number[]>([]);
-  const [selectedODS, setSelectedODS] = useState<number[]>([]);
   const [selectedCEPs, setSelectedCEPs] = useState<string[]>([]);
   const [selectedSegments, setSelectedSegments] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -36,9 +62,6 @@ export function usePractices() {
       const matchesSearch = query === '' || searchableText.includes(query);
       const matchesYear =
         selectedYears.length === 0 || selectedYears.includes(practice.year);
-      const matchesODS =
-        selectedODS.length === 0 ||
-        practice.ods.some((id) => selectedODS.includes(id));
       const matchesCEP =
         selectedCEPs.length === 0 || selectedCEPs.includes(practice.unit);
       const matchesSegment =
@@ -49,15 +72,12 @@ export function usePractices() {
       const matchesBrand =
         selectedBrands.length === 0 ||
         selectedBrands.some((brand) =>
-          practice.formativeBrands.some((b) =>
-            b.toLowerCase().includes(brand.toLowerCase())
-          )
+          BRAND_MATCHERS[brand]?.(practice) ?? false
         );
 
       return (
         matchesSearch &&
         matchesYear &&
-        matchesODS &&
         matchesCEP &&
         matchesSegment &&
         matchesBrand
@@ -69,19 +89,10 @@ export function usePractices() {
       if (sortBy === 'antigas') return a.year - b.year;
       return b.year - a.year;
     });
-  }, [
-    searchQuery,
-    selectedYears,
-    selectedODS,
-    selectedCEPs,
-    selectedSegments,
-    selectedBrands,
-    sortBy,
-  ]);
+  }, [searchQuery, selectedYears, selectedCEPs, selectedSegments, selectedBrands, sortBy]);
 
   const activeFiltersCount =
     selectedYears.length +
-    selectedODS.length +
     selectedCEPs.length +
     selectedSegments.length +
     selectedBrands.length;
@@ -89,12 +100,6 @@ export function usePractices() {
   const handleYearChange = (year: number) => {
     setSelectedYears((prev) =>
       prev.includes(year) ? prev.filter((y) => y !== year) : [...prev, year]
-    );
-  };
-
-  const handleODSChange = (id: number) => {
-    setSelectedODS((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
     );
   };
 
@@ -119,7 +124,6 @@ export function usePractices() {
   const clearAllFilters = () => {
     setSearchQuery('');
     setSelectedYears([]);
-    setSelectedODS([]);
     setSelectedCEPs([]);
     setSelectedSegments([]);
     setSelectedBrands([]);
@@ -131,14 +135,12 @@ export function usePractices() {
     searchQuery,
     setSearchQuery,
     selectedYears,
-    selectedODS,
     selectedCEPs,
     selectedSegments,
     selectedBrands,
     sortedPractices,
     activeFiltersCount,
     handleYearChange,
-    handleODSChange,
     handleCEPChange,
     handleSegmentChange,
     handleBrandChange,

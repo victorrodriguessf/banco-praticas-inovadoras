@@ -111,7 +111,7 @@ export const PracticeSummaryModal = ({
 
           <div className="p-6 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <SummaryInfoBox title="Instrutor" value={practice.instructor} />
+              <SummaryInfoBox title="Docente" value={practice.instructor} />
 
               <SummaryInfoBox
                 title="Orientação Pedagógica"
@@ -187,17 +187,13 @@ export const PracticeSummaryModal = ({
               </p>
 
               {practice.learningSituation.length > 1200 && (
-                <p className="mt-3 text-sm font-semibold text-senac-blue">
-                  Para ler mais,{' '}
-                  <button
-                    type="button"
-                    onClick={handleDownloadPdf}
-                    className="underline underline-offset-2 font-black hover:text-senac-orange transition-colors"
-                  >
-                    baixe o PDF
-                  </button>
-                  .
-                </p>
+                <button
+                  type="button"
+                  onClick={handleDownloadPdf}
+                  className="mt-3 text-sm font-black text-senac-blue underline underline-offset-2 hover:text-senac-orange transition-colors"
+                >
+                  Visualizar no e-book ({practice.year})
+                </button>
               )}
             </section>
 

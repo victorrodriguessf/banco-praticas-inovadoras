@@ -73,7 +73,7 @@ export const PracticeCard = ({
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <User size={16} className="text-senac-orange" />
           <span>
-            Instrutor:{' '}
+            Docente:{' '}
             <span className="font-semibold text-gray-700">
               {practice.instructor}
             </span>
@@ -113,7 +113,7 @@ export const PracticeCard = ({
             size={14}
             className="group-hover:translate-y-0.5 transition-transform"
           />
-          Baixar PDF
+          Visualizar no e-book
         </button>
       </div>
     </motion.div>

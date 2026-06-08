@@ -15,6 +15,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { EbookSection } from './components/EbookSection';
 import { Sidebar } from './components/Sidebar';
 import { PracticeCard } from './components/PracticeCard';
 import { PracticeSummaryModal } from './components/PracticeSummaryModal';
@@ -33,14 +34,12 @@ export default function App() {
     searchQuery,
     setSearchQuery,
     selectedYears,
-    selectedODS,
     selectedCEPs,
     selectedSegments,
     selectedBrands,
     sortedPractices,
     activeFiltersCount,
     handleYearChange,
-    handleODSChange,
     handleCEPChange,
     handleSegmentChange,
     handleBrandChange,
@@ -53,6 +52,8 @@ export default function App() {
 
       <main className="flex-grow">
         <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+
+        <EbookSection />
 
         <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
           {/* Mobile Filter Trigger */}
@@ -86,8 +87,6 @@ export default function App() {
               <Sidebar
                 selectedYears={selectedYears}
                 onYearChange={handleYearChange}
-                selectedODS={selectedODS}
-                onODSChange={handleODSChange}
                 selectedCEPs={selectedCEPs}
                 onCEPChange={handleCEPChange}
                 selectedSegments={selectedSegments}
@@ -359,8 +358,6 @@ export default function App() {
                   isMobile
                   selectedYears={selectedYears}
                   onYearChange={handleYearChange}
-                  selectedODS={selectedODS}
-                  onODSChange={handleODSChange}
                   selectedCEPs={selectedCEPs}
                   onCEPChange={handleCEPChange}
                   selectedSegments={selectedSegments}

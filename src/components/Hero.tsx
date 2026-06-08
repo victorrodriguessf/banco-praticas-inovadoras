@@ -19,10 +19,6 @@ export const Hero = ({
         transition={{ duration: 0.6 }}
         className="space-y-4"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full text-xs font-bold text-senac-blue border border-blue-100 shadow-sm uppercase tracking-widest">
-          Transição Digital e Educacional
-        </div>
-
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-[#003366]">
           BANCO DE PRÁTICAS{' '}
           <span className="text-senac-orange">INOVADORAS</span>
@@ -30,7 +26,7 @@ export const Hero = ({
 
         <p className="text-gray-500 font-medium max-w-2xl mx-auto">
           Explore, inspire-se e replique as melhores metodologias educacionais
-          desenvolvidas pelos docentes do Senac Rio Grande do Norte.
+          desenvolvidas pelos docentes do Senac RN.
         </p>
       </motion.div>
 
@@ -38,7 +34,7 @@ export const Hero = ({
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="relative max-w-3xl mx-auto"
+        className="relative max-w-xl mx-auto"
       >
         <div className="flex bg-white rounded-2xl shadow-xl shadow-blue-900/5 overflow-hidden p-2 border border-blue-50 focus-within:ring-4 focus-within:ring-senac-blue/5 transition-all">
           <div className="flex-1 flex items-center px-4 gap-3">
@@ -48,7 +44,7 @@ export const Hero = ({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar por palavra-chave, título, instrutor ou curso..."
+              placeholder="Buscar por título, docente, metodologia ou tecnologia."
               className="w-full h-14 outline-none text-gray-800 placeholder:text-gray-400 text-lg font-medium"
             />
 
