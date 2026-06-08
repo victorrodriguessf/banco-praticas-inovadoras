@@ -101,6 +101,18 @@ As práticas são armazenadas em JSON (`src/data/`) e normalizadas pelo adapter 
 
 ---
 
+## LGPD
+
+Esta plataforma exibe dados de docentes do Senac RN (nome e orientação pedagógica) extraídos dos e-books institucionais oficiais, publicados pelo próprio Senac com finalidade de divulgação das práticas educacionais.
+
+- A aplicação **não coleta, armazena nem transmite** dados pessoais de usuários — não há cadastro, login, cookies de rastreamento ou formulários
+- Os dados exibidos são de caráter **profissional e público**, vinculados à atuação institucional dos docentes
+- Qualquer solicitação de correção, atualização ou remoção de dados pode ser encaminhada ao responsável pelo projeto
+
+Para mais informações sobre a política de privacidade do Senac RN, consulte o site institucional.
+
+---
+
 ## Licença
 
 © 2026 Senac RN — Todos os direitos reservados.
