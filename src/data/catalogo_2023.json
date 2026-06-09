@@ -12,7 +12,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comunicação - Fotógrafo",
       "elementos_competencia": "UC2: Iluminar cenas fotográficas em estúdio Indicadores: - Transforma as características da luz de acordo com os acessórios e modificadores - Controla o flash dedicado na função manual com base na quantidade de luz necessária à ce",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -38,7 +44,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Qualificação em Serviços de Supermercados",
       "elementos_competencia": "Organização do PDV: categorização das mercadorias, produtos e insumos; exposição de mercc rias e produtos: formas de arrumação no ponto de venda, horizontal, verticale em bloco; e mat de ponto de venda.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -64,7 +77,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Qualificação em Serviços de Supermercados",
       "elementos_competencia": "Planejamento de carreira; técnicas e tipos de atendimento: personalizados, diferenciados; com car-se de forma clara e assertiva. Respeito à diversidade; cortesia no atendimento ao cliente.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -90,7 +110,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Qualificação em Serviços de Vendas",
       "elementos_competencia": "Exposição de mercadorias e produtos: formas de arrumação no Ponto de Venda (PDV). Prever de perdas.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -116,7 +142,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Qualificação em Serviços Administrativos",
       "elementos_competencia": "Atitude sustentável; autoconhecimento; saúde mental; educação financeira; empreendedorism e geração de trabalho e renda.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -142,7 +175,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Técnico em Guia de Turismo",
       "elementos_competencia": "Patrimônio cultural local e regional: sítios, monumentos e edifícios histórico-culturals;",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -168,7 +207,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Tecnologia da Informação - Operador de Computador",
       "elementos_competencia": "Aplicar uma aula transversal-Conscientização para Economia de Energia; Conhecer e aplicar as ferramentas para construção de planilhas com formulas, gráficos e a ló matemática.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -194,7 +240,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão e Comércio - APC Supermercado",
       "elementos_competencia": "Técnicas de armazenagem: definição e características; Tipos de equipamentos utilizados no processo de armazenagem; Leiaute na armazenagem e Segurança do trabalho. Seminário sobre o livro Rotinas de Estoque\"",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -220,7 +272,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão de Negócios - Aprendizagem em Serviços de Supermerc",
       "elementos_competencia": "Sistema de reendereçamento de Estoques",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -246,7 +305,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Tecnologia da Informação - Programador de Sistemas",
       "elementos_competencia": "Desenvolver soluções tecnológicas sustentáveis; aplicar metodologias ágeis; colaborar digital te: adaptar-se a diversidades; refletir sobre impactos ambientais.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -272,7 +338,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Criação de prompts para o ChatGPT: Redação de roteiro para programa de rádio; Locução em estúdio; Edição de áudio",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -298,7 +370,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Qualificação em Serviços de Supermercados",
       "elementos_competencia": "Estoque: conceito, tipos e classificação de níveis. Técnicas de armazenagem: definição e características. Indicadores de desempenho e fatores que afetam o estoque.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -324,7 +402,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "idiomas - Inglês",
       "elementos_competencia": "CONHECIMENTO: Simple Past e Simple Present HABILIDADE: Oratória e comunicação. ATITUDE: Positiva, colaborativa e mente aberta ao diálogo.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -350,7 +434,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Qualificação em Serviços de Supermercados",
       "elementos_competencia": "CONHECIMENTOS: Os setores varejista e atacadista: conceito, características, estratégias, estrutura e fun HABILIDADES: Comunicar-se de forma clara e assertiva; Utilizar recursos da tecnologia da informaç: comunicação; Trabalhar em equipe multiprofissional. ATITUDES/VALORES: Postura profissional no ambiente de trabalho; Parcimônia na utilização de recur",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -376,7 +466,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "O objetivo é estimular a imaginação, a escrita criativa e a comunicação eficaz de uma ideia. Competências linguísticas: Escrita, leitura e fala. Tópicos gramaticais: Narrative tenses. Gênero textual: Sinopse",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -402,7 +498,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Vendas e Atendimento - Noções Básica.",
       "elementos_competencia": "CONHECIMENTO: 1-Público-alvo: definição e elaboração de roteiro de vendas; 2- Técnicas de vend: de negociação. HABILIDADES: Utilizar técnicas de vendas; Administrar o tempo e as atividades do plano de vendas. ATITUDES: Proatividade no atendimento e na resolução de problemas no processo de vendas flex dade e dinamismo no atendimento aos diferentes tipos de clientes.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -428,7 +530,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo e Hospitalidade - Técnico em Guia de Turismo",
       "elementos_competencia": "Matemática aplicada ao turismo; Geografia aplicada ao turismo; Roteiros acessíveis; Princípios da sustentabilidades e os ODS",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -454,7 +563,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Aprendizagem em Serviços de Supermercados",
       "elementos_competencia": "Estoque: conceito. Técnicas de armazenagem: Organização do estoque Tipos de equipamentos utilizado processo de armazenagem; Limpeza e higienização do ambiente de estoque: procedimentos organizacie (5S, entre outros); Definição de logística e da cadeia de suprimentos; Tipos de documentos: pedido de con nota fiscal, romaneio de carga, ficha de inspeção, ficha de cautela, requisição de materiais; Fases do rec mento de equipamentos, materiais e produtos: entrada, conferência qualitativa, quantitativa e regularizaç",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -480,7 +596,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - DEL Turismo",
       "elementos_competencia": "Programa DEL Turismo: Porto do Mangue/RN Fortalecimento da Apicultura, Turismo e Sustentabilidade - Intercâmbio BrasilAlemanha",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -506,7 +629,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão e Negócios - Qualificação em Serviços de Supermerca",
       "elementos_competencia": "Prevenção de perdas: Conceito de perdas e quebras, registro de ocorrências, tipos de perda: quebras e formas de minimizar ocorrências.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -532,7 +661,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Espanhol",
       "elementos_competencia": "Trabalhar conteúdos específicos de gramática de maneira contextualizada usando ferramentas digitais.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -558,7 +694,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Qualificação em Serviços de Supermercados",
       "elementos_competencia": "Planejamento de vida e carreira: desenvolvimento de metas pessoais, profissionais e econômic: uma proposta de guia para alcançá-las; mundo do trabalho: empreendedorismo e outras for de inserção no mercado de trabalho; construção de itinerário de profissionalização.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -584,7 +727,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Beleza - Cabeleireiro",
       "elementos_competencia": "Estrutura do cabelo: medula, córtex e cutícula (UC2). Avaliação da estrutura capilar e couro cc ludo: propriedades do cabelo (pH, ciclos de crescimento, tipos de cabelo, queda de cabelos, tc de crescimento, densidade do cabelo e textura capilar (UC3); Estrutura e características do cal para a realização do corte (UC4).",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -610,7 +758,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Comércio - Qualificação em Serviços de Supermercados",
       "elementos_competencia": "Técnicas de armazenagem",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -636,7 +790,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gastronomia - Cozinheiro Profissional",
       "elementos_competencia": "UC6: Apresentar Produção da Cozinha Quente Gastronomia internacional, Montagem de pratos, Técnicas de cocção",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -662,7 +822,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Hospitalidade",
       "elementos_competencia": "* Entender a importância do Turismo de Base Comunitária para o desenvolvimento local; * Reconhecimento das potencialidades individuais para atuação no turismo.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -688,7 +855,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gastronomia - Competições senac de educação profissional",
       "elementos_competencia": "Uso da IA como facilitador da pesquisa e aprendizagem na gastronomia.UC8- Participar da elaboração de cardápios: apresentação, formatação, redação, diagramação e tecnologias.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -714,7 +887,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Qualificação em Serviços Administrativos",
       "elementos_competencia": "CONHECIMENTOS: Noções da evolução histórica da Administração. HABILIDADES: Organizar o biente de trabalho; Pesquisar e coletar informações: Resolver conflitos inerentes ao process trabalho administrativo. Utilizar recursos da tecnologia da informação e comunicação. Atitudes lores: Apresentação pessoal; Postura profissional; Colaboração com colegas e equipes de trab Utilização consciente de recursos e insumos.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -740,7 +919,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "CONHECIMENTO: Inteligência artificial e inglês. HABILIDADE: autonomia digital, comunicação em inglês. ATITUDE: crítica à IA, colaborativa, comunicativa digitalmente.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -766,7 +952,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Qualificação em Serviços de Vendas",
       "elementos_competencia": "E-commerce: tecnologias, plataformas, estratégias de vendas, relacionamento com o cliente; Utilizar diferentes canais de vendas;",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -792,7 +984,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Comunicação em Inglês; Ampliação de Vocabulário; Habilidades de Escrita e Leitura; e Trabalhe em Equipe.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -818,7 +1017,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão e Negócios - Qualificação em Serviços Administrativos",
       "elementos_competencia": "1. Cumpre as atividades previstas no fluxo do projeto, conforme desafio Identificado na comun de pesquisada; 2. Apresenta resultados ou soluções de acordo com as problemáticas identifico e objetivos do Laboratório Juventudes.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -844,7 +1050,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "idiomas - Inglês",
       "elementos_competencia": "Mobilizar conhecimentos linguísticos para uma comunicação espontânea em inglês; Estimular visão crítica acerca de questões ambientais; Estimular a colaboração aluno-aluno e aluno-pl taformas digitais",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -870,7 +1083,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "saúde - Técnico em óptica",
       "elementos_competencia": "Atendimento ao cliente: conceito; perfis de pessoas: sinestésico, auditivo, visual; perfis de clie em lojas ópticas; normas de etiqueta profissional, comunicação: tipos e barreiras comunicaciot! adequação da linguagem às necessidades do cliente. Técnicas de comunicação. Comportame do consumidor: perfil comportamental de clientes e suas necessidades, Técnicas e tipos de a dimento: in loco, personalizados.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -896,7 +1115,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Técnico em Guia de Turismo",
       "elementos_competencia": "Demanda e oferta turística; Características e atribuições do guia local; Roteiros acessíveis: tipos acessibilidade mobilidade urbana, acomodações adequadas para diferentes tipos de deficiêr Princípios da sustentabilidade: pilares, princípios ambientais, 3R, consumo consciente, 5S.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -922,7 +1147,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gastronomia - Auxiliar de Cozinha",
       "elementos_competencia": "Executar atividades operacionais, de cordo com o fluxo do ambiente de trabalho, utilizando mc Ários, selecionando utensílios e equipamentos inovadores, adequados para realização dos serv",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -948,7 +1179,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão e Negócios",
       "elementos_competencia": "Organizar estoques de equipamentos, materiais e produtos",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -974,7 +1211,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Comércio - Qualificação em Serviços Comerciais",
       "elementos_competencia": "Inclusão digital, letramento digital, ferramentas de produtividade e abordagem de temas cont porâneos que afetam a vida humana em escala local, regional e global, preferencialmente na ma transversal e integradora.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1000,7 +1244,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Serviços Administrativos",
       "elementos_competencia": "Saúde mental: conceito de saúde mental; situações relacionadas ao sofrimento psíquico, exposi aos estigmas e aos preconceitos, discriminação social e de gênero, tristeza ou humor deprir afastamento de amigos e familiares.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1026,7 +1277,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Educação e Sustentabilidade - Programa DEL Turismc",
       "elementos_competencia": "Turismo Pedagógico: educação e sustentabilidade",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1052,7 +1310,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Passado simples do verbo to be; Passado simples dos verbos regulares e irregulares, nas forr afirmativa, negativa e Interrogativa.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1078,7 +1341,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gastronomia - Atitude Empreendedora - Projeto SAR",
       "elementos_competencia": "Empreendedorismo — intraempreendedorismo - Tendências do mercado - Carreira - Cidadania",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1104,7 +1373,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Instância de Governança Local",
       "elementos_competencia": "Estimular o trabalho em equipe, de forma participativa; Desenvolver a capacidade de planejam to estratégico; Desenvolver habilidades na tomada de decisões que atendam às necessidades várias partes.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1130,7 +1405,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Empreendedorismo, colaboração, brainstorming, branding.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1156,7 +1436,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Tomada de Decisão em grupo, análise de problemas, raciocínio crítico, comunicação eficaz e Ih lidades de resolução de conflitos. Competências linguísticas: leitura e fala.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1182,7 +1468,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Beleza - Maquiador",
       "elementos_competencia": "Visagismo aplicado à maquiagem; Morfologia, Geometria facial e técnicas de correção: Fat determinantes para a escolha da maquiagem: Preparação da pele, Teoria das cores, Sombra e aplicadas à maquiagem: contorno e iluminação; Tipos e características de maquiagem.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1208,7 +1500,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Escrita e lertura",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1234,7 +1531,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Técnico em Guia de Turismo",
       "elementos_competencia": "Demanda e oferta turística; Características e atribuições do guia local; Roteiros acessíveis: tipos acessibilidade, mobilidade urbana, acomodações adequadas para diferentes tipos de deficiêr Princípios da sustentabilidade: pilares, princípios ambientais, 3R, consumo consciente, 5S.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1260,7 +1564,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Saúde - Curso Técnico em Enfermagem",
       "elementos_competencia": "13. Processo de saúde-doença: conceitos, adoecimento, cuidado centrado no indivíduo, e visão têmica da saúde 15. Educação em saúde: conceito, objetivos e processo de trabalho.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1286,7 +1596,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Saúde - Técnico em Enfermagem",
       "elementos_competencia": "18. Plano de Gerenciamento de Resíduos de Serviços de Saúde: definição, finalidade, tipos, legi ção e normas regulamentadoras.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1312,7 +1629,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Técnico em Guia de Turismo",
       "elementos_competencia": "Psicologia e sociologia do lazer e do turismo; Elaborar roteiros turísticos; Comunicar-se com cla e objetividade",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1338,7 +1662,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gastronomia - Iniciação à decoração de bolos e tortas",
       "elementos_competencia": "Conhecimentos e habilidades na decoração de Bolos e Tortas.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1364,7 +1694,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Tecnologia da Informação - Excel do Zero ao Pro",
       "elementos_competencia": "Planejar, desenvolver e manter planilhas eletrônicas, visando a produtividade",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1390,7 +1726,14 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo - Condutor Turístico Local",
       "elementos_competencia": "Exposição Agropecuária de Apodi 2023 - Expoap; Receptivo Turma Condutor Turístico Local.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1416,7 +1759,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Repertório Cultural e Cultura digital",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1442,7 +1791,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Recepcionisto",
       "elementos_competencia": "Planejamento de Carreira: mundo do trabalho, formas de inserção no mercado de trabalho. | mentos de comunicação: contexto, emissor, receptor, canal, mensagem, ruídos e feedback. Técn e tipos de atendimento: personalizados, diferenciados (idosos; crianças; pessoas com deficiêr gestantes), presenciais, eletrônicos, telefônicos e impressos; Atuação em rede, etiqueta e netwo",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1468,7 +1823,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "saúde - Técnico em Estética",
       "elementos_competencia": "Definição de vírus, bactérias e patogênicos; Níveis de riscos e contaminação por doenças trans sívels: HIV, hepatite A, Be €, HPV verruga plantar e herpes labial, entre outras.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1494,7 +1855,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "saúde - Técnico em Estética",
       "elementos_competencia": "Proatividade na resolução de problemas; Sigilo no tratamento de dados e informações; Cordiali de e empatia no trato com as pessoas; Flexibilidade nas diversas situações de trabalho; Valor ção e respeito à diversidade",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1520,7 +1886,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "| Speaking, Listening, Reading, Writing.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1546,7 +1917,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Tecnologia da Informação - Informática Básica",
       "elementos_competencia": "Conceitos, funcionalidades e interação entre elementos de hardware.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1572,7 +1949,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Aprendizagem Supermercados",
       "elementos_competencia": "Gestão de Estoques, Inventário, Giro, Acurácia, PEPS, UEPS, PVPS, Curva ABC, Layout, EPI, EPC, Er nomia, Endereçamento.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1598,7 +1981,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Turismo e Hospitalidade - Consultoria empresarial",
       "elementos_competencia": "Consultoria empresarial - Levantamento das Necessidades.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1624,7 +2012,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gestão - Estratégias em Vendas",
       "elementos_competencia": "Aplicar estratégias em vendas, conceitos de Marketing, Comunicação, Aplicar estratégias e técn de negociação, utilizar estratégica de ferramentas digitais para vendas.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1650,7 +2044,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "comércio - Qualificação em Serviços de Supermercados",
       "elementos_competencia": "Realizar procedimentos de conferência de equipamentos, materiais e produtos no processo gístico.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1676,7 +2075,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "idiomas - Inglês",
       "elementos_competencia": "Habilidades de fala e escrita em inglês, técnicas de ensino criativas para um aluno portador! transtorno de espectro autista.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1702,7 +2107,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Gastronomia - Cozinheiro",
       "elementos_competencia": "Procedimentos de boas práticas para serviços de alimentação: higiene pessoal, ambiental e insumos; noções de microbiologia de alimentos no pré-preparo; riscos de contaminação cruz e descarte de resíduos; princípios da sustentabilidade na gestão de recursos, produtos e Insur Compromisso no atendimento aos requisitos legais vigentes.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1728,7 +2139,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Saúde - Técnico em Podologia",
       "elementos_competencia": "Utensílios, insumos, equipamentos e instrumentos utilizados no procedimento da profilaxia po Biossegurança: Técnicas de manuseio para prevenção de contaminação dos cosméticos. Proto de profilaxia podal: higienização, emoliencia, limpeza das pregas unguealis, corte das unhas, | mento ungueal e plantar, hidratação e massagem.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1754,7 +2171,12 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Saúde - Técnico em Enfermagem",
       "elementos_competencia": "Documentos técnicos: prontuário, prescrição (médica, enfermagem e multiprofissional), exames, | nos de cuidados e relatório de alta. Prontuários: tipos, aspectos legais, finalidade e estrutura.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1780,7 +2202,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Inglês",
       "elementos_competencia": "Escrita, leitura, compreensão oral e fala em conjunto com uso de tablets e app Capcut",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1806,7 +2234,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Francês",
       "elementos_competencia": "Produção oral em língua estrangeira: Autocrítica; Gestão das emoções; Uso de novas tecnologj",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1832,7 +2266,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "Idiomas - Francês",
       "elementos_competencia": "Domínio de língua estrangeira; Habilidade comunicativa; Produção e compreensão de conteúdo língua estrangeira; Criatividade comunicativa; Uso de novas tecnologias.",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },
@@ -1858,7 +2298,13 @@
       "orientacao_pedagogica": "Não informado",
       "segmento_curso": "saúde - Técnico em Estética",
       "elementos_competencia": "Permeabilidade cutânea: lipossomas, nanotecnologia e biotecnologia, via de permeação (cutãr transepidérmi-ca, glândula sudorípara e folículo piloso) e fatores que influenciam na permeaçá",
-      "marcas_formativas": [],
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
       "aprendizagem_integradora": {
         "valor": false
       },

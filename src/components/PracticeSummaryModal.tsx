@@ -128,23 +128,6 @@ export const PracticeSummaryModal = ({
 
             <section>
               <h3 className="text-sm font-black uppercase tracking-widest text-senac-blue mb-3">
-                ODS relacionados
-              </h3>
-
-              <div className="flex flex-wrap gap-2">
-                {practice.odsDetails.map((ods) => (
-                  <span
-                    key={`${practice.id}-${ods.tag}`}
-                    className="text-xs font-bold bg-senac-blue text-white px-3 py-1.5 rounded-full"
-                  >
-                    ODS {ods.numero} - {ods.nome}
-                  </span>
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <h3 className="text-sm font-black uppercase tracking-widest text-senac-blue mb-3">
                 Marcas formativas
               </h3>
 
