@@ -1,9 +1,9 @@
 import { BookOpen, Download, Lock } from 'lucide-react';
 
 const EBOOKS = [
-  { year: 2022, available: false },
-  { year: 2023, available: false },
-  { year: 2024, available: false },
+  { year: 2022, available: true },
+  { year: 2023, available: true },
+  { year: 2024, available: true },
   { year: 2025, available: true },
 ];
 

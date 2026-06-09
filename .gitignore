@@ -10,8 +10,8 @@ build/
 .env.local
 .env.*.local
 
-# PDFs (arquivos grandes)
-public/pdfs/*.pdf
+# PDF 2025 ignorado por exceder o limite do GitHub (100MB)
+public/pdfs/praticas-inovadoras-2025.pdf
 
 # System files
 .DS_Store
