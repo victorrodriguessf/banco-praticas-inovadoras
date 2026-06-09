@@ -1,6 +1,6 @@
 # Banco de Práticas Inovadoras — Senac RN
 
-Catálogo interativo das melhores práticas educacionais desenvolvidas pelos docentes do Senac Rio Grande do Norte. A plataforma reúne **195 práticas** dos editais de 2024 e 2025, com busca em tempo real, filtros avançados e acesso direto aos e-books completos.
+Catálogo interativo das melhores práticas educacionais desenvolvidas pelos docentes do Senac Rio Grande do Norte. A plataforma reúne **267 práticas** dos editais de 2023, 2024 e 2025, com busca em tempo real, filtros avançados e acesso direto aos e-books completos.
 
 ---
 
@@ -43,6 +43,7 @@ src/
 ├── hooks/
 │   └── usePractices.ts          # Lógica de filtro, busca e ordenação
 ├── data/
+│   ├── catalogo_2023.json       # 72 práticas do edital 2023 (extração OCR)
 │   ├── catalogo_2024.json       # 91 práticas do edital 2024
 │   ├── catalogo_2025.json       # 104 práticas do edital 2025
 │   └── practicesAdapter.ts      # Normalização dos dados JSON → Practice

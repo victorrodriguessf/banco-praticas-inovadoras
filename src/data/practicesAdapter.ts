@@ -1,3 +1,4 @@
+import catalogo2023 from './catalogo_2023.json';
 import catalogo2024 from './catalogo_2024.json';
 import catalogo2025 from './catalogo_2025.json';
 import type { Practice, ODSDetail } from '../types';
@@ -87,6 +88,7 @@ function normalizeCatalog(catalog: RawCatalog, year: number): Practice[] {
 }
 
 export const PRACTICES: Practice[] = [
+  ...normalizeCatalog(catalogo2023 as RawCatalog, 2023),
   ...normalizeCatalog(catalogo2024 as RawCatalog, 2024),
   ...normalizeCatalog(catalogo2025 as RawCatalog, 2025),
 ];
