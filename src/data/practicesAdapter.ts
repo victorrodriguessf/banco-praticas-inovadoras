@@ -1,3 +1,4 @@
+import catalogo2022 from './catalogo_2022.json';
 import catalogo2023 from './catalogo_2023.json';
 import catalogo2024 from './catalogo_2024.json';
 import catalogo2025 from './catalogo_2025.json';
@@ -39,6 +40,13 @@ function cleanText(value: unknown, fallback = ''): string {
   return value.trim() || fallback;
 }
 
+function normalizeUnit(cep: string): string {
+  return cep
+    .replace(/^Escola\s+Senac\s+/i, '')
+    .replace(/^Senac\s+/i, '')
+    .trim();
+}
+
 function normalizeCatalog(catalog: RawCatalog, year: number): Practice[] {
   return catalog.projetos.map((project) => {
     const title = cleanText(project.nome_projeto, 'Projeto sem título');
@@ -51,7 +59,7 @@ function normalizeCatalog(catalog: RawCatalog, year: number): Practice[] {
       title,
       instructor: cleanText(project.instrutor, 'Não informado'),
       pedagogicalGuidance: cleanText(project.orientacao_pedagogica, 'Não informado'),
-      unit: cleanText(project.cep, 'Não informado'),
+      unit: normalizeUnit(cleanText(project.cep, 'Não informado')),
       segment: cleanText(project.segmento_curso, 'Não informado'),
 
       competencyElements: cleanText(project.elementos_competencia),
@@ -88,6 +96,7 @@ function normalizeCatalog(catalog: RawCatalog, year: number): Practice[] {
 }
 
 export const PRACTICES: Practice[] = [
+  ...normalizeCatalog(catalogo2022 as RawCatalog, 2022),
   ...normalizeCatalog(catalogo2023 as RawCatalog, 2023),
   ...normalizeCatalog(catalogo2024 as RawCatalog, 2024),
   ...normalizeCatalog(catalogo2025 as RawCatalog, 2025),

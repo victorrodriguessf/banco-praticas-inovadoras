@@ -1,0 +1,2452 @@
+{
+  "fonte": "ebook-praticas-inovadoras-2022.pdf",
+  "ano": 2022,
+  "total_projetos": 40,
+  "observacao_metodologica": "O e-book de 2022 apresenta estrutura diferente dos catálogos posteriores. A extração foi adaptada ao modelo de 2025: CEP, instrutor, segmento/curso e situação de aprendizagem foram preservados a partir do layout; elementos de competência foram sintetizados a partir do objetivo e da descrição da aula; marcas formativas, ODS e indicadores de inclusão/aprendizagem integradora foram inferidos por análise textual quando não apareciam explicitamente.",
+  "projetos": [
+    {
+      "id_projeto": "P001",
+      "pagina_inicial": 13,
+      "pagina_situacao": 13,
+      "nome_projeto": "Aprendizagem Colaborativa + Gamificação",
+      "cep": "Senac Alecrim",
+      "instrutor": "Raphael Carvalho L. Rêgo",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês - Teens 2",
+      "elementos_competencia": "Consolidar o conteúdo estudado durante o ciclo por meio de gamificação, cooperação, revisão ativa, uso de QR Codes, jogos digitais e participação cinestésica dos estudantes.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: prática de aprendizagem ativa e uso de tecnologia educacional"
+        }
+      ],
+      "situacao_aprendizagem": "A turma, com média de 11 anos, apresentava interesse por tecnologia e por atividades com movimento. A aula foi planejada como revisão dos conteúdos do ciclo. O instrutor criou QR Codes com jogos e exercícios relacionados aos temas estudados e os escondeu em pontos de difícil visibilidade na sala. Os alunos procuraram os códigos de forma colaborativa, em dinâmica semelhante a uma caça ao tesouro, ativando engajamento, movimento e cooperação. Após localizar os códigos, utilizaram smartphones para acessá-los e realizar as atividades on-line. A prática aumentou a motivação, favoreceu a colaboração entre colegas e tornou a revisão mais eficaz por meio de gamificação e aprendizagem ativa.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 13",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "gamificação",
+        "QR Code",
+        "aprendizagem colaborativa",
+        "inglês",
+        "tecnologia educacional"
+      ]
+    },
+    {
+      "id_projeto": "P002",
+      "pagina_inicial": 14,
+      "pagina_situacao": 14,
+      "nome_projeto": "Criação de Produto com Microsoft PowerPoint + QR Code",
+      "cep": "Senac Centro",
+      "instrutor": "Maria Beatriz C. Avelino",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão e Negócios / Aprendizagem em Serviços Administrativos - Projeto Integrador 3 - UC10",
+      "elementos_competencia": "Articular competências das UCs ligadas à ocupação de Assistente de Pessoal, abordando direitos trabalhistas, processo de seleção, benefícios, rescisão e criação de produto digital para consulta.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: educação profissional, mundo do trabalho e inovação digital"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: educação profissional, mundo do trabalho e inovação digital"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: educação profissional, mundo do trabalho e inovação digital"
+        }
+      ],
+      "situacao_aprendizagem": "Por se tratar de Projeto Integrador, a prática foi planejada para articular competências desenvolvidas nas UCs da ocupação. Após simulações de processos seletivos e palestra sobre setor pessoal, os alunos criaram um aplicativo para consulta prática e objetiva sobre direitos trabalhistas, processo de contratação e rescisão. A turma realizou a dinâmica “Quem eu escolho?”, organizou grupos por temas como pré-contratação, benefícios e rescisão, desenvolveu o produto em formato digital e compartilhou o acesso por QR Code em cartazes espalhados pelo CEP. O projeto foi socializado com outras turmas de aprendizagem, permitindo aos alunos atuarem como consultores sobre o tema, evidenciando protagonismo, colaboração e compartilhamento de experiências.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 14",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "PowerPoint",
+        "QR Code",
+        "aplicativo",
+        "Projeto Integrador",
+        "direitos trabalhistas",
+        "assistente de pessoal"
+      ]
+    },
+    {
+      "id_projeto": "P003",
+      "pagina_inicial": 15,
+      "pagina_situacao": 15,
+      "nome_projeto": "Visita Técnica + Microsoft Minecraft Education",
+      "cep": "Senac Centro",
+      "instrutor": "Maria Beatriz C. Avelino",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão e Negócios / Aprendizagem em Serviços de Supermercados / Projeto Integrador 2 - UC6",
+      "elementos_competencia": "Articular competências relacionadas à ocupação de estoquista, ao controle e administração do estoque, utilizando visita técnica, análise de processos e construção de projeto virtual no Minecraft.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: educação profissional, inovação e processos de estoque/consumo"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: educação profissional, inovação e processos de estoque/consumo"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: educação profissional, inovação e processos de estoque/consumo"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: educação profissional, inovação e processos de estoque/consumo"
+        }
+      ],
+      "situacao_aprendizagem": "A prática integrou teoria e prática no Projeto Integrador. Inicialmente foram realizadas visitas técnicas ao Centro de Distribuição do Senac e a estoques de lojas onde os alunos trabalhavam, para conhecer a gestão de estoque e identificar melhorias. Em seguida, os alunos foram apresentados ao Minecraft Education e organizados em grupos para criar um projeto de estoque em ambiente virtual. A socialização ocorreu com outras turmas do CEP Centro, permitindo que os aprendizes compartilhassem o que estudaram e desenvolveram. A atividade evidenciou protagonismo, segurança, compreensão prática do tema e uso significativo de uma ferramenta tecnológica para representar layout, controle e administração do estoque.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 15",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Minecraft Education",
+        "visita técnica",
+        "estoque",
+        "Projeto Integrador",
+        "aprendizagem profissional"
+      ]
+    },
+    {
+      "id_projeto": "P004",
+      "pagina_inicial": 16,
+      "pagina_situacao": 16,
+      "nome_projeto": "Aprendizagem Colaborativa + Criação de Trend em Rede Social",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Fernando Cortez",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Desenvolver vocabulário, oralidade, compreensão auditiva e colaboração em língua inglesa por meio de atividade prática inspirada em trend de rede social.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: prática pedagógica de aprendizagem de idiomas"
+        }
+      ],
+      "situacao_aprendizagem": "A prática “Rainbow Food Challenge” partiu do interesse dos alunos por internet e redes sociais, especialmente TikTok, para trabalhar vocabulário de alimentos, substantivos contáveis e incontáveis e quantificadores. Junto com o instrutor, os alunos organizaram um café da manhã compartilhado em que cada participante levou alimentos de uma cor específica, formando visualmente um arco-íris. Durante a atividade, apresentaram os alimentos em inglês, utilizando containers e quantificadores corretos. Depois fizeram fotos e vídeos para compartilhar, aproximando o conteúdo da realidade digital dos estudantes. A prática gerou engajamento, autonomia, espírito de equipe e conexão entre lazer, cultura digital e aprendizagem.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 16",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "trend",
+        "redes sociais",
+        "TikTok",
+        "inglês",
+        "comida",
+        "aprendizagem colaborativa"
+      ]
+    },
+    {
+      "id_projeto": "P005",
+      "pagina_inicial": 17,
+      "pagina_situacao": 17,
+      "nome_projeto": "Histórias em Quadrinhos",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Válber Medeiros",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês - Young Adults 2 - 2022.2 (online)",
+      "elementos_competencia": "Revisar e reforçar o uso de formas verbais no presente e no passado por meio de escrita criativa, storytelling, storyboard e produção de histórias em quadrinhos.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: desenvolvimento de linguagem e criatividade"
+        }
+      ],
+      "situacao_aprendizagem": "A prática surgiu da necessidade de aplicar tempos verbais no presente e no passado em situações reais de discurso. Os alunos participaram de uma sequência que incluiu leitura de texto motivador sobre a origem das histórias em quadrinhos, criação de personagem central, definição do cenário, esboço de storyboard e diálogos, além do desenho final em ferramenta virtual escolhida pelo aluno, como PowerPoint ou Canva. As produções foram compartilhadas entre os colegas, que escolheram suas favoritas, e o instrutor realizou feedback linguístico. A atividade estimulou criatividade, autonomia produtiva, escrita em inglês e uso de recursos digitais.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 17",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "histórias em quadrinhos",
+        "storyboard",
+        "Canva",
+        "PowerPoint",
+        "inglês",
+        "escrita criativa"
+      ]
+    },
+    {
+      "id_projeto": "P006",
+      "pagina_inicial": 18,
+      "pagina_situacao": 18,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Finanças Online",
+      "cep": "Senac Zona Norte",
+      "instrutor": "Alcileide Lima",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão e Negócios / Qualificação Profissional em Serviços Comerciais / Projeto Integrador II",
+      "elementos_competencia": "Desenvolver educação financeira, protagonismo juvenil, pesquisa, comunicação e produção de conteúdo digital em rede social.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: educação financeira, qualificação profissional e redução de vulnerabilidades"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: educação financeira, qualificação profissional e redução de vulnerabilidades"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: educação financeira, qualificação profissional e redução de vulnerabilidades"
+        }
+      ],
+      "situacao_aprendizagem": "O projeto “Finanças Online” foi desenvolvido no Programa de Aprendizagem Comercial a partir da identificação da necessidade dos alunos e de seus círculos sociais em relação à educação financeira. Em roda de conversa, a instrutora mobilizou a turma e organizou grupos para pesquisar dúvidas frequentes sobre o tema. Coletivamente, os alunos selecionaram os assuntos mais relevantes e definiram a estratégia de apresentação à comunidade. As equipes produziram materiais e os publicaram em rede social, competindo de forma saudável pelo maior engajamento. A prática evidenciou mobilização, qualidade na produção, visão crítica, atitude empreendedora e colaboração, demonstrando que redes sociais podem apoiar aprendizagem significativa e conscientização financeira.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 18",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "educação financeira",
+        "Instagram",
+        "Projeto Integrador",
+        "serviços comerciais",
+        "aprendizagem baseada em projetos"
+      ]
+    },
+    {
+      "id_projeto": "P007",
+      "pagina_inicial": 19,
+      "pagina_situacao": 19,
+      "nome_projeto": "Criação de Produto com Microsoft Sway",
+      "cep": "Senac Zona Norte",
+      "instrutor": "Kelly Rodrigues O. de Lima",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão / Aprendizagem em Serviços Comerciais",
+      "elementos_competencia": "Promover qualidade no atendimento, valorização cultural, pesquisa regional, simulação de telemarketing, empatia e comunicação profissional com uso do Microsoft Sway.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: trabalho decente, valorização cultural e respeito à diversidade regional"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: trabalho decente, valorização cultural e respeito à diversidade regional"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: trabalho decente, valorização cultural e respeito à diversidade regional"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: trabalho decente, valorização cultural e respeito à diversidade regional"
+        }
+      ],
+      "situacao_aprendizagem": "A prática nasceu de uma tempestade de ideias sobre dificuldades no atendimento de telemarketing e a necessidade de qualidade independente da situação. Os alunos foram organizados por regiões do Brasil — Sul, Sudeste, Centro-Oeste, Norte e Nordeste — e pesquisaram aspectos culturais, culinária, pontos turísticos, história, linguagem e dialetos. Com apoio do Microsoft Sway, desenvolveram uma feira cultural, presencial ou on-line, e simularam atendimentos de telemarketing para clientes das regiões pesquisadas. A atividade trabalhou empatia, hospitalidade virtual, escolha adequada de palavras, tempo de espera, segurança e valorização da cultura brasileira. O resultado fortaleceu protagonismo juvenil, integração, diálogo, respeito e qualidade no atendimento.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 19",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Microsoft Sway",
+        "telemarketing",
+        "feira cultural",
+        "atendimento",
+        "cultura brasileira",
+        "aprendizagem em serviços comerciais"
+      ]
+    },
+    {
+      "id_projeto": "P008",
+      "pagina_inicial": 20,
+      "pagina_situacao": 20,
+      "nome_projeto": "Flipgrid",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Maxwel Pereira Batista",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Produzir vídeos em inglês sobre alimentação, respondendo perguntas pessoais e desenvolvendo oralidade, vocabulário, compreensão e uso de plataforma digital privada.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: aprendizagem de idiomas com tecnologia educacional"
+        }
+      ],
+      "situacao_aprendizagem": "Após o estudo de vocabulário relacionado a comida, os alunos responderam perguntas pessoais em inglês sobre nome, idade, local onde vivem, refeição favorita, lanches, comidas com amigos e restaurantes preferidos. O professor apresentou o Flipgrid, realizou treinamento para uso da plataforma e forneceu senhas individuais. Em seguida, os alunos gravaram e postaram vídeos privados, que foram exibidos em sala para comentários dos colegas. A prática incentivou produção oral em inglês, autonomia digital, feedback entre pares e aprendizagem contextualizada.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 20",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Flipgrid",
+        "vídeo",
+        "inglês",
+        "comida",
+        "oralidade",
+        "plataforma digital"
+      ]
+    },
+    {
+      "id_projeto": "P009",
+      "pagina_inicial": 21,
+      "pagina_situacao": 21,
+      "nome_projeto": "Microsoft Minecraft Education",
+      "cep": "Senac Centro",
+      "instrutor": "Rodrigo Fortunato de O. Alves",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão e Negócios",
+      "elementos_competencia": "Utilizar o Minecraft Education para construir layout e setores de supermercado em ambiente virtual, relacionando tecnologia, varejo e aprendizagem profissional.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: tecnologia educacional aplicada ao mundo do trabalho"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: tecnologia educacional aplicada ao mundo do trabalho"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: tecnologia educacional aplicada ao mundo do trabalho"
+        }
+      ],
+      "situacao_aprendizagem": "Após capacitação de instrutores em Minecraft Education, a turma de aprendizagem da área de supermercados foi levada ao laboratório do CEP Alecrim para utilizar a ferramenta no contexto do curso. Os alunos foram divididos em grupos e acessaram individualmente um mundo criado no Minecraft, construindo supermercados com setores, equipamentos e identidade visual. O melhor supermercado foi escolhido pelos próprios alunos e premiado simbolicamente. A prática gerou encantamento, alto engajamento e aprendizagem relacionada ao dia a dia do curso e do trabalho em supermercados, favorecendo compreensão sobre setores, layout, equipamentos e identidade visual do varejo.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 21",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Minecraft Education",
+        "supermercado",
+        "layout",
+        "varejo",
+        "aprendizagem profissional"
+      ]
+    },
+    {
+      "id_projeto": "P010",
+      "pagina_inicial": 22,
+      "pagina_situacao": 22,
+      "nome_projeto": "Spotify + Aprendizagem Colaborativa",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Edilson Menezes",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Desenvolver vocabulário, oralidade, escrita, gramática e compreensão auditiva em inglês por meio de música, protagonismo estudantil e playlist colaborativa.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: aprendizagem ativa de idiomas"
+        }
+      ],
+      "situacao_aprendizagem": "A prática “Friday Song” partiu da importância do contato cotidiano com o idioma por meio da música. No primeiro ciclo, o instrutor demonstrou diferentes formas de trabalhar músicas em sala. A partir do segundo ciclo, um aluno era sorteado a cada sexta-feira para escolher uma música, preparar uma atividade e aplicá-la com a turma, com revisão prévia do professor. O aluno se tornava protagonista da aula ao apresentar, aplicar e corrigir a atividade. A prática desenvolveu vocabulário, oralidade, gramática, escrita e compreensão auditiva em ambiente descontraído. Como desdobramento, foi criada uma playlist colaborativa no Spotify, compartilhada com turmas desde 2019, com mais de 100 músicas.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 22",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Spotify",
+        "música",
+        "Friday Song",
+        "inglês",
+        "aprendizagem colaborativa",
+        "protagonismo"
+      ]
+    },
+    {
+      "id_projeto": "P011",
+      "pagina_inicial": 23,
+      "pagina_situacao": 23,
+      "nome_projeto": "Revista online",
+      "cep": "Senac Alecrim",
+      "instrutor": "Igo Bilro",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Fortalecer escrita, fala, revisão textual, produção multimídia e publicação on-line em língua inglesa.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: produção textual e aprendizagem de idiomas"
+        }
+      ],
+      "situacao_aprendizagem": "A prática surgiu da percepção de que os alunos precisavam praticar escrita em inglês também fora da sala. Em conjunto com a turma, foi proposta a criação de uma revista on-line, capaz de reunir textos, vídeos e imagens. Os tópicos de escrita foram definidos conforme as necessidades da turma e o conforto dos alunos em produzi-los. Cada estudante teve uma semana para elaborar seu texto, que foi revisado pelo professor antes de ser incluído na revista. Houve feedback constante entre professor e aluno e troca de ideias entre os próprios estudantes. A diagramação ficou sob responsabilidade do professor. A produção com temas de interesse dos alunos ampliou o engajamento, a interação e o interesse por aspectos gramaticais.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 23",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "revista online",
+        "Canva",
+        "escrita",
+        "inglês",
+        "produção multimídia"
+      ]
+    },
+    {
+      "id_projeto": "P012",
+      "pagina_inicial": 24,
+      "pagina_situacao": 24,
+      "nome_projeto": "Podcast",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Válber Medeiros",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês - Young Adults 4 - 2022.1 (online)",
+      "elementos_competencia": "Produzir podcasts em inglês para narrar eventos passados, aplicando tempos verbais, criatividade, roteiro, gravação, edição de áudio e avaliação entre pares.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: aprendizagem de idiomas e comunicação"
+        }
+      ],
+      "situacao_aprendizagem": "A turma apresentava dificuldade para migrar espontaneamente entre tempos verbais no passado, como past simple, present perfect, past continuous e past perfect. A metodologia propôs a criação de podcasts com narração de eventos passados. Os alunos discutiram o gênero textual podcast, fizeram brainstorm de ideias, escolheram a melhor opção, criaram roteiros e gravaram áudios com efeitos sonoros fora da sala. Cada aluno apresentou seu podcast, explicou suas motivações e os aplicativos utilizados, e avaliou o podcast de um colega usando a metodologia TAG: tell something you liked, ask a question, give a suggestion. A prática permitiu diagnosticar pontos linguísticos a reforçar e valorizou criatividade, autonomia e produção oral.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 24",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "podcast",
+        "inglês",
+        "tempos verbais",
+        "áudio",
+        "TAG feedback",
+        "storytelling"
+      ]
+    },
+    {
+      "id_projeto": "P013",
+      "pagina_inicial": 25,
+      "pagina_situacao": 25,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Portfólio virtual da Casa de Câmara e Cadeia",
+      "cep": "Senac Mossoró",
+      "instrutor": "Catiane Lopes de Lima",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Turismo de Base Comunitária em Portalegre/RN",
+      "elementos_competencia": "Diagnosticar problemas e potencialidades de atrativo histórico-cultural, elaborar portfólio virtual, formulário de pesquisa e proposta de informatização turística.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: turismo, patrimônio cultural, inovação e desenvolvimento local"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: turismo, patrimônio cultural, inovação e desenvolvimento local"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: turismo, patrimônio cultural, inovação e desenvolvimento local"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: turismo, patrimônio cultural, inovação e desenvolvimento local"
+        }
+      ],
+      "situacao_aprendizagem": "A prática trabalhou a reestruturação e informatização do Espaço Cultural “Casa de Câmara e Cadeia”, em Portalegre/RN. Após visita de campo, os alunos identificaram carência de informações, problemas estruturais e necessidade de informatização do espaço. Com metodologia de aprendizagem baseada em projetos, elaboraram diagnóstico, portfólio virtual com fotos, descrição e objetivos do espaço, proposta de disponibilização em site da prefeitura com QR Code na entrada do atrativo e formulário físico e on-line de pesquisa de satisfação e perfil de visitantes. A proposta visou qualificar a oferta turística, valorizar a história local, criar banco de dados para análise futura e inspirar replicação em outros espaços culturais.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 25",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "turismo de base comunitária",
+        "portfólio virtual",
+        "QR Code",
+        "museu",
+        "patrimônio cultural",
+        "Portalegre"
+      ]
+    },
+    {
+      "id_projeto": "P014",
+      "pagina_inicial": 26,
+      "pagina_situacao": 26,
+      "nome_projeto": "Aprendizagem Baseada em Problemas - Mural sobre identificação de produtos e mercadorias",
+      "cep": "Senac Centro",
+      "instrutor": "Simone Borba",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Aprendizagem Profissional de Qualificação em Serviços de Supermercados / UC2",
+      "elementos_competencia": "Desenvolver competência de embalar e empacotar mercadorias, analisando embalagens, identificação de produtos, tabela nutricional, composição, acessibilidade e logística de produção e consumo.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: consumo responsável, embalagens, logística e educação profissional"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: consumo responsável, embalagens, logística e educação profissional"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: consumo responsável, embalagens, logística e educação profissional"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: consumo responsável, embalagens, logística e educação profissional"
+        }
+      ],
+      "situacao_aprendizagem": "A prática iniciou com o estudo de tipos de embalagens e suas finalidades, como comunicação, proteção e identificação comercial. Os aprendizes analisaram embalagens de produtos manipulados no ambiente de trabalho, pesquisaram fabricantes, utilizaram Google Maps para dimensionar a distância entre produção e consumo, formularam pesquisas, gráficos e registros em mural digital no Padlet. Em pares, escolheram mercadorias e planejaram apresentações sobre características das embalagens, tabela nutricional, composição, acessibilidade e simbologia. O mural permitiu postagens, comentários e reações, favorecendo socialização, avaliação entre pares, colaboração, senso crítico e construção de acervo útil ao Projeto Integrador.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 26",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Padlet",
+        "embalagens",
+        "Google Maps",
+        "supermercados",
+        "aprendizagem baseada em problemas",
+        "consumo responsável"
+      ]
+    },
+    {
+      "id_projeto": "P015",
+      "pagina_inicial": 27,
+      "pagina_situacao": 27,
+      "nome_projeto": "Photovoice - Turismo de Base Comunitária em Brejinho/RN",
+      "cep": "Escola Senac Barreira Roxa",
+      "instrutor": "Ana Christina Roque dos Santos Lobato",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Turismo / Turismo de Base Comunitária",
+      "elementos_competencia": "Aplicar a metodologia Photovoice para identificar elementos naturais e culturais da comunidade, fortalecer pertencimento e criar produtos turísticos de base comunitária.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: turismo comunitário, valorização local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: turismo comunitário, valorização local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: turismo comunitário, valorização local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: turismo comunitário, valorização local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: turismo comunitário, valorização local e desenvolvimento sustentável"
+        }
+      ],
+      "situacao_aprendizagem": "No curso de Turismo de Base Comunitária realizado em Brejinho/RN, a prática aplicou o Photovoice, metodologia de ação-investigativa que desperta o olhar endógeno dos moradores sobre elementos naturais e artificiais da comunidade. Após tempestade de ideias e explanação teórica, os participantes foram desafiados a registrar, com celular ou câmera, elementos significativos que gostariam de apresentar a visitantes. Compartilharam cinco fotos por aluno, decidiram coletivamente a forma de exposição, o local, o nome da mostra e criaram perfil em rede social. O curso culminou em evento organizado pelos alunos para sensibilizar moradores sobre o TBC, evidenciando coletividade, pertencimento e adaptação de práticas inovadoras a diferentes realidades.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 27",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Photovoice",
+        "TBC",
+        "turismo de base comunitária",
+        "Brejinho",
+        "exposição fotográfica",
+        "rede social"
+      ]
+    },
+    {
+      "id_projeto": "P016",
+      "pagina_inicial": 28,
+      "pagina_situacao": 28,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Jogos didáticos sobre controle de estoques",
+      "cep": "Senac Centro",
+      "instrutor": "Gustavo Marques",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Comércio / Aprendizagem em Serviços de Supermercados / UC 06 PI",
+      "elementos_competencia": "Elaborar jogos didáticos sobre controle de estoques de mercadorias, aplicando competências do Projeto Integrador, sala de aula invertida e socialização com outras turmas.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: aprendizagem profissional, estoque e consumo responsável"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: aprendizagem profissional, estoque e consumo responsável"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: aprendizagem profissional, estoque e consumo responsável"
+        }
+      ],
+      "situacao_aprendizagem": "A prática foi organizada em quatro dias. No primeiro, houve lançamento da proposta de Projeto Integrador com o tema controle de estoques de mercadorias de supermercados, divisão de grupos, definição de subtemas, tempestade de ideias e escolha do tipo de jogo didático. No segundo e terceiro dias, os grupos construíram os jogos e planejaram as apresentações, utilizando materiais de papelaria, internet, Office 365 e celulares, em metodologia de sala de aula invertida. No quarto dia, os jogos foram apresentados a outras turmas, nas quais os aprendizes atuaram como protagonistas e os visitantes participaram das atividades. A prática promoveu compartilhamento de conhecimentos e aplicação prática dos indicadores da UC.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 28",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "jogos didáticos",
+        "estoque",
+        "Projeto Integrador",
+        "sala de aula invertida",
+        "supermercados"
+      ]
+    },
+    {
+      "id_projeto": "P017",
+      "pagina_inicial": 29,
+      "pagina_situacao": 29,
+      "nome_projeto": "Projeto MasterChef Teens",
+      "cep": "Senac Alecrim",
+      "instrutor": "Flora Caldas",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês - Teens 3",
+      "elementos_competencia": "Aplicar vocabulário de alimentos, substantivos contáveis e incontáveis, verbos culinários e comunicação oral em inglês por meio de produção de vídeo culinário.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: aprendizagem de idiomas"
+        }
+      ],
+      "situacao_aprendizagem": "Durante a Unidade 2, os alunos do Teens 3 estudaram vocabulário de alimentos, substantivos contáveis e incontáveis e verbos usados na cozinha. Para evidenciar a relevância prática do conteúdo, a instrutora propôs o projeto MasterChef Teens. Após estudo do vocabulário, os alunos assistiram a trechos do MasterChef Júnior e cada um escolheu uma receita que fosse capaz de executar em casa. No vídeo produzido, deveriam apresentar os ingredientes e o passo a passo em inglês. No dia da apresentação, a turma assistiu aos vídeos e degustou alimentos trazidos por alguns colegas. A prática gerou envolvimento, esforço, autonomia e aplicação real do idioma.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 29",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "MasterChef Teens",
+        "inglês",
+        "culinária",
+        "vídeo",
+        "vocabulário"
+      ]
+    },
+    {
+      "id_projeto": "P018",
+      "pagina_inicial": 30,
+      "pagina_situacao": 30,
+      "nome_projeto": "Gamificação",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Ítalo Queiroz",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas",
+      "elementos_competencia": "Estimular participação ativa, aprendizagem de idiomas e engajamento por meio de gincana gamificada contínua em sala.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: gamificação aplicada à educação"
+        }
+      ],
+      "situacao_aprendizagem": "A prática consistiu em uma gincana competitiva contínua realizada ao longo de cada ciclo de aulas. No início do semestre, o instrutor explicou que atividades diversas gerariam pontuações para os alunos. As aulas passaram a incluir jogos, competições e atividades de sorte, como Kahoot, Baamboozle, board games, atividades em times e tarefas relacionadas às habilidades de leitura, gramática, oralidade, vocabulário, escrita e compreensão auditiva. Os alunos também pontuavam ao entregar exercícios de casa no prazo. A pontuação ficava exposta em sala e, ao final do ciclo, era anunciado o pódio dos vencedores. A estratégia elevou motivação, participação, colaboração e compromisso com o estudo.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 30",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "gamificação",
+        "gincana",
+        "Kahoot",
+        "Baamboozle",
+        "idiomas",
+        "jogos"
+      ]
+    },
+    {
+      "id_projeto": "P019",
+      "pagina_inicial": 31,
+      "pagina_situacao": 31,
+      "nome_projeto": "Imagineforest.com",
+      "cep": "Senac Alecrim",
+      "instrutor": "Maria Cristina H. Assrany",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Praticar escrita em inglês, aplicar tópicos gramaticais e publicar livro on-line na plataforma Imagineforest.com.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: produção escrita e tecnologia educacional"
+        }
+      ],
+      "situacao_aprendizagem": "A prática teve como foco a escrita contextualizada em língua inglesa. Inicialmente, a turma estudou tópicos gramaticais em aula síncrona pelo Microsoft Teams. Em seguida, os estudantes foram incentivados a escrever um livro on-line e publicá-lo no site Imagineforest.com. Os textos foram revisados e receberam feedback da professora antes da publicação. A atividade incentivou a prática da escrita, a aplicação gramatical, a criatividade e a autonomia digital dos alunos.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 31",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Imagineforest",
+        "livro online",
+        "inglês",
+        "escrita",
+        "Microsoft Teams"
+      ]
+    },
+    {
+      "id_projeto": "P020",
+      "pagina_inicial": 32,
+      "pagina_situacao": 32,
+      "nome_projeto": "Intercâmbio cultural no Microsoft Teams",
+      "cep": "Senac Alecrim",
+      "instrutor": "Raphael Carvalho L. Rêgo",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Promover intercâmbio cultural com falante nativo dos Estados Unidos, praticando escuta, oralidade e interação em inglês sobre esportes radicais.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: educação e parceria/intercâmbio cultural"
+        },
+        {
+          "numero": 17,
+          "nome": "Parcerias e Meios de Implementação",
+          "tag": "ODS 17 - Parcerias e Meios de Implementação",
+          "fonte": "inferência: educação e parceria/intercâmbio cultural"
+        }
+      ],
+      "situacao_aprendizagem": "A turma Express 9, na modalidade on-line, estudava o tema “taking risks” relacionado a esportes outdoor perigosos. O instrutor convidou Jesse, um amigo americano que pratica escalada no Arizona, para participar de uma aula síncrona no Microsoft Teams. Os alunos prepararam perguntas antecipadamente para compreender melhor o esporte, seus riscos e sua popularização nos Estados Unidos. A conversa despertou grande curiosidade e engajamento, tornando-se para muitos o primeiro contato com um falante nativo de inglês. A interação, prevista para uma hora, durou toda a aula e ampliou discussões sobre esportes, geografia, cultura, comida e diferenças entre Brasil e Estados Unidos.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 32",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Microsoft Teams",
+        "intercâmbio cultural",
+        "inglês",
+        "falante nativo",
+        "esportes radicais"
+      ]
+    },
+    {
+      "id_projeto": "P021",
+      "pagina_inicial": 33,
+      "pagina_situacao": 33,
+      "nome_projeto": "Mentimeter",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Maxwel Pereira Batista",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Realizar diagnóstico de perfil da turma e negociação pedagógica por meio do Mentimeter, identificando práticas de aprendizagem valorizadas pelos alunos.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: personalização do ensino e participação estudantil"
+        }
+      ],
+      "situacao_aprendizagem": "No primeiro dia de aula, o professor apresentou uma lista de técnicas e atividades comuns em aulas de idiomas para que os alunos refletissem sobre quais práticas consideravam mais eficazes. Em seguida, usaram o Mentimeter para postar atividades de que gostavam e, depois, aspectos considerados menos relevantes. As respostas apareceram para toda a turma no modo apresentação e foram discutidas coletivamente. O resultado foi uma conversa personalizada sobre expectativas, necessidades e possibilidades de negociação do percurso formativo, sem eliminar práticas pedagógicas importantes, mas esclarecendo e pactuando estratégias com os alunos.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 33",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Mentimeter",
+        "diagnóstico de turma",
+        "personalização",
+        "inglês",
+        "participação estudantil"
+      ]
+    },
+    {
+      "id_projeto": "P022",
+      "pagina_inicial": 34,
+      "pagina_situacao": 34,
+      "nome_projeto": "Técnica Metaplan",
+      "cep": "Senac Assú",
+      "instrutor": "Katiane Gelly Dantas A. de Souza",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Turismo - Instância de Governança",
+      "elementos_competencia": "Realizar planejamento participativo e construir mapa estratégico de desenvolvimento econômico local com a técnica Metaplan.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: governança local, planejamento participativo e desenvolvimento econômico"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: governança local, planejamento participativo e desenvolvimento econômico"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: governança local, planejamento participativo e desenvolvimento econômico"
+        },
+        {
+          "numero": 16,
+          "nome": "Paz, Justiça e Instituições Eficazes",
+          "tag": "ODS 16 - Paz, Justiça e Instituições Eficazes",
+          "fonte": "inferência: governança local, planejamento participativo e desenvolvimento econômico"
+        },
+        {
+          "numero": 17,
+          "nome": "Parcerias e Meios de Implementação",
+          "tag": "ODS 17 - Parcerias e Meios de Implementação",
+          "fonte": "inferência: governança local, planejamento participativo e desenvolvimento econômico"
+        }
+      ],
+      "situacao_aprendizagem": "A prática utilizou a técnica Metaplan com participantes de diferentes esferas da sociedade — poder público, iniciativa privada e sociedade civil organizada — em uma Instância de Governança Local DEL Assú. Cada aluno recebeu uma tarjeta para registrar projetos ou áreas que exigiam atenção. Após leitura pelo mediador, o grupo definiu coletivamente em que ano a demanda poderia ser realizada, formando um mapa estratégico de desenvolvimento econômico para o período de 2022 a 2026. A atividade favoreceu clareza, participação, empatia, respeito e compreensão do município como um todo. Também sugeriu a criação de Câmaras Técnicas para atuação paralela ao Conselho Municipal de Desenvolvimento Econômico.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 34",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Metaplan",
+        "governança",
+        "DEL Assú",
+        "planejamento participativo",
+        "desenvolvimento econômico"
+      ]
+    },
+    {
+      "id_projeto": "P023",
+      "pagina_inicial": 35,
+      "pagina_situacao": 35,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Roteirização em Turismo de Base Comunitária",
+      "cep": "Senac Assú",
+      "instrutor": "Maria Juliana J. B. de Souza Rebouças",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Turismo, Hospitalidade e Lazer / Técnico em Guia de Turismo / Projeto Integrador",
+      "elementos_competencia": "Fortalecer o Turismo de Base Comunitária no Vale do Açu por meio de roteirização, valorização cultural, patrimônio gastronômico e protagonismo comunitário.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: TBC, patrimônio cultural, desenvolvimento local e biodiversidade"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: TBC, patrimônio cultural, desenvolvimento local e biodiversidade"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: TBC, patrimônio cultural, desenvolvimento local e biodiversidade"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: TBC, patrimônio cultural, desenvolvimento local e biodiversidade"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: TBC, patrimônio cultural, desenvolvimento local e biodiversidade"
+        },
+        {
+          "numero": 15,
+          "nome": "Vida Terrestre",
+          "tag": "ODS 15 - Vida Terrestre",
+          "fonte": "inferência: TBC, patrimônio cultural, desenvolvimento local e biodiversidade"
+        }
+      ],
+      "situacao_aprendizagem": "O Projeto Integrador do Técnico em Guia de Turismo trabalhou a roteirização pautada no Turismo de Base Comunitária, considerando desafios e potencialidades da região do Vale do Açu. A turma foi dividida em sete equipes, representando municípios participantes, e pesquisou aspectos históricos, culturais, gastronômicos, econômicos, sociais e ambientais. Houve visitas in loco e reuniões com a comunidade para valorização de produtos locais, como a banana em Ipanguaçu. A equipe desse município desenvolveu proposta de valorização do patrimônio gastronômico da comunidade Quilombola de Picada, com oficina gastronômica, desenvolvimento de produto à base de banana e participação em feira. A prática fortaleceu protagonismo comunitário, cooperativismo e valorização da cultura local.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 35",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "TBC",
+        "roteirização turística",
+        "Vale do Açu",
+        "Projeto Integrador",
+        "patrimônio gastronômico",
+        "comunidade quilombola"
+      ]
+    },
+    {
+      "id_projeto": "P024",
+      "pagina_inicial": 36,
+      "pagina_situacao": 36,
+      "nome_projeto": "Instagram - Curso de Oratória",
+      "cep": "Senac Centro",
+      "instrutor": "Rodrigo Fortunato de O. Alves",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Comunicação",
+      "elementos_competencia": "Desenvolver oratória, lives, entrevistas e eventos híbridos por meio de práticas em Instagram fechado e feedback técnico.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: comunicação profissional e uso de mídia digital"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: comunicação profissional e uso de mídia digital"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: comunicação profissional e uso de mídia digital"
+        }
+      ],
+      "situacao_aprendizagem": "Diante das demandas pós-pandemia e do interesse dos alunos em aprimorar lives, entrevistas e eventos híbridos, o instrutor criou um Instagram fechado para práticas de comunicação durante as aulas de oratória. Os estudantes realizaram lives, entrevistas e exposições, assumindo papéis de entrevistadores, entrevistados, expositores e plateia. Durante as práticas, foram ajustados pontos como iluminação, som, posicionamento e desempenho oral. As gravações ficaram disponíveis para revisão posterior. A atividade gerou engajamento, satisfação e avanço no desempenho comunicativo dos alunos.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 36",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Instagram",
+        "oratória",
+        "lives",
+        "eventos híbridos",
+        "comunicação"
+      ]
+    },
+    {
+      "id_projeto": "P025",
+      "pagina_inicial": 37,
+      "pagina_situacao": 37,
+      "nome_projeto": "Realidade Aumentada",
+      "cep": "Senac Zona Norte",
+      "instrutor": "Mizael Martins",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Saúde / Técnico em Enfermagem / UC15 Prestar Assistência de Enfermagem a Pacientes Críticos",
+      "elementos_competencia": "Trabalhar anatomia e fisiologia do sistema circulatório por meio de pesquisa, debates, aplicativos de realidade aumentada e visita técnica.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 3,
+          "nome": "Saúde e Bem-Estar",
+          "tag": "ODS 3 - Saúde e Bem-Estar",
+          "fonte": "inferência: saúde, educação profissional e tecnologia educacional"
+        },
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: saúde, educação profissional e tecnologia educacional"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: saúde, educação profissional e tecnologia educacional"
+        }
+      ],
+      "situacao_aprendizagem": "A prática abordou anatomia e fisiologia do sistema circulatório em uma turma de Técnico em Enfermagem. Inicialmente, os alunos participaram de discussão e pesquisa para mobilização de conhecimentos. Em seguida, utilizaram aplicativos de realidade aumentada e Virtuali-Tee, visitaram o SmartLab para aprofundar a compreensão do sistema circulatório e, especialmente, do coração, e realizaram visita ao centro de morfologia da UFPB para conhecer anatomia e fisiologia na prática. A atividade permitiu desenvolver conhecimentos por meio de pesquisa, debate, tecnologia imersiva e vivência prática.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 37",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "realidade aumentada",
+        "enfermagem",
+        "sistema circulatório",
+        "SmartLab",
+        "Virtuali-Tee",
+        "saúde"
+      ]
+    },
+    {
+      "id_projeto": "P026",
+      "pagina_inicial": 38,
+      "pagina_situacao": 38,
+      "nome_projeto": "Aprendizagem Baseada em Problemas - Exposição de Mercadorias",
+      "cep": "Senac Mossoró",
+      "instrutor": "Francisco Xavier Neto",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Comércio / Aprendizagem em Serviços de Supermercados / UC8",
+      "elementos_competencia": "Analisar exposição de produtos e merchandising visual no PDV para compreender planejamento, gestão, decisão de compra e fidelização de clientes.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: comércio, consumo e organização de mercadorias"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: comércio, consumo e organização de mercadorias"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: comércio, consumo e organização de mercadorias"
+        }
+      ],
+      "situacao_aprendizagem": "A prática propôs o estudo do meio sobre exposição de mercadorias no ponto de venda. A partir do desafio de identificar ações realizadas no PDV capazes de informar, destacar e acelerar a rotatividade de produtos, os alunos realizaram discussão prévia, abordagem complementar, planejamento, pesquisa, construção de cenários e apresentações. Foram utilizados biblioteca, auditório, computador, internet, sites, jogos on-line, celular, texto orientador e equipamentos diversos para exposição. Como resultado, houve compreensão da importância do merchandising visual para vendas, reconhecimento de marca, organização, valor de entrega e satisfação percebida pelo cliente.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 38",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "merchandising visual",
+        "PDV",
+        "supermercado",
+        "estudo do meio",
+        "aprendizagem baseada em problemas"
+      ]
+    },
+    {
+      "id_projeto": "P027",
+      "pagina_inicial": 39,
+      "pagina_situacao": 39,
+      "nome_projeto": "Criação de vídeos + Microsoft Forms",
+      "cep": "Escola Senac Barreira Roxa",
+      "instrutor": "João Amorim Pinheiro",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Turismo e Hospitalidade / Técnico em Guia de Turismo / Projeto Integrador",
+      "elementos_competencia": "Elaborar vídeos sobre pontos turísticos de Natal/RN e avaliar competências profissionais por meio do Microsoft Forms.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: turismo, patrimônio urbano e educação profissional"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: turismo, patrimônio urbano e educação profissional"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: turismo, patrimônio urbano e educação profissional"
+        }
+      ],
+      "situacao_aprendizagem": "A prática solicitou aos alunos do Técnico em Guia de Turismo a elaboração individual de vídeo com um a três atrativos turísticos da cidade de Natal/RN, apresentados durante um city tour. Os vídeos deveriam ser produzidos com câmera ou celular, incluindo edição, e entregues para exibição em sala. A avaliação das competências profissionais foi realizada pelos colegas, de forma anônima, por meio de formulário no Microsoft Forms, com exibição dos resultados ao final de cada projeção e intervenções do docente quando necessário. A atividade movimentou as aulas, promoveu discussão positiva e integrou recursos tecnológicos atuais à formação do guia de turismo.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 39",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "vídeo",
+        "Microsoft Forms",
+        "turismo",
+        "Natal RN",
+        "city tour",
+        "guia de turismo"
+      ]
+    },
+    {
+      "id_projeto": "P028",
+      "pagina_inicial": 40,
+      "pagina_situacao": 40,
+      "nome_projeto": "Photovoice - Turismo de Base Comunitária em Pium",
+      "cep": "Escola Senac Barreira Roxa",
+      "instrutor": "Ana Christina Roque dos Santos Lobato",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Turismo - Curso de Turismo de Base Comunitária",
+      "elementos_competencia": "Aplicar a metodologia Photovoice para desenvolver olhar comunitário, exposição fotográfica, pertencimento e sensibilização para o Turismo de Base Comunitária.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: turismo comunitário, cultura local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: turismo comunitário, cultura local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: turismo comunitário, cultura local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: turismo comunitário, cultura local e desenvolvimento sustentável"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: turismo comunitário, cultura local e desenvolvimento sustentável"
+        }
+      ],
+      "situacao_aprendizagem": "No curso de Turismo de Base Comunitária realizado em Pium, bairro de Parnamirim, a prática aplicou o Photovoice como metodologia de ação-investigativa. Após tempestade de ideias e aula expositiva-dialogada sobre a metodologia, os participantes registraram elementos da localidade com significado pessoal e potencial de apresentação a visitantes. Os registros foram feitos com celulares ou câmeras durante o horário da aula. Depois, os alunos compartilharam cinco fotos por participante e decidiram coletivamente como expô-las. A exposição “Retratos e Relatos da Nossa Pium” foi realizada na I ECOFEIRA Criativa de Pium, com fotos impressas e coladas em discos de vinil. A prática evidenciou pertencimento, coletividade e adaptação de metodologias inovadoras ao contexto comunitário.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 40",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Photovoice",
+        "Pium",
+        "TBC",
+        "ECOFEIRA",
+        "exposição fotográfica",
+        "turismo comunitário"
+      ]
+    },
+    {
+      "id_projeto": "P029",
+      "pagina_inicial": 41,
+      "pagina_situacao": 41,
+      "nome_projeto": "Aprendizagem Colaborativa + Criação de Trend",
+      "cep": "Senac Alecrim",
+      "instrutor": "Flora Caldas",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês - Teens 1",
+      "elementos_competencia": "Trabalhar perguntas sobre informações pessoais com WH questions em inglês por meio de trend de rede social.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: aprendizagem de idiomas e cultura digital"
+        }
+      ],
+      "situacao_aprendizagem": "Durante a Unidade 2, os alunos do Teens 1 estudaram perguntas sobre informações pessoais utilizando WH questions. A instrutora aproveitou a música “Some things about me”, que viralizou no TikTok e no Reels do Instagram, para conectar o conteúdo à cultura digital dos estudantes. Após assistir a vídeos da trend, a turma identificou informações pessoais citadas na música, elaborou perguntas correspondentes, completou lacunas ao escutar a canção e respondeu com dados próprios. Ao final, os alunos realizaram a trend ao vivo e apresentaram aos colegas, praticando vocabulário, estrutura interrogativa, escuta e oralidade de forma engajadora.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 41",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "trend",
+        "TikTok",
+        "Instagram Reels",
+        "WH questions",
+        "inglês",
+        "aprendizagem colaborativa"
+      ]
+    },
+    {
+      "id_projeto": "P030",
+      "pagina_inicial": 42,
+      "pagina_situacao": 42,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Cozinheiro",
+      "cep": "Escola Senac Barreira Roxa",
+      "instrutor": "Elizabeth Assunção",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gastronomia / Cozinheiro / UC9 Projeto Integrador",
+      "elementos_competencia": "Desenvolver Projeto Integrador com valorização regional, pesquisa gastronômica, produto inovador à base de sardinha, marca e plano de negócios.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 2,
+          "nome": "Fome Zero e Agricultura Sustentável",
+          "tag": "ODS 2 - Fome Zero e Agricultura Sustentável",
+          "fonte": "inferência: alimentação, empreendedorismo, valorização de produto local e consumo responsável"
+        },
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: alimentação, empreendedorismo, valorização de produto local e consumo responsável"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: alimentação, empreendedorismo, valorização de produto local e consumo responsável"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: alimentação, empreendedorismo, valorização de produto local e consumo responsável"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: alimentação, empreendedorismo, valorização de produto local e consumo responsável"
+        }
+      ],
+      "situacao_aprendizagem": "Durante a orientação do Projeto Integrador, os alunos foram incentivados a valorizar cultura gastronômica, produtos e pratos locais. Uma aluna escolheu pesquisar a sardinha, peixe acessível, nutritivo, comum na região e pouco valorizado. A estudante pesquisou origem, nome científico, aspectos nutricionais, técnicas culinárias aplicáveis e região de pesca. Realizou testes nos laboratórios de cozinha, visitou comunidade pesqueira, acompanhou um barco de pesca e entrevistou pescadores sobre a falta de valorização do produto. Como resultado, transformou sardinha em farinha, desenvolveu produtos com essa farinha, enviou para análise nutricional, criou marca, montou plano de negócios e apresentou o produto em feira. A prática evidenciou inovação, empreendedorismo e valorização regional.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 42",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "gastronomia",
+        "sardinha",
+        "Projeto Integrador",
+        "plano de negócios",
+        "produto regional",
+        "empreendedorismo"
+      ]
+    },
+    {
+      "id_projeto": "P031",
+      "pagina_inicial": 43,
+      "pagina_situacao": 43,
+      "nome_projeto": "Aprendizagem Baseada em Problemas - Atendimento acessível em alimentos e bebidas",
+      "cep": "Senac Mossoró",
+      "instrutor": "Francinalda Louise Tavares",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Técnicas para Garçom",
+      "elementos_competencia": "Resolver problema de atendimento acessível no segmento de alimentos e bebidas, considerando pessoas com deficiência, diversidade e inclusão.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": true
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: acessibilidade, inclusão e formação profissional"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: acessibilidade, inclusão e formação profissional"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: acessibilidade, inclusão e formação profissional"
+        }
+      ],
+      "situacao_aprendizagem": "A prática trabalhou a problemática: como o segmento de alimentos e bebidas pode proporcionar atendimento mais acessível? A partir do contexto de protocolos de atendimento ao cliente, os alunos realizaram simulações nas quais o garçom deveria atender pessoas com diferentes deficiências. A vivência inseriu os estudantes na problemática e os incentivou a pesquisar atendimento inclusivo no segmento de alimentos e bebidas. Na aula seguinte, apresentaram soluções para atendimento a pessoas surdas, com deficiência visual e física, além de reflexões sobre atendimento a pessoas LGBTQIA+, transgênero e estrangeiros. Foram demonstradas estratégias como uso de Libras, cardápio em braile e ações corretivas, destacando acessibilidade como cidadania e melhoria da experiência do cliente.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 43",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "acessibilidade",
+        "garçom",
+        "atendimento inclusivo",
+        "Libras",
+        "braile",
+        "diversidade"
+      ]
+    },
+    {
+      "id_projeto": "P032",
+      "pagina_inicial": 44,
+      "pagina_situacao": 44,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Plano de gerenciamento de resíduos",
+      "cep": "Senac Mossoró",
+      "instrutor": "Francinalda Louise Tavares",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Boas Práticas na Manipulação de Alimentos",
+      "elementos_competencia": "Identificar problema comunitário relacionado ao lixo, pesquisar, elaborar plano de ação e apresentar soluções a autoridades locais.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 3,
+          "nome": "Saúde e Bem-Estar",
+          "tag": "ODS 3 - Saúde e Bem-Estar",
+          "fonte": "inferência: saúde pública, resíduos, educação ambiental e sustentabilidade"
+        },
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: saúde pública, resíduos, educação ambiental e sustentabilidade"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: saúde pública, resíduos, educação ambiental e sustentabilidade"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: saúde pública, resíduos, educação ambiental e sustentabilidade"
+        },
+        {
+          "numero": 13,
+          "nome": "Ação Contra a Mudança Global do Clima",
+          "tag": "ODS 13 - Ação Contra a Mudança Global do Clima",
+          "fonte": "inferência: saúde pública, resíduos, educação ambiental e sustentabilidade"
+        }
+      ],
+      "situacao_aprendizagem": "Após estudarem segurança dos alimentos, doenças transmitidas por alimentos, controle de pragas e vetores e manejo de resíduos, as alunas identificaram um problema de descarte inadequado de lixo na cidade de Ipanguaçu. A prática iniciou com brainstorming e utilizou o método de estimativa rápida, baseado em observação ativa, registros fotográficos, entrevista com a comunidade e envolvimento da população. Com Word e PowerPoint, as alunas elaboraram um plano de ação contemplando coleta seletiva, educação ambiental, cooperativa de reciclagem e outras soluções. O plano foi apresentado e entregue às autoridades, que convidaram as alunas para ações da Vigilância Sanitária e se comprometeram a buscar soluções. A prática conectou saúde, turismo local, economia e proteção ambiental.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 44",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "resíduos",
+        "educação ambiental",
+        "Ipanguaçu",
+        "plano de ação",
+        "boas práticas",
+        "sustentabilidade"
+      ]
+    },
+    {
+      "id_projeto": "P033",
+      "pagina_inicial": 45,
+      "pagina_situacao": 45,
+      "nome_projeto": "Criação de Produto com Microsoft Excel - Workshop de Educação Financeira",
+      "cep": "Senac Zona Norte",
+      "instrutor": "Lilian Maia",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão e Negócios / Aprendizagem em Serviços Administrativos",
+      "elementos_competencia": "Desenvolver educação financeira para consumo e mundo do trabalho, criando planilhas de orçamento pessoal no Microsoft Excel e realizando workshop.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: educação financeira, mundo do trabalho e autonomia"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: educação financeira, mundo do trabalho e autonomia"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: educação financeira, mundo do trabalho e autonomia"
+        }
+      ],
+      "situacao_aprendizagem": "A atividade abordou educação financeira para o consumo e informações sobre o mundo do trabalho. Inicialmente, foi realizado brainstorming sobre o tema, seguido de vídeos, reportagens, pesquisas e criação de planilhas de orçamento pessoal no Microsoft Excel. Os alunos foram organizados em quatro equipes, cada uma responsável por uma área e público: escola, família, empresa e mídia. As equipes distribuíram tarefas de apresentação, dinâmicas, jogos, gravações e marketing. As atividades foram desenvolvidas nas 16 horas do Projeto Integrador e apresentadas no Senac e Sesc Zona Norte. O aprendizado favoreceu melhor relação com o dinheiro, resolução de problemas, escolhas responsáveis, ética e autonomia.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 45",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Microsoft Excel",
+        "educação financeira",
+        "workshop",
+        "Projeto Integrador",
+        "orçamento pessoal"
+      ]
+    },
+    {
+      "id_projeto": "P034",
+      "pagina_inicial": 46,
+      "pagina_situacao": 46,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Programa DEL Turismo Galinhos/RN",
+      "cep": "Senac Mossoró",
+      "instrutor": "Maria Juliana J. B. de Souza Rebouças",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Atuação do Programa DEL Turismo Galinhos/RN",
+      "elementos_competencia": "Trabalhar conscientização turística e ambiental nas escolas de Galinhos/RN por meio do Programa DEL Turismo, Câmara Técnica de Meio Ambiente e Educação.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: educação ambiental, turismo sustentável, biodiversidade e parcerias"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: educação ambiental, turismo sustentável, biodiversidade e parcerias"
+        },
+        {
+          "numero": 11,
+          "nome": "Cidades e Comunidades Sustentáveis",
+          "tag": "ODS 11 - Cidades e Comunidades Sustentáveis",
+          "fonte": "inferência: educação ambiental, turismo sustentável, biodiversidade e parcerias"
+        },
+        {
+          "numero": 13,
+          "nome": "Ação Contra a Mudança Global do Clima",
+          "tag": "ODS 13 - Ação Contra a Mudança Global do Clima",
+          "fonte": "inferência: educação ambiental, turismo sustentável, biodiversidade e parcerias"
+        },
+        {
+          "numero": 14,
+          "nome": "Vida na Água",
+          "tag": "ODS 14 - Vida na Água",
+          "fonte": "inferência: educação ambiental, turismo sustentável, biodiversidade e parcerias"
+        },
+        {
+          "numero": 15,
+          "nome": "Vida Terrestre",
+          "tag": "ODS 15 - Vida Terrestre",
+          "fonte": "inferência: educação ambiental, turismo sustentável, biodiversidade e parcerias"
+        },
+        {
+          "numero": 17,
+          "nome": "Parcerias e Meios de Implementação",
+          "tag": "ODS 17 - Parcerias e Meios de Implementação",
+          "fonte": "inferência: educação ambiental, turismo sustentável, biodiversidade e parcerias"
+        }
+      ],
+      "situacao_aprendizagem": "A prática foi desenvolvida no Programa DEL Turismo em Galinhos/RN, destino marcado por biodiversidade e turismo de experiência. A Câmara Técnica de Meio Ambiente e o COMTUR discutiram alternativas para sensibilização ambiental junto à comunidade e ao receptivo turístico local. Foram realizadas reuniões presenciais e virtuais com ONGs, nativos e atores locais, além de ações socioambientais na Escola Municipal Professor Freitas, com palestra e soltura de tartarugas. A proposta envolveu parcerias com o Projeto Cetáceos da Costa Branca e o Centro de Monitoramento Ambiental, articulando Prefeitura, Secretaria Municipal de Turismo, COMTUR e Programa DEL. O objetivo foi trabalhar educação ambiental permanente, fortalecer o turismo sustentável e valorizar comunidades receptoras.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 46",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "DEL Turismo",
+        "Galinhos",
+        "educação ambiental",
+        "turismo sustentável",
+        "tartarugas",
+        "parcerias"
+      ]
+    },
+    {
+      "id_projeto": "P035",
+      "pagina_inicial": 47,
+      "pagina_situacao": 47,
+      "nome_projeto": "Padlet - Cozinheiro",
+      "cep": "Escola Senac Barreira Roxa",
+      "instrutor": "Thiago Gomes",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gastronomia / Cozinheiro / UC6",
+      "elementos_competencia": "Desenvolver cosmovisão digital, pesquisa gastronômica, comunicação, trabalho em equipe e apresentação interativa por meio do Padlet.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: tecnologia educacional aplicada à gastronomia"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: tecnologia educacional aplicada à gastronomia"
+        }
+      ],
+      "situacao_aprendizagem": "A aula foi desenvolvida com o Padlet como instrumento de trabalho virtual, permitindo um passeio pelo mundo gastronômico em mapa geográfico interativo. Os alunos preencheram informações, apresentaram conteúdos e tiveram acesso ao material tanto digitalmente quanto em versão salva em PDF. A prática buscou desenvolver pensamento digital, comunicação, trabalho em equipe, aula reversa, interatividade, criatividade, inteligência emocional e uso de novas ferramentas tecnológicas. O resultado foi um aprendizado completo, envolvendo ler, desenvolver, escrever, identificar problemas e propor ações corretivas, além de ampliar a visão dos alunos sobre educação 4.0.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 47",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Padlet",
+        "gastronomia",
+        "mapa interativo",
+        "aula reversa",
+        "educação 4.0"
+      ]
+    },
+    {
+      "id_projeto": "P036",
+      "pagina_inicial": 48,
+      "pagina_situacao": 48,
+      "nome_projeto": "Criação de Produto envolvendo música, arte e inglês",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Miguel Moia Júnior",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Desenvolver comunicação em inglês, arte, interpretação musical e reflexão sobre questões sociais por meio de desenho e apresentação oral.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: reflexão social, diversidade, paz e educação"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: reflexão social, diversidade, paz e educação"
+        },
+        {
+          "numero": 16,
+          "nome": "Paz, Justiça e Instituições Eficazes",
+          "tag": "ODS 16 - Paz, Justiça e Instituições Eficazes",
+          "fonte": "inferência: reflexão social, diversidade, paz e educação"
+        }
+      ],
+      "situacao_aprendizagem": "A prática uniu música, arte e inglês a partir do videoclipe da música “Crazy”, da banda Simple Plan, que aborda questões sociais como desigualdade, depressão, violência, padrões estéticos e solidão. Os alunos assistiram ao videoclipe, analisaram a letra e participaram de brainstorming sobre possíveis soluções ou formas de controle dos problemas apresentados. Em seguida, criaram desenhos em cartolina representando uma problemática social e apresentaram seus trabalhos em inglês, descrevendo a situação e sugerindo alternativas. A prática mostrou que a língua inglesa pode ser instrumento de expressão artística, social e crítica, favorecendo trabalho em equipe, comunicação e sensibilidade social.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 48",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "música",
+        "arte",
+        "inglês",
+        "Simple Plan",
+        "questões sociais",
+        "desenho"
+      ]
+    },
+    {
+      "id_projeto": "P037",
+      "pagina_inicial": 49,
+      "pagina_situacao": 49,
+      "nome_projeto": "Aprendizagem Baseada em Projetos - Checklist de inclusão no ambiente administrativo",
+      "cep": "Senac Centro",
+      "instrutor": "Ana Paula Pereira da Silva / Simone Borba",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão / Assistente Administrativo",
+      "elementos_competencia": "Construir checklists de inclusão para setores de uma empresa, considerando PcDs, comunicação, interação, tecnologia e rotinas administrativas.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": true
+      },
+      "pratica_inclusiva": {
+        "valor": true
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: inclusão, trabalho decente, redução de desigualdades e ambiente institucional justo"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: inclusão, trabalho decente, redução de desigualdades e ambiente institucional justo"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: inclusão, trabalho decente, redução de desigualdades e ambiente institucional justo"
+        },
+        {
+          "numero": 16,
+          "nome": "Paz, Justiça e Instituições Eficazes",
+          "tag": "ODS 16 - Paz, Justiça e Instituições Eficazes",
+          "fonte": "inferência: inclusão, trabalho decente, redução de desigualdades e ambiente institucional justo"
+        }
+      ],
+      "situacao_aprendizagem": "Em uma turma inclusiva com alunos PcDs, as docentes desenvolveram uma situação hipotética em que pessoas com deficiência eram admitidas em diferentes setores de uma empresa. Cada grupo representou um setor e precisou escutar, de forma real, dificuldades e expectativas dos colegas PcDs em relação ao mundo do trabalho. A partir disso, os grupos elaboraram checklists com ações para tornar o ambiente administrativo mais acessível e inclusivo nos aspectos estruturais, atitudinais, comunicacionais, tecnológicos e de rotina. As listas foram apresentadas em uma reunião de trabalho simulada. A prática valorizou diversidade, escuta, comunicação, convivência híbrida, senso de comunidade e conexão entre hard skills administrativas e soft skills relacionadas à inclusão.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 49",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "inclusão",
+        "PcD",
+        "checklist",
+        "assistente administrativo",
+        "acessibilidade",
+        "ambiente de trabalho"
+      ]
+    },
+    {
+      "id_projeto": "P038",
+      "pagina_inicial": 50,
+      "pagina_situacao": 50,
+      "nome_projeto": "NVDA - Curso Operador de Computador",
+      "cep": "Senac Alecrim",
+      "instrutor": "Helane Galvão",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Tecnologia de Informação",
+      "elementos_competencia": "Produzir texto e tabela sobre lixo eletrônico, sustentabilidade e tecnologia utilizando Word e leitor de tela NVDA para inclusão de aluno com deficiência visual.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Autonomia digital",
+        "Atitude sustentável"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": true
+      },
+      "pratica_fomento_inclusao": {
+        "valor": true
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: inclusão digital, consumo responsável e sustentabilidade"
+        },
+        {
+          "numero": 10,
+          "nome": "Redução das Desigualdades",
+          "tag": "ODS 10 - Redução das Desigualdades",
+          "fonte": "inferência: inclusão digital, consumo responsável e sustentabilidade"
+        },
+        {
+          "numero": 12,
+          "nome": "Consumo e Produção Responsáveis",
+          "tag": "ODS 12 - Consumo e Produção Responsáveis",
+          "fonte": "inferência: inclusão digital, consumo responsável e sustentabilidade"
+        },
+        {
+          "numero": 13,
+          "nome": "Ação Contra a Mudança Global do Clima",
+          "tag": "ODS 13 - Ação Contra a Mudança Global do Clima",
+          "fonte": "inferência: inclusão digital, consumo responsável e sustentabilidade"
+        }
+      ],
+      "situacao_aprendizagem": "A atividade propôs reflexão sobre aproveitamento consciente de produtos de informática e redução do lixo eletrônico. Inicialmente, os alunos assistiram a vídeo sobre usina de reciclagem de hardware e produziram texto sobre sustentabilidade e tecnologia. Um aluno PcD com perda total de visão realizou a atividade com apoio do leitor de tela NVDA e comandos de teclado. Os alunos deveriam formatar o texto segundo parâmetros de trabalho científico e construir uma tabela com informações sobre produtos químicos presentes em placas-mãe, quantidade e valor de venda. A prática associou editor de texto Word, acessibilidade, sustentabilidade, tecnologia e inclusão em contexto real de aprendizagem.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 50",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "NVDA",
+        "acessibilidade",
+        "deficiência visual",
+        "lixo eletrônico",
+        "Word",
+        "sustentabilidade"
+      ]
+    },
+    {
+      "id_projeto": "P039",
+      "pagina_inicial": 51,
+      "pagina_situacao": 51,
+      "nome_projeto": "Uso de Ferramentas Técnicas da Ocupação",
+      "cep": "Senac Assú",
+      "instrutor": "José Willames Lopes",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Gestão e Negócios / Técnico em Administração / UC8",
+      "elementos_competencia": "Utilizar ferramentas reais de controle de ponto e geração de holerite para auxiliar na elaboração da folha de pagamento.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Autonomia digital"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: tecnologia aplicada à administração e mundo do trabalho"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: tecnologia aplicada à administração e mundo do trabalho"
+        },
+        {
+          "numero": 9,
+          "nome": "Indústria, Inovação e Infraestrutura",
+          "tag": "ODS 9 - Indústria, Inovação e Infraestrutura",
+          "fonte": "inferência: tecnologia aplicada à administração e mundo do trabalho"
+        }
+      ],
+      "situacao_aprendizagem": "Em uma turma on-line de Técnico em Administração, a prática buscou tornar o desenvolvimento da competência mais atrativo e dinâmico por meio de ferramentas reais usadas em empresas. Os alunos foram apresentados à empresa fictícia TAS Empreendimentos e cadastrados como funcionários. Baixaram o aplicativo Oitchau em seus celulares e, durante dez dias, registraram entradas e saídas para geração do controle de horas trabalhadas. Depois, utilizaram o site tarefanaweb.com para gerar seus próprios holerites. Muitos alunos tiveram contato pela primeira vez com controle de ponto, tornando a experiência desafiadora e significativa. O resultado esperado foi alcançado e as ferramentas foram bem utilizadas.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 51",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "Oitchau",
+        "holerite",
+        "folha de pagamento",
+        "Técnico em Administração",
+        "ferramentas técnicas",
+        "controle de ponto"
+      ]
+    },
+    {
+      "id_projeto": "P040",
+      "pagina_inicial": 52,
+      "pagina_situacao": 52,
+      "nome_projeto": "Comunicação de alta performance por meio de técnicas de oratória utilizando a língua inglesa",
+      "cep": "Senac Zona Sul",
+      "instrutor": "Miguel Moia Júnior",
+      "orientacao_pedagogica": "Não informado",
+      "segmento_curso": "Idiomas - Inglês",
+      "elementos_competencia": "Desenvolver comunicação de alta performance em inglês por meio de técnicas de oratória, PNL, speech, leitura, dicção, postura e apresentação pública.",
+      "marcas_formativas": [
+        "Comunicação e colaboração",
+        "Domínio técnico-científico",
+        "Visão crítica",
+        "Atitude criativa e empreendedora"
+      ],
+      "aprendizagem_integradora": {
+        "valor": false
+      },
+      "pratica_inclusiva": {
+        "valor": false
+      },
+      "pratica_fomento_inclusao": {
+        "valor": false
+      },
+      "ods": [
+        {
+          "numero": 4,
+          "nome": "Educação de Qualidade",
+          "tag": "ODS 4 - Educação de Qualidade",
+          "fonte": "inferência: comunicação profissional e qualificação para o trabalho"
+        },
+        {
+          "numero": 8,
+          "nome": "Trabalho Decente e Crescimento Econômico",
+          "tag": "ODS 8 - Trabalho Decente e Crescimento Econômico",
+          "fonte": "inferência: comunicação profissional e qualificação para o trabalho"
+        }
+      ],
+      "situacao_aprendizagem": "A prática aproximou língua inglesa e comunicação de alta performance. Os alunos foram conduzidos ao aprimoramento de leitura, dicção, controle de hesitação, pausa e fluidez por meio de recursos de apresentação em público. Foram aplicadas atividades como declamação de textos, introdução e fechamento de apresentações, pitch de elevador, narração de vídeos, produção para redes sociais, entrevista de emprego, fala de improviso, rapport e técnicas de PNL. O foco foi mostrar que o inglês funciona como veículo para desenvolver qualidade de comunicação em público. Os alunos evoluíram por meio de gravações de speech, análises e feedback técnico, identificando dificuldades e aplicando estratégias também em contextos profissionais, networking e relações interpessoais.",
+      "ocr_auditoria": {
+        "status": "revisado e adaptado ao padrão 2025",
+        "fonte": "ebook-praticas-inovadoras-2022.pdf, página 52",
+        "observacoes": "O e-book de 2022 não possui o mesmo layout de 2024/2025. Campos como ODS, marcas formativas e indicadores foram adaptados por análise do conteúdo, preservando CEP, instrutor, curso, objetivo e descrição da aula.",
+        "confianca": "alta"
+      },
+      "tags_identificacao": [
+        "oratória",
+        "inglês",
+        "speech",
+        "PNL",
+        "pitch",
+        "comunicação profissional"
+      ]
+    }
+  ]
+}

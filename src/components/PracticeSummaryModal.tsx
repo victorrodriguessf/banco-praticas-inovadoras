@@ -143,6 +143,25 @@ export const PracticeSummaryModal = ({
               </div>
             </section>
 
+            {practice.odsDetails.length > 0 && (
+              <section>
+                <h3 className="text-sm font-black uppercase tracking-widest text-senac-blue mb-3">
+                  ODS relacionados
+                </h3>
+
+                <div className="flex flex-wrap gap-2">
+                  {practice.odsDetails.map((ods) => (
+                    <span
+                      key={`${practice.id}-${ods.tag}`}
+                      className="text-xs font-bold bg-senac-blue text-white px-3 py-1.5 rounded-full"
+                    >
+                      ODS {ods.numero} — {ods.nome}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            )}
+
             <section className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <SummaryBooleanBox
                 title="Aprendizagem Integradora"
@@ -169,15 +188,13 @@ export const PracticeSummaryModal = ({
                 {previewText || 'Resumo não informado.'}
               </p>
 
-              {practice.learningSituation.length > 1200 && (
-                <button
-                  type="button"
-                  onClick={handleDownloadPdf}
-                  className="mt-3 text-sm font-black text-senac-blue underline underline-offset-2 hover:text-senac-orange transition-colors"
-                >
-                  Visualizar no e-book ({practice.year})
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={handleDownloadPdf}
+                className="mt-3 text-sm font-black text-senac-blue underline underline-offset-2 hover:text-senac-orange transition-colors"
+              >
+                Visualizar no e-book ({practice.year})
+              </button>
             </section>
 
             <section>
