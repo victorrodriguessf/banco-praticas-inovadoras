@@ -181,8 +181,17 @@ export const Sidebar = ({
       )}
     </FilterSection>
 
-    <FilterSection title="Eixo / Segmento">
-      {['Gestão', 'TI', 'Saúde', 'Turismo'].map((seg) => (
+    <FilterSection title="Eixo / Segmento" expanded={false}>
+      {[
+        'Beleza e Estética',
+        'Design, Artes e Comunicação',
+        'Gastronomia e Hospitalidade',
+        'Gestão e Negócios',
+        'Idiomas',
+        'Moda',
+        'Saúde',
+        'Tecnologia da Informação',
+      ].map((seg) => (
         <Checkbox
           key={seg}
           id={`seg-${seg}`}

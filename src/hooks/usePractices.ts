@@ -4,6 +4,42 @@ import type { Practice } from '../types';
 
 type SortBy = 'recentes' | 'antigas' | 'az';
 
+const SEGMENT_MATCHERS: Record<string, (p: Practice) => boolean> = {
+  'Beleza e Estética': (p) =>
+    /^beleza/i.test(p.segment) || /técnico em estética/i.test(p.segment),
+
+  'Gestão e Negócios': (p) =>
+    /^(gestão|aprendizagem|comércio)/i.test(p.segment) ||
+    /\bgestão\b/i.test(p.segment) ||
+    /^asseio/i.test(p.segment),
+
+  'Saúde': (p) =>
+    /saúde/i.test(p.segment) && !/estética/i.test(p.segment),
+
+  'Tecnologia da Informação': (p) =>
+    /^ti[\s\-|/]/i.test(p.segment) ||
+    /^tecnologia\s(da|de)\sinformação/i.test(p.segment) ||
+    /informática para (internet|adolescentes)/i.test(p.segment) ||
+    /robótica educacional/i.test(p.segment),
+
+  'Gastronomia e Hospitalidade': (p) =>
+    /^gastronomia/i.test(p.segment) ||
+    /turismo/i.test(p.segment) ||
+    /hospitalidade/i.test(p.segment) ||
+    /garçom/i.test(p.segment) ||
+    /manipulação de alimentos/i.test(p.segment),
+
+  'Moda': (p) => /^moda/i.test(p.segment),
+
+  'Design, Artes e Comunicação': (p) =>
+    /^(comunicação|design|artes e design)/i.test(p.segment) ||
+    /ensino médio técnico.*(artes?|l[íi]ngua portuguesa)/i.test(p.segment),
+
+  'Idiomas': (p) =>
+    /^idiomas/i.test(p.segment) ||
+    /ensino médio técnico.*ingl[êe]s/i.test(p.segment),
+};
+
 const BRAND_MATCHERS: Record<string, (p: Practice) => boolean> = {
   'Prática de inclusão': (p) => p.inclusivePractice,
   'Aprendizagem integradora': (p) => p.integrativeLearning,
@@ -67,7 +103,7 @@ export function usePractices() {
       const matchesSegment =
         selectedSegments.length === 0 ||
         selectedSegments.some((seg) =>
-          practice.segment.toLowerCase().includes(seg.toLowerCase())
+          SEGMENT_MATCHERS[seg]?.(practice) ?? false
         );
       const matchesBrand =
         selectedBrands.length === 0 ||

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   LayoutGrid,
   List,
@@ -23,10 +23,30 @@ import { usePractices } from './hooks/usePractices';
 import type { Practice } from './types';
 import logoSenacLabs from './logo_senac_labs.png';
 
+function getPageNumbers(current: number, total: number): (number | '...')[] {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+
+  const pages: (number | '...')[] = [1];
+
+  if (current > 3) pages.push('...');
+
+  const start = Math.max(2, current - 1);
+  const end = Math.min(total - 1, current + 1);
+  for (let i = start; i <= end; i++) pages.push(i);
+
+  if (current < total - 2) pages.push('...');
+
+  pages.push(total);
+  return pages;
+}
+
 export default function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
   const [selectedPractice, setSelectedPractice] = useState<Practice | null>(null);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState<number | 'all'>(20);
 
   const {
     sortBy,
@@ -45,6 +65,34 @@ export default function App() {
     handleBrandChange,
     clearAllFilters,
   } = usePractices();
+
+  // Reset to page 1 whenever filters/search/sort produce a new result set
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortedPractices]);
+
+  const totalPages =
+    perPage === 'all' ? 1 : Math.ceil(sortedPractices.length / perPage);
+
+  const paginatedPractices =
+    perPage === 'all'
+      ? sortedPractices
+      : sortedPractices.slice(
+          (currentPage - 1) * perPage,
+          currentPage * perPage
+        );
+
+  const rangeStart =
+    perPage === 'all' ? 1 : (currentPage - 1) * (perPage as number) + 1;
+  const rangeEnd =
+    perPage === 'all'
+      ? sortedPractices.length
+      : Math.min(currentPage * (perPage as number), sortedPractices.length);
+
+  const handlePerPageChange = (value: number | 'all') => {
+    setPerPage(value);
+    setCurrentPage(1);
+  };
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
@@ -99,34 +147,83 @@ export default function App() {
             {/* Main Content Area */}
             <div className="flex-grow flex flex-col gap-6">
               {/* Toolbar */}
-              <div className="flex items-center justify-between bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
+              <div className="flex items-center justify-between bg-white p-4 rounded-2xl border border-gray-100 shadow-sm gap-3 flex-wrap">
                 <div className="flex items-center gap-2">
-                  <span className="text-gray-400 font-medium whitespace-nowrap">
+                  <span className="text-gray-400 font-medium whitespace-nowrap text-sm">
                     Exibindo
                   </span>
-                  <span className="bg-blue-50 text-senac-blue px-2.5 py-0.5 rounded-full font-bold text-sm whitespace-nowrap">
-                    {sortedPractices.length} práticas
-                  </span>
+                  {sortedPractices.length === 0 ? (
+                    <span className="bg-blue-50 text-senac-blue px-2.5 py-0.5 rounded-full font-bold text-sm whitespace-nowrap">
+                      0 práticas
+                    </span>
+                  ) : perPage !== 'all' && totalPages > 1 ? (
+                    <span className="bg-blue-50 text-senac-blue px-2.5 py-0.5 rounded-full font-bold text-sm whitespace-nowrap">
+                      {rangeStart}–{rangeEnd} de {sortedPractices.length}
+                    </span>
+                  ) : (
+                    <span className="bg-blue-50 text-senac-blue px-2.5 py-0.5 rounded-full font-bold text-sm whitespace-nowrap">
+                      {sortedPractices.length} práticas
+                    </span>
+                  )}
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                  {/* View mode */}
                   <div className="hidden sm:flex items-center gap-1 bg-gray-50 p-1 rounded-lg">
                     <button
                       type="button"
-                      className="p-1.5 rounded-md bg-white text-senac-blue shadow-sm"
+                      aria-label="Visualizar em grade"
+                      onClick={() => setViewMode('grid')}
+                      className={`p-1.5 rounded-md transition-all ${
+                        viewMode === 'grid'
+                          ? 'bg-white text-senac-blue shadow-sm'
+                          : 'text-gray-400 hover:text-gray-600'
+                      }`}
                     >
                       <LayoutGrid size={18} />
                     </button>
                     <button
                       type="button"
-                      className="p-1.5 rounded-md text-gray-400 hover:text-gray-600"
+                      aria-label="Visualizar em lista"
+                      onClick={() => setViewMode('list')}
+                      className={`p-1.5 rounded-md transition-all ${
+                        viewMode === 'list'
+                          ? 'bg-white text-senac-blue shadow-sm'
+                          : 'text-gray-400 hover:text-gray-600'
+                      }`}
                     >
                       <List size={18} />
                     </button>
                   </div>
 
-                  <div className="h-6 w-px bg-gray-100 hidden sm:block" />
+                  <div className="h-5 w-px bg-gray-100 hidden sm:block" />
 
+                  {/* Per page */}
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-gray-400 uppercase hidden sm:block whitespace-nowrap">
+                      Mostrar:
+                    </span>
+                    <div className="flex items-center gap-1 bg-gray-50 p-1 rounded-lg">
+                      {([10, 20, 50, 'all'] as const).map((n) => (
+                        <button
+                          key={n}
+                          type="button"
+                          onClick={() => handlePerPageChange(n)}
+                          className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                            perPage === n
+                              ? 'bg-white text-senac-blue shadow-sm'
+                              : 'text-gray-400 hover:text-gray-600'
+                          }`}
+                        >
+                          {n === 'all' ? 'Todas' : n}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="h-5 w-px bg-gray-100 hidden sm:block" />
+
+                  {/* Sort */}
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-bold text-gray-400 uppercase hidden sm:block whitespace-nowrap">
                       Ordenar:
@@ -152,72 +249,98 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {sortedPractices.map((practice) => (
-                  <PracticeCard
-                    key={practice.id}
-                    practice={practice}
-                    onReadSummary={() => setSelectedPractice(practice)}
-                  />
-                ))}
-
-                {/* Empty State */}
-                {sortedPractices.length === 0 && (
-                  <div className="col-span-full py-20 text-center space-y-4 bg-white rounded-3xl border border-dashed border-gray-200">
-                    <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-300">
-                      <Search size={40} />
-                    </div>
-
-                    <div className="space-y-1">
-                      <h3 className="text-xl font-bold text-gray-700">
-                        Nenhuma prática encontrada
-                      </h3>
-                      <p className="text-gray-500">
-                        Tente ajustar seus filtros ou mudar os termos da busca.
-                      </p>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={clearAllFilters}
-                      className="text-senac-orange font-bold hover:underline"
-                    >
-                      Limpar todos os filtros
-                    </button>
+              {/* Practices */}
+              {sortedPractices.length === 0 ? (
+                <div className="py-20 text-center space-y-4 bg-white rounded-3xl border border-dashed border-gray-200">
+                  <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-gray-300">
+                    <Search size={40} />
                   </div>
-                )}
-              </div>
 
-              {/* Pagination visual provisória */}
-              {sortedPractices.length > 0 && (
-                <div className="mt-12 flex justify-center">
-                  <nav className="flex items-center gap-2">
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-bold text-gray-700">
+                      Nenhuma prática encontrada
+                    </h3>
+                    <p className="text-gray-500">
+                      Tente ajustar seus filtros ou mudar os termos da busca.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={clearAllFilters}
+                    className="text-senac-orange font-bold hover:underline"
+                  >
+                    Limpar todos os filtros
+                  </button>
+                </div>
+              ) : viewMode === 'grid' ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {paginatedPractices.map((practice) => (
+                    <PracticeCard
+                      key={practice.id}
+                      practice={practice}
+                      variant="grid"
+                      onReadSummary={() => setSelectedPractice(practice)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {paginatedPractices.map((practice) => (
+                    <PracticeCard
+                      key={practice.id}
+                      practice={practice}
+                      variant="list"
+                      onReadSummary={() => setSelectedPractice(practice)}
+                    />
+                  ))}
+                </div>
+              )}
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="mt-8 flex justify-center">
+                  <nav className="flex items-center gap-1.5">
                     <button
                       type="button"
-                      className="p-2 rounded-lg text-gray-400 hover:bg-gray-100 disabled:opacity-30"
-                      disabled
+                      onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                      aria-label="Página anterior"
+                      className="p-2 rounded-lg text-gray-400 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
                       <ChevronDown className="rotate-90" size={20} />
                     </button>
 
-                    {[1, 2, 3].map((page) => (
-                      <button
-                        type="button"
-                        key={page}
-                        className={`w-10 h-10 rounded-lg font-bold text-sm transition-all ${
-                          page === 1
-                            ? 'bg-senac-blue text-white shadow-lg shadow-senac-blue/20'
-                            : 'text-gray-500 hover:bg-gray-100'
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
+                    {getPageNumbers(currentPage, totalPages).map((item, idx) =>
+                      item === '...' ? (
+                        <span
+                          key={`ellipsis-${idx}`}
+                          className="w-10 h-10 flex items-center justify-center text-gray-400 font-bold text-sm select-none"
+                        >
+                          …
+                        </span>
+                      ) : (
+                        <button
+                          type="button"
+                          key={item}
+                          onClick={() => setCurrentPage(item)}
+                          className={`w-10 h-10 rounded-lg font-bold text-sm transition-all ${
+                            item === currentPage
+                              ? 'bg-senac-blue text-white shadow-lg shadow-senac-blue/20'
+                              : 'text-gray-500 hover:bg-gray-100'
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      )
+                    )}
 
                     <button
                       type="button"
-                      className="p-2 rounded-lg text-senac-blue hover:bg-gray-100"
+                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                      aria-label="Próxima página"
+                      className="p-2 rounded-lg text-senac-blue hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
                       <ChevronDown className="-rotate-90" size={20} />
                     </button>

@@ -7,6 +7,8 @@ type PrintPracticePdfParams = {
   title: string;
 };
 
+const pdfCache = new Map<string, Promise<PDFDocument>>();
+
 function getPdfPathByYear(year: number | string): string {
   const normalizedYear = String(year).trim();
 
@@ -17,10 +19,33 @@ function getPdfPathByYear(year: number | string): string {
   throw new Error(`Ano inválido para localizar PDF: ${year}`);
 }
 
+function loadPdf(pdfPath: string): Promise<PDFDocument> {
+  const cached = pdfCache.get(pdfPath);
+  if (cached) return cached;
+
+  const promise = fetch(pdfPath)
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Não foi possível carregar o PDF em: ${pdfPath}. Verifique se o arquivo existe em public/pdfs.`
+        );
+      }
+      const bytes = await response.arrayBuffer();
+      return PDFDocument.load(bytes);
+    })
+    .catch((err) => {
+      pdfCache.delete(pdfPath);
+      throw err;
+    });
+
+  pdfCache.set(pdfPath, promise);
+  return promise;
+}
+
 function sanitizeFileName(value: string): string {
   return value
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .replace(/[^a-zA-Z0-9-_ ]/g, '')
     .trim()
     .replace(/\s+/g, '-')
@@ -53,17 +78,8 @@ export async function printPracticePdf({
   title,
 }: PrintPracticePdfParams): Promise<void> {
   const pdfPath = getPdfPathByYear(year);
+  const sourcePdf = await loadPdf(pdfPath);
 
-  const sourcePdfResponse = await fetch(pdfPath);
-
-  if (!sourcePdfResponse.ok) {
-    throw new Error(
-      `Não foi possível carregar o PDF em: ${pdfPath}. Verifique se o arquivo existe em public/pdfs.`
-    );
-  }
-
-  const sourcePdfBytes = await sourcePdfResponse.arrayBuffer();
-  const sourcePdf = await PDFDocument.load(sourcePdfBytes);
   const newPdf = await PDFDocument.create();
 
   const { firstPage, lastPage } = normalizePageRange(
