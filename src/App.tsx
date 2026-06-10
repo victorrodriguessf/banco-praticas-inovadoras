@@ -44,7 +44,7 @@ export default function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
   const [selectedPractice, setSelectedPractice] = useState<Practice | null>(null);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState<number | 'all'>(20);
 
@@ -172,18 +172,6 @@ export default function App() {
                   <div className="hidden sm:flex items-center gap-1 bg-gray-50 p-1 rounded-lg">
                     <button
                       type="button"
-                      aria-label="Visualizar em grade"
-                      onClick={() => setViewMode('grid')}
-                      className={`p-1.5 rounded-md transition-all ${
-                        viewMode === 'grid'
-                          ? 'bg-white text-senac-blue shadow-sm'
-                          : 'text-gray-400 hover:text-gray-600'
-                      }`}
-                    >
-                      <LayoutGrid size={18} />
-                    </button>
-                    <button
-                      type="button"
                       aria-label="Visualizar em lista"
                       onClick={() => setViewMode('list')}
                       className={`p-1.5 rounded-md transition-all ${
@@ -193,6 +181,18 @@ export default function App() {
                       }`}
                     >
                       <List size={18} />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Visualizar em grade"
+                      onClick={() => setViewMode('grid')}
+                      className={`p-1.5 rounded-md transition-all ${
+                        viewMode === 'grid'
+                          ? 'bg-white text-senac-blue shadow-sm'
+                          : 'text-gray-400 hover:text-gray-600'
+                      }`}
+                    >
+                      <LayoutGrid size={18} />
                     </button>
                   </div>
 
