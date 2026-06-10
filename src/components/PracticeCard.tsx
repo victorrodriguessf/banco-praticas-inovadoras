@@ -14,20 +14,11 @@ export const PracticeCard = ({
   onReadSummary,
   variant = 'grid',
 }: PracticeCardProps) => {
-  const handleDownloadPdf = async () => {
-    try {
-      await printPracticePdf({
-        year: practice.year,
-        initialPage: practice.pages.initial,
-        situationPage: practice.pages.situation,
-        title: practice.title,
-      });
-    } catch (error) {
-      console.error(error);
-      alert(
-        'Não foi possível gerar o PDF desta prática. Verifique se o PDF original está disponível em public/pdfs.'
-      );
-    }
+  const handleDownloadPdf = () => {
+    printPracticePdf({
+      year: practice.year,
+      originalId: practice.originalId,
+    });
   };
 
   if (variant === 'list') {
