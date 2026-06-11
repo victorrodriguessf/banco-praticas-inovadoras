@@ -18,7 +18,7 @@ export const EbookSection = () => (
           </h2>
         </div>
         <p className="text-xs text-gray-400 font-medium">
-          Acesse os anuários completos de práticas inovadoras
+          Acesse os anuários completos de Educação Inovadora
         </p>
       </div>
 

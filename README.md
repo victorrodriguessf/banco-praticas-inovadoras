@@ -1,4 +1,4 @@
-# Banco de Práticas Inovadoras — Senac RN
+# Banco de Práticas Educação Inovadora — Senac RN
 
 Catálogo interativo das melhores práticas educacionais desenvolvidas pelos docentes do Senac Rio Grande do Norte. A plataforma reúne **310 práticas** dos editais de 2022, 2023, 2024 e 2025, com busca em tempo real, filtros avançados e acesso direto aos e-books completos.
 

@@ -20,8 +20,8 @@ export const Hero = ({
         className="space-y-4"
       >
         <h1 className="text-4xl md:text-5xl font-black tracking-tight text-[#003366]">
-          BANCO DE PRÁTICAS{' '}
-          <span className="text-senac-orange">INOVADORAS</span>
+          BANCO DE PRÁTICAS{' '} <br></br>
+          <span className="text-senac-orange">EDUCAÇÃO INOVADORA</span>
         </h1>
 
         <p className="text-gray-500 font-medium max-w-2xl mx-auto">
