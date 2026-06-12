@@ -24,12 +24,8 @@ export const PracticeCard = ({
   if (variant === 'list') {
     return (
       <motion.div
-        layout
-        initial={{ opacity: 0, x: -8 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        whileHover={{ backgroundColor: '#fafafa' }}
-        className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 flex items-center gap-5 transition-colors duration-200"
+        whileHover={{ backgroundColor: '#f9fafb' }}
+        className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 flex items-center gap-5 transition-colors duration-150"
       >
         {/* Year + Unit */}
         <div className="shrink-0 flex flex-col items-center gap-1.5 w-[4.5rem]">
@@ -108,14 +104,10 @@ export const PracticeCard = ({
 
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
       whileHover={{
-        y: -5,
+        y: -2,
         boxShadow:
-          '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+          '0 8px 20px -4px rgb(0 0 0 / 0.08), 0 4px 8px -4px rgb(0 0 0 / 0.06)',
       }}
       className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col h-full transition-all duration-300"
     >

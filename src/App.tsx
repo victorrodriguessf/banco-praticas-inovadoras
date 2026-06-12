@@ -273,28 +273,46 @@ export default function App() {
                     Limpar todos os filtros
                   </button>
                 </div>
-              ) : viewMode === 'grid' ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {paginatedPractices.map((practice) => (
-                    <PracticeCard
-                      key={practice.id}
-                      practice={practice}
-                      variant="grid"
-                      onReadSummary={() => setSelectedPractice(practice)}
-                    />
-                  ))}
-                </div>
               ) : (
-                <div className="flex flex-col gap-3">
-                  {paginatedPractices.map((practice) => (
-                    <PracticeCard
-                      key={practice.id}
-                      practice={practice}
-                      variant="list"
-                      onReadSummary={() => setSelectedPractice(practice)}
-                    />
-                  ))}
-                </div>
+                <AnimatePresence mode="wait">
+                  {viewMode === 'grid' ? (
+                    <motion.div
+                      key="grid"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+                    >
+                      {paginatedPractices.map((practice) => (
+                        <PracticeCard
+                          key={practice.id}
+                          practice={practice}
+                          variant="grid"
+                          onReadSummary={() => setSelectedPractice(practice)}
+                        />
+                      ))}
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="list"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="flex flex-col gap-3"
+                    >
+                      {paginatedPractices.map((practice) => (
+                        <PracticeCard
+                          key={practice.id}
+                          practice={practice}
+                          variant="list"
+                          onReadSummary={() => setSelectedPractice(practice)}
+                        />
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               )}
 
               {/* Pagination */}
