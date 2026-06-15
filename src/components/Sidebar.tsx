@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Filter, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { FILTER_COUNTS, type FilterCounts } from '../hooks/usePractices';
 
 const CheckIcon = ({ className }: { className?: string }) => (
   <svg
@@ -22,15 +23,17 @@ const Checkbox = ({
   id,
   label,
   checked = false,
+  count,
   onChange,
 }: {
   id: string;
   label: string;
   checked?: boolean;
+  count?: number;
   onChange?: () => void;
 }) => (
   <label htmlFor={id} className="flex items-center gap-3 cursor-pointer group">
-    <div className="relative">
+    <div className="relative shrink-0">
       <input
         id={id}
         type="checkbox"
@@ -43,9 +46,15 @@ const Checkbox = ({
       <CheckIcon className="absolute top-1 left-1 transform scale-0 peer-checked:scale-100 transition-transform text-white" />
     </div>
 
-    <span className="text-sm font-semibold text-gray-500 group-hover:text-senac-blue transition-colors">
+    <span className="text-sm font-semibold text-gray-500 group-hover:text-senac-blue transition-colors flex-1 leading-tight">
       {label}
     </span>
+
+    {count !== undefined && (
+      <span className="text-[10px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full min-w-[1.5rem] text-center shrink-0">
+        {count}
+      </span>
+    )}
   </label>
 );
 
@@ -92,42 +101,62 @@ const FilterSection = ({
   );
 };
 
+const SEGMENTS = [
+  'Beleza e Gastronomia',
+  'Design e Comunicação',
+  'Educacional',
+  'Gestão e Negócios',
+  'Graduação',
+  'Idiomas',
+  'Mediotec',
+  'Moda',
+  'Saúde e Segurança',
+  'Tecnologia da Informação',
+  'Turismo e Hospitalidade',
+];
+
 const BRANDS = [
-  { label: 'Prática de inclusão' },
-  { label: 'Aprendizagem integradora' },
-  { label: 'Prática de fomento à inclusão' },
-  { label: 'Impacto social', placeholder: true },
-  { label: 'Conexão com o mercado', placeholder: true },
-  { label: 'Autonomia digital' },
-  { label: 'Atitude sustentável' },
-  { label: 'Atitude criativa e empreendedora' },
-  { label: 'Comunicação e colaboração' },
-  { label: 'Domínio técnico-científico' },
-  { label: 'Visão crítica' },
+  'Autonomia digital',
+  'Atitude sustentável',
+  'Atitude criativa e empreendedora',
+  'Comunicação e colaboração',
+  'Domínio técnico-científico',
+  'Visão crítica',
+];
+
+const CRITERIA = [
+  'Aprendizagem integradora',
+  'Prática de inclusão',
+  'Prática de fomento à inclusão',
+  'Impacto social / Conexão com o mercado',
 ];
 
 interface SidebarProps {
   isMobile?: boolean;
   selectedYears: number[];
   onYearChange: (y: number) => void;
-  selectedCEPs: string[];
-  onCEPChange: (c: string) => void;
   selectedSegments: string[];
   onSegmentChange: (s: string) => void;
   selectedBrands: string[];
   onBrandChange: (b: string) => void;
+  selectedCriteria: string[];
+  onCriteriaChange: (c: string) => void;
+  disabledOptions: Set<string>;
+  counts: FilterCounts;
 }
 
 export const Sidebar = ({
   isMobile = false,
   selectedYears,
   onYearChange,
-  selectedCEPs,
-  onCEPChange,
   selectedSegments,
   onSegmentChange,
   selectedBrands,
   onBrandChange,
+  selectedCriteria,
+  onCriteriaChange,
+  disabledOptions,
+  counts,
 }: SidebarProps) => (
   <aside
     className={`${
@@ -144,60 +173,57 @@ export const Sidebar = ({
     </div>
 
     <FilterSection title="Ano do Edital">
-      {[2025, 2024, 2023, 2022].map((year) => (
+      {([2025, 2024, 2023, 2022] as const).map((year) => (
         <Checkbox
           key={year}
           id={`year-${year}`}
-          label={year.toString()}
+          label={String(year)}
           checked={selectedYears.includes(year)}
+          count={counts.years[year] ?? 0}
           onChange={() => onYearChange(year)}
         />
       ))}
     </FilterSection>
 
-    <FilterSection title="Marcas Formativas">
-      {BRANDS.map(({ label, placeholder }) => (
-        <Checkbox
-          key={label}
-          id={`brand-${label}`}
-          label={label}
-          checked={selectedBrands.includes(label)}
-          onChange={placeholder ? undefined : () => onBrandChange(label)}
-        />
-      ))}
-    </FilterSection>
-
-    <FilterSection title="Unidade (CEP)">
-      {['Alecrim', 'Assú', 'Barreira Roxa', 'Caicó', 'Centro', 'Mossoró', 'Zona Norte', 'Zona Sul'].map(
-        (cep) => (
-          <Checkbox
-            key={cep}
-            id={`cep-${cep}`}
-            label={cep}
-            checked={selectedCEPs.includes(cep)}
-            onChange={() => onCEPChange(cep)}
-          />
-        )
-      )}
-    </FilterSection>
-
-    <FilterSection title="Eixo / Segmento" expanded={false}>
-      {[
-        'Beleza e Estética',
-        'Design, Artes e Comunicação',
-        'Gastronomia e Hospitalidade',
-        'Gestão e Negócios',
-        'Idiomas',
-        'Moda',
-        'Saúde',
-        'Tecnologia da Informação',
-      ].map((seg) => (
+    <FilterSection title="Segmentação">
+      {SEGMENTS.filter((seg) => !disabledOptions.has(seg)).map((seg) => (
         <Checkbox
           key={seg}
           id={`seg-${seg}`}
           label={seg}
           checked={selectedSegments.includes(seg)}
+          count={counts.segments[seg] ?? 0}
           onChange={() => onSegmentChange(seg)}
+        />
+      ))}
+    </FilterSection>
+
+    <FilterSection title="Marcas Formativas" expanded={false}>
+      {BRANDS.filter((b) => !disabledOptions.has(b)).map((brand) => (
+        <Checkbox
+          key={brand}
+          id={`brand-${brand}`}
+          label={brand}
+          checked={selectedBrands.includes(brand)}
+          count={counts.brands[brand] ?? 0}
+          onChange={() => onBrandChange(brand)}
+        />
+      ))}
+    </FilterSection>
+
+    <FilterSection title="Critérios do Edital" expanded={false}>
+      {CRITERIA.filter((c) => !disabledOptions.has(c)).map((crit) => (
+        <Checkbox
+          key={crit}
+          id={`crit-${crit}`}
+          label={crit}
+          checked={selectedCriteria.includes(crit)}
+          count={counts.criteria[crit] ?? 0}
+          onChange={
+            counts.criteria[crit]
+              ? () => onCriteriaChange(crit)
+              : undefined
+          }
         />
       ))}
     </FilterSection>

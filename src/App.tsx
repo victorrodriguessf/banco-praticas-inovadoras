@@ -20,7 +20,7 @@ import { EbookSection } from './components/EbookSection';
 import { Sidebar } from './components/Sidebar';
 import { PracticeCard } from './components/PracticeCard';
 import { PracticeSummaryModal } from './components/PracticeSummaryModal';
-import { usePractices } from './hooks/usePractices';
+import { usePractices, FILTER_COUNTS } from './hooks/usePractices';
 import type { Practice } from './types';
 import logoSenacLabs from './logo_senac_labs.png';
 
@@ -57,15 +57,16 @@ export default function App() {
     searchQuery,
     setSearchQuery,
     selectedYears,
-    selectedCEPs,
     selectedSegments,
     selectedBrands,
+    selectedCriteria,
     sortedPractices,
     activeFiltersCount,
+    disabledOptions,
     handleYearChange,
-    handleCEPChange,
     handleSegmentChange,
     handleBrandChange,
+    handleCriteriaChange,
     clearAllFilters,
     filterByYear,
   } = usePractices();
@@ -146,12 +147,14 @@ export default function App() {
               <Sidebar
                 selectedYears={selectedYears}
                 onYearChange={handleYearChange}
-                selectedCEPs={selectedCEPs}
-                onCEPChange={handleCEPChange}
                 selectedSegments={selectedSegments}
                 onSegmentChange={handleSegmentChange}
                 selectedBrands={selectedBrands}
                 onBrandChange={handleBrandChange}
+                selectedCriteria={selectedCriteria}
+                onCriteriaChange={handleCriteriaChange}
+                disabledOptions={disabledOptions}
+                counts={FILTER_COUNTS}
               />
             </div>
 
@@ -191,7 +194,7 @@ export default function App() {
 
                 <div className="flex items-center gap-3 flex-wrap">
                   {/* View mode */}
-                  <div className="hidden sm:flex items-center gap-1 bg-gray-50 p-1 rounded-lg">
+                  <div className="flex items-center gap-1 bg-gray-50 p-1 rounded-lg">
                     <button
                       type="button"
                       aria-label="Visualizar em lista"
@@ -283,7 +286,7 @@ export default function App() {
                       Nenhuma prática encontrada
                     </h3>
                     <p className="text-gray-500">
-                      Tente ajustar seus filtros ou mudar os termos da busca.
+                      Tente ajustar os filtros ou termos de busca.
                     </p>
                   </div>
 
@@ -521,12 +524,14 @@ export default function App() {
                   isMobile
                   selectedYears={selectedYears}
                   onYearChange={handleYearChange}
-                  selectedCEPs={selectedCEPs}
-                  onCEPChange={handleCEPChange}
                   selectedSegments={selectedSegments}
                   onSegmentChange={handleSegmentChange}
                   selectedBrands={selectedBrands}
                   onBrandChange={handleBrandChange}
+                  selectedCriteria={selectedCriteria}
+                  onCriteriaChange={handleCriteriaChange}
+                  disabledOptions={disabledOptions}
+                  counts={FILTER_COUNTS}
                 />
               </div>
 

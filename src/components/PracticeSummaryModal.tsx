@@ -82,13 +82,20 @@ export const PracticeSummaryModal = ({
                 </span>
 
                 <span className="bg-senac-orange/10 text-senac-orange text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">
-                  CEP {practice.unit}
+                  {practice.unit}
                 </span>
               </div>
 
-              <h2 className="text-2xl font-black text-senac-blue leading-tight">
+              <h2 className="text-2xl font-black text-senac-blue leading-tight mb-2">
                 {practice.title}
               </h2>
+
+              <div className="flex items-center gap-1.5 text-gray-400">
+                <BookOpen size={12} className="shrink-0" />
+                <span className="text-[11px] font-semibold">
+                  Prática publicada no E-book Educação Inovadora – {practice.year}
+                </span>
+              </div>
             </div>
 
             <button

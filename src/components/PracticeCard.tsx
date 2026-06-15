@@ -1,4 +1,4 @@
-import { BookOpen, ExternalLink, MapPin, User, Tag, Globe } from 'lucide-react';
+import { BookOpen, ExternalLink, Tag, User, Globe, Info } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ODS_DATA, type Practice } from '../types';
 import { printPracticePdf } from '../utils/pdfPrint';
@@ -9,26 +9,47 @@ type PracticeCardProps = {
   variant?: 'grid' | 'list';
 };
 
+const InfoTooltip = ({ year, openUp = false }: { year: number; openUp?: boolean }) => (
+  <div className="relative group/info inline-flex">
+    <button
+      type="button"
+      aria-label="Informação sobre publicação no e-book"
+      className="p-0.5 rounded-full text-gray-300 hover:text-senac-blue transition-colors"
+    >
+      <Info size={14} />
+    </button>
+
+    <div
+      className={`absolute right-0 ${openUp ? 'bottom-full mb-2' : 'top-full mt-2'} hidden group-hover/info:block z-30 pointer-events-none`}
+    >
+      {/* Arrow */}
+      <div
+        className={`absolute right-2 w-2.5 h-2.5 bg-senac-blue rotate-45 ${openUp ? '-bottom-[5px]' : '-top-[5px]'}`}
+      />
+      <div className="bg-senac-blue text-white text-[10px] font-semibold rounded-xl px-3 py-1.5 shadow-xl whitespace-nowrap">
+        Prática publicada no E-book Educação Inovadora – {year}
+      </div>
+    </div>
+  </div>
+);
+
 export const PracticeCard = ({
   practice,
   onReadSummary,
   variant = 'grid',
 }: PracticeCardProps) => {
   const handleDownloadPdf = () => {
-    printPracticePdf({
-      year: practice.year,
-      originalId: practice.originalId,
-    });
+    printPracticePdf({ year: practice.year, originalId: practice.originalId });
   };
 
   if (variant === 'list') {
     return (
       <motion.div
         whileHover={{ backgroundColor: '#f9fafb' }}
-        className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 flex items-center gap-5 transition-colors duration-150"
+        className="relative bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 flex items-start gap-4 transition-colors duration-150"
       >
         {/* Year + Unit */}
-        <div className="shrink-0 flex flex-col items-center gap-1.5 w-[4.5rem]">
+        <div className="shrink-0 flex flex-col items-center gap-1.5 w-16 pt-0.5">
           <span className="bg-senac-blue text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full w-full text-center">
             {practice.year}
           </span>
@@ -43,19 +64,19 @@ export const PracticeCard = ({
             {practice.title}
           </h3>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-0.5 text-xs text-gray-500">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-gray-500 mb-1.5">
             <span className="flex items-center gap-1">
-              <User size={11} className="text-senac-orange shrink-0" />
+              <User size={10} className="text-senac-orange shrink-0" />
               {practice.instructor}
             </span>
             <span className="flex items-center gap-1 min-w-0">
-              <Tag size={11} className="text-senac-orange shrink-0" />
+              <Tag size={10} className="text-senac-orange shrink-0" />
               <span className="truncate">{practice.segment}</span>
             </span>
           </div>
 
           {practice.ods.length > 0 && (
-            <div className="flex items-center gap-1 mt-2">
+            <div className="flex items-center gap-1 mb-1.5">
               {practice.ods.slice(0, 4).map((odsId) => {
                 const ods = ODS_DATA[odsId];
                 if (!ods) return null;
@@ -76,32 +97,38 @@ export const PracticeCard = ({
               )}
             </div>
           )}
+
+          {practice.learningSituation && (
+            <p className="text-xs text-gray-400 line-clamp-1 leading-relaxed">
+              {practice.learningSituation}
+            </p>
+          )}
         </div>
 
         {/* Actions */}
-        <div className="shrink-0 flex flex-col items-end gap-1">
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={onReadSummary}
-              className="flex items-center gap-1.5 py-2 px-3 rounded-lg border-2 border-gray-200 text-gray-600 font-bold text-xs hover:border-senac-blue hover:text-senac-blue hover:bg-gray-50 transition-all"
-            >
-              <BookOpen size={13} />
-              <span className="hidden lg:inline">Resumo</span>
-            </button>
+        <div className="shrink-0 flex items-center gap-2 pt-0.5">
+          <button
+            type="button"
+            onClick={onReadSummary}
+            className="flex items-center gap-1.5 py-2 px-3 rounded-lg border-2 border-gray-200 text-gray-600 font-bold text-xs hover:border-senac-blue hover:text-senac-blue hover:bg-gray-50 transition-all"
+          >
+            <BookOpen size={13} />
+            <span className="hidden lg:inline">Resumo</span>
+          </button>
 
-            <button
-              type="button"
-              onClick={handleDownloadPdf}
-              className="flex items-center gap-1.5 py-2 px-3 rounded-lg bg-senac-blue text-white font-bold text-xs hover:bg-senac-blue/90 shadow-md shadow-senac-blue/20 transition-all"
-            >
-              <ExternalLink size={13} />
-              <span className="hidden lg:inline">Acessar prática</span>
-            </button>
-          </div>
-          <span className="text-[9px] font-medium text-gray-400 hidden lg:block">
-            Recorte · E-book {practice.year}
-          </span>
+          <button
+            type="button"
+            onClick={handleDownloadPdf}
+            className="flex items-center gap-1.5 py-2 px-3 rounded-lg bg-senac-blue text-white font-bold text-xs hover:bg-senac-blue/90 shadow-md shadow-senac-blue/20 transition-all"
+          >
+            <ExternalLink size={13} />
+            <span className="hidden lg:inline">Acessar prática</span>
+          </button>
+        </div>
+
+        {/* Info — canto inferior direito */}
+        <div className="absolute bottom-2.5 right-3">
+          <InfoTooltip year={practice.year} openUp />
         </div>
       </motion.div>
     );
@@ -111,93 +138,89 @@ export const PracticeCard = ({
     <motion.div
       whileHover={{
         y: -2,
-        boxShadow:
-          '0 8px 20px -4px rgb(0 0 0 / 0.08), 0 4px 8px -4px rgb(0 0 0 / 0.06)',
+        boxShadow: '0 8px 20px -4px rgb(0 0 0 / 0.08), 0 4px 8px -4px rgb(0 0 0 / 0.06)',
       }}
-      className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col h-full transition-all duration-300"
+      className="relative bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col h-full transition-all duration-300"
     >
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {practice.ods.map((odsId) => {
+      {/* Info — canto superior direito, fora do fluxo dos ODS */}
+      <div className="absolute top-3 right-3 z-10">
+        <InfoTooltip year={practice.year} />
+      </div>
+
+      {/* Year + Unit + ODS — com padding direito para não encostar no i */}
+      <div className="flex flex-wrap items-center gap-1.5 mb-3 pr-7">
+        <span className="bg-senac-blue text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+          {practice.year}
+        </span>
+        <span className="bg-senac-orange/10 text-senac-orange text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full">
+          {practice.unit}
+        </span>
+        {practice.ods.slice(0, 3).map((odsId) => {
           const ods = ODS_DATA[odsId];
-
           if (!ods) return null;
-
           return (
             <span
               key={odsId}
               style={{ backgroundColor: ods.color }}
-              className="text-[10px] font-bold text-white px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-sm"
+              className="text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full flex items-center gap-0.5"
             >
-              <Globe size={10} />
+              <Globe size={9} />
               ODS {odsId}
             </span>
           );
         })}
+        {practice.ods.length > 3 && (
+          <span className="text-[9px] font-bold text-gray-400">
+            +{practice.ods.length - 3}
+          </span>
+        )}
       </div>
 
-      <h3 className="font-bold text-lg text-senac-blue leading-tight mb-4 flex-grow">
+      {/* Title */}
+      <h3 className="font-bold text-base text-senac-blue leading-tight mb-3 line-clamp-2">
         {practice.title}
       </h3>
 
-      <div className="space-y-2 mb-6">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <MapPin size={16} className="text-senac-orange" />
-          <span className="font-medium text-gray-700">
-            CEP: {practice.unit}
-          </span>
+      {/* Docente + Segmento */}
+      <div className="space-y-1 mb-3">
+        <div className="flex items-center gap-1.5 text-xs text-gray-500">
+          <User size={12} className="text-senac-orange shrink-0" />
+          <span className="truncate">{practice.instructor}</span>
         </div>
-
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <User size={16} className="text-senac-orange" />
-          <span>
-            Docente:{' '}
-            <span className="font-semibold text-gray-700">
-              {practice.instructor}
-            </span>
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Tag size={16} className="text-senac-orange" />
-          <span>
-            Segmento:{' '}
-            <span className="font-semibold text-gray-700">
-              {practice.segment}
-            </span>
-          </span>
+        <div className="flex items-center gap-1.5 text-xs text-gray-500">
+          <Tag size={12} className="text-senac-orange shrink-0" />
+          <span className="truncate">{practice.segment}</span>
         </div>
       </div>
 
-      <div className="mt-auto pt-4 border-t border-gray-50 space-y-2">
-        <div className="grid grid-cols-2 gap-3">
+      {/* Resumo preview */}
+      {practice.learningSituation && (
+        <p className="text-xs text-gray-400 leading-relaxed line-clamp-3 flex-grow">
+          {practice.learningSituation}
+        </p>
+      )}
+
+      {/* Footer */}
+      <div className="mt-4 pt-3 border-t border-gray-50">
+        <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={onReadSummary}
-            className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg border-2 border-gray-200 text-gray-600 font-bold text-xs hover:border-senac-blue hover:text-senac-blue hover:bg-gray-50 transition-all group"
+            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg border-2 border-gray-200 text-gray-600 font-bold text-xs hover:border-senac-blue hover:text-senac-blue hover:bg-gray-50 transition-all group"
           >
-            <BookOpen
-              size={14}
-              className="group-hover:scale-110 transition-transform"
-            />
+            <BookOpen size={13} className="group-hover:scale-110 transition-transform" />
             Resumo
           </button>
 
           <button
             type="button"
             onClick={handleDownloadPdf}
-            className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-senac-blue text-white font-bold text-xs hover:bg-senac-blue/90 shadow-md shadow-senac-blue/20 transition-all group"
+            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-senac-blue text-white font-bold text-xs hover:bg-senac-blue/90 shadow-md shadow-senac-blue/20 transition-all group"
           >
-            <ExternalLink
-              size={14}
-              className="group-hover:scale-110 transition-transform"
-            />
+            <ExternalLink size={13} className="group-hover:scale-110 transition-transform" />
             Acessar prática
           </button>
         </div>
-
-        <p className="text-[10px] text-gray-400 font-medium text-center">
-          Recorte do E-book Educação Inovadora – {practice.year}
-        </p>
       </div>
     </motion.div>
   );
