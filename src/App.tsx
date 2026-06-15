@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   LayoutGrid,
   List,
@@ -11,6 +11,7 @@ import {
   Filter as FilterIcon,
   X,
   Search,
+  Download,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
@@ -48,6 +49,8 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState<number | 'all'>(20);
 
+  const practicesSectionRef = useRef<HTMLDivElement>(null);
+
   const {
     sortBy,
     setSortBy,
@@ -64,7 +67,15 @@ export default function App() {
     handleSegmentChange,
     handleBrandChange,
     clearAllFilters,
+    filterByYear,
   } = usePractices();
+
+  const handleFilterByYear = (year: number) => {
+    filterByYear(year);
+    setTimeout(() => {
+      practicesSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   // Reset to page 1 whenever filters/search/sort produce a new result set
   useEffect(() => {
@@ -101,7 +112,7 @@ export default function App() {
       <main className="flex-grow">
         <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-        <EbookSection />
+        <EbookSection onFilterByYear={handleFilterByYear} />
 
         <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
           {/* Mobile Filter Trigger */}
@@ -145,10 +156,10 @@ export default function App() {
             </div>
 
             {/* Main Content Area */}
-            <div className="flex-grow flex flex-col gap-6">
+            <div ref={practicesSectionRef} className="flex-grow flex flex-col gap-6">
               {/* Toolbar */}
               <div className="flex items-center justify-between bg-white p-4 rounded-2xl border border-gray-100 shadow-sm gap-3 flex-wrap">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-gray-400 font-medium whitespace-nowrap text-sm">
                     Exibindo
                   </span>
@@ -164,6 +175,17 @@ export default function App() {
                     <span className="bg-blue-50 text-senac-blue px-2.5 py-0.5 rounded-full font-bold text-sm whitespace-nowrap">
                       {sortedPractices.length} práticas
                     </span>
+                  )}
+
+                  {selectedYears.length === 1 && (
+                    <a
+                      href={`/pdfs/praticas-inovadoras-${selectedYears[0]}.pdf`}
+                      download={`ebook-educacao-inovadora-senac-rn-melhores-praticas-${selectedYears[0]}.pdf`}
+                      className="flex items-center gap-1 py-0.5 px-2.5 rounded-full bg-senac-orange/10 text-senac-orange text-xs font-bold hover:bg-senac-orange/20 transition-colors whitespace-nowrap"
+                    >
+                      <Download size={10} />
+                      E-book {selectedYears[0]}
+                    </a>
                   )}
                 </div>
 

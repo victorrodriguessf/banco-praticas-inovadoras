@@ -1,4 +1,4 @@
-import { X } from 'lucide-react';
+import { X, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { type Practice } from '../types';
 import { printPracticePdf } from '../utils/pdfPrint';
@@ -179,13 +179,32 @@ export const PracticeSummaryModal = ({
                 {previewText || 'Resumo não informado.'}
               </p>
 
-              <button
-                type="button"
-                onClick={handleDownloadPdf}
-                className="mt-3 text-sm font-black text-senac-blue underline underline-offset-2 hover:text-senac-orange transition-colors"
-              >
-                Visualizar no e-book ({practice.year})
-              </button>
+              <div className="relative inline-block group mt-3">
+                <button
+                  type="button"
+                  onClick={handleDownloadPdf}
+                  className="text-sm font-black text-senac-blue underline underline-offset-2 hover:text-senac-orange transition-colors"
+                >
+                  Leia mais
+                </button>
+                <div className="absolute bottom-full left-0 mb-2.5 hidden group-hover:block z-20 pointer-events-none">
+                  <div className="bg-[#003366] text-white rounded-xl px-3.5 py-2.5 shadow-xl whitespace-nowrap">
+                    <p className="text-[9px] uppercase tracking-widest text-white/50 font-black mb-0.5">
+                      Recorte do e-book
+                    </p>
+                    <p className="text-xs font-black">
+                      E-book Educação Inovadora do Senac RN – {practice.year}
+                    </p>
+                    <p className="text-[10px] text-white/60 font-medium mt-0.5">
+                      Páginas {practice.pages.initial}
+                      {practice.pages.situation !== practice.pages.initial
+                        ? ` a ${practice.pages.situation}`
+                        : ''}
+                    </p>
+                  </div>
+                  <div className="w-2.5 h-2.5 bg-[#003366] rotate-45 ml-4 -mt-[5px]" />
+                </div>
+              </div>
             </section>
 
             <section>
@@ -198,12 +217,29 @@ export const PracticeSummaryModal = ({
               </p>
             </section>
 
-            <div className="bg-blue-50 rounded-2xl p-4 text-sm text-senac-blue font-bold">
-              Páginas no e-book: {practice.pages.initial}
-              {practice.pages.situation !== practice.pages.initial
-                ? ` a ${practice.pages.situation}`
-                : ''}
-            </div>
+            <button
+              type="button"
+              onClick={handleDownloadPdf}
+              className="flex items-center gap-3 w-full text-left bg-blue-50 rounded-2xl p-4 border border-senac-blue/10 hover:bg-senac-blue/10 hover:border-senac-blue/30 transition-colors group"
+            >
+              <div className="shrink-0 bg-senac-blue/10 p-2.5 rounded-xl group-hover:bg-senac-blue/20 transition-colors">
+                <BookOpen size={18} className="text-senac-blue" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[9px] uppercase tracking-widest font-black text-gray-400 mb-0.5">
+                  Recorte do e-book
+                </p>
+                <p className="text-sm font-black text-senac-blue leading-tight">
+                  E-book Educação Inovadora do Senac RN – {practice.year}
+                </p>
+                <p className="text-xs text-gray-500 font-medium mt-0.5">
+                  Páginas {practice.pages.initial}
+                  {practice.pages.situation !== practice.pages.initial
+                    ? ` a ${practice.pages.situation}`
+                    : ''}
+                </p>
+              </div>
+            </button>
           </div>
         </motion.div>
       </motion.div>

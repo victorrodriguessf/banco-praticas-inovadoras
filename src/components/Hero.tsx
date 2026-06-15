@@ -25,8 +25,9 @@ export const Hero = ({
         </h1>
 
         <p className="text-gray-500 font-medium max-w-2xl mx-auto">
-          Explore, inspire-se e replique as melhores metodologias educacionais
-          desenvolvidas pelos docentes do Senac RN.
+          Explore, inspire-se e replique práticas pedagógicas dos docentes do
+          Senac RN, selecionadas pelo edital Educação Inovadora, validadas por
+          banca avaliadora e publicadas no e-book do programa.
         </p>
       </motion.div>
 

@@ -165,6 +165,10 @@ export function usePractices() {
     setSelectedBrands([]);
   };
 
+  const filterByYear = (year: number) => {
+    setSelectedYears([year]);
+  };
+
   return {
     sortBy,
     setSortBy,
@@ -181,5 +185,6 @@ export function usePractices() {
     handleSegmentChange,
     handleBrandChange,
     clearAllFilters,
+    filterByYear,
   };
 }
