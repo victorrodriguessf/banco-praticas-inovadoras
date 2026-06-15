@@ -10,9 +10,17 @@ type PracticeCardProps = {
   variant?: 'grid' | 'list';
 };
 
+const CLOSE_TOOLTIPS_EVENT = 'close-info-tooltips';
+
 const InfoTooltip = ({ year, openUp = false }: { year: number; openUp?: boolean }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleCloseAll = () => setOpen(false);
+    document.addEventListener(CLOSE_TOOLTIPS_EVENT, handleCloseAll);
+    return () => document.removeEventListener(CLOSE_TOOLTIPS_EVENT, handleCloseAll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -25,12 +33,22 @@ const InfoTooltip = ({ year, openUp = false }: { year: number; openUp?: boolean 
     return () => document.removeEventListener('click', handler);
   }, [open]);
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!open) {
+      document.dispatchEvent(new CustomEvent(CLOSE_TOOLTIPS_EVENT));
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  };
+
   return (
     <div className="relative inline-flex" ref={ref}>
       <button
         type="button"
         aria-label="Informação sobre publicação no e-book"
-        onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}
+        onClick={handleClick}
         className={`p-0.5 rounded-full transition-colors cursor-pointer ${open ? 'text-senac-blue' : 'text-gray-300 hover:text-senac-blue'}`}
       >
         <Info size={14} />
@@ -64,11 +82,11 @@ export const PracticeCard = ({
         className="relative bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 flex items-start gap-4 transition-colors duration-150"
       >
         {/* Year + Unit */}
-        <div className="shrink-0 flex flex-col items-center gap-1.5 w-16 pt-0.5">
+        <div className="shrink-0 flex flex-col items-center gap-1.5 w-24 pt-0.5">
           <span className="bg-senac-blue text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full w-full text-center">
             {practice.year}
           </span>
-          <span className="bg-senac-orange/10 text-senac-orange text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full w-full text-center truncate">
+          <span className="bg-senac-orange/10 text-senac-orange text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full w-full text-center leading-tight break-words">
             {practice.unit}
           </span>
         </div>
