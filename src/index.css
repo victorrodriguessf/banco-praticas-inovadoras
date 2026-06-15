@@ -12,4 +12,12 @@
   body {
     @apply bg-slate-50 text-slate-900;
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  label[for],
+  select,
+  a[href] {
+    cursor: pointer;
+  }
 }

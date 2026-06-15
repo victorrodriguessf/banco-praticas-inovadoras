@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { BookOpen, ExternalLink, Tag, User, Globe, Info } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ODS_DATA, type Practice } from '../types';
@@ -9,29 +10,43 @@ type PracticeCardProps = {
   variant?: 'grid' | 'list';
 };
 
-const InfoTooltip = ({ year, openUp = false }: { year: number; openUp?: boolean }) => (
-  <div className="relative group/info inline-flex">
-    <button
-      type="button"
-      aria-label="Informação sobre publicação no e-book"
-      className="p-0.5 rounded-full text-gray-300 hover:text-senac-blue transition-colors"
-    >
-      <Info size={14} />
-    </button>
+const InfoTooltip = ({ year, openUp = false }: { year: number; openUp?: boolean }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-    <div
-      className={`absolute right-0 ${openUp ? 'bottom-full mb-2' : 'top-full mt-2'} hidden group-hover/info:block z-30 pointer-events-none`}
-    >
-      {/* Arrow */}
-      <div
-        className={`absolute right-2 w-2.5 h-2.5 bg-senac-blue rotate-45 ${openUp ? '-bottom-[5px]' : '-top-[5px]'}`}
-      />
-      <div className="bg-senac-blue text-white text-[10px] font-semibold rounded-xl px-3 py-1.5 shadow-xl whitespace-nowrap">
-        Prática publicada no E-book Educação Inovadora – {year}
-      </div>
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('click', handler);
+    return () => document.removeEventListener('click', handler);
+  }, [open]);
+
+  return (
+    <div className="relative inline-flex" ref={ref}>
+      <button
+        type="button"
+        aria-label="Informação sobre publicação no e-book"
+        onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}
+        className={`p-0.5 rounded-full transition-colors cursor-pointer ${open ? 'text-senac-blue' : 'text-gray-300 hover:text-senac-blue'}`}
+      >
+        <Info size={14} />
+      </button>
+
+      {open && (
+        <div className={`absolute right-0 ${openUp ? 'bottom-full mb-2' : 'top-full mt-2'} z-30 pointer-events-none`}>
+          <div className={`absolute right-2 w-2.5 h-2.5 bg-senac-blue rotate-45 ${openUp ? '-bottom-[5px]' : '-top-[5px]'}`} />
+          <div className="bg-senac-blue text-white text-[10px] font-semibold rounded-xl px-3 py-1.5 shadow-xl whitespace-nowrap">
+            Prática publicada no E-book Educação Inovadora – {year}
+          </div>
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 export const PracticeCard = ({
   practice,

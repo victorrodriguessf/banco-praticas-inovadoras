@@ -12,6 +12,7 @@ import {
   X,
   Search,
   Download,
+  Send,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
@@ -475,8 +476,22 @@ export default function App() {
                 )}
               </nav>
 
-              <div className="p-8 border-t border-gray-100 italic text-gray-400 text-xs">
-                &copy; 2026 Senac Labs RN
+              <div className="p-6 border-t border-gray-100 flex flex-col gap-1.5">
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 text-center">
+                  Exclusivo para docentes do Senac RN
+                </span>
+                <a
+                  href="https://labs.rn.senac.br/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-senac-blue text-white text-sm font-black uppercase tracking-wider px-4 py-3 rounded-xl shadow-md hover:bg-[#003366] transition-colors"
+                >
+                  <Send size={14} />
+                  Submeta sua prática
+                </a>
+                <p className="text-[10px] text-gray-300 italic text-center mt-1">
+                  &copy; 2026 Senac Labs RN
+                </p>
               </div>
             </motion.div>
           </>
