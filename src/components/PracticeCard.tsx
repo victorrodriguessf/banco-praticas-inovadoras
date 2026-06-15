@@ -12,6 +12,74 @@ type PracticeCardProps = {
 
 const CLOSE_TOOLTIPS_EVENT = 'close-info-tooltips';
 
+const OdsOverflowBadge = ({ hiddenOds }: { hiddenOds: number[] }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleCloseAll = () => setOpen(false);
+    document.addEventListener(CLOSE_TOOLTIPS_EVENT, handleCloseAll);
+    return () => document.removeEventListener(CLOSE_TOOLTIPS_EVENT, handleCloseAll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('click', handler);
+    return () => document.removeEventListener('click', handler);
+  }, [open]);
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!open) {
+      document.dispatchEvent(new CustomEvent(CLOSE_TOOLTIPS_EVENT));
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  };
+
+  return (
+    <div className="relative inline-flex" ref={ref}>
+      <button
+        type="button"
+        onClick={handleClick}
+        className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full transition-colors cursor-pointer ${
+          open ? 'bg-gray-200 text-gray-600' : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+        }`}
+      >
+        +{hiddenOds.length}
+      </button>
+
+      {open && (
+        <div className="absolute left-0 top-full mt-2 z-30 pointer-events-none">
+          <div className="absolute left-2 -top-[5px] w-2.5 h-2.5 bg-[#003366] rotate-45" />
+          <div className="bg-[#003366] rounded-xl px-3 py-2 shadow-xl flex flex-wrap gap-1.5 max-w-[180px]">
+            {hiddenOds.map((odsId) => {
+              const ods = ODS_DATA[odsId];
+              if (!ods) return null;
+              return (
+                <span
+                  key={odsId}
+                  style={{ backgroundColor: ods.color }}
+                  className="text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full flex items-center gap-0.5 whitespace-nowrap"
+                >
+                  <Globe size={9} />
+                  ODS {odsId}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const InfoTooltip = ({ year, openUp = false }: { year: number; openUp?: boolean }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -124,9 +192,7 @@ export const PracticeCard = ({
                 );
               })}
               {practice.ods.length > 4 && (
-                <span className="text-[9px] font-bold text-gray-400">
-                  +{practice.ods.length - 4}
-                </span>
+                <OdsOverflowBadge hiddenOds={practice.ods.slice(4)} />
               )}
             </div>
           )}
@@ -203,9 +269,7 @@ export const PracticeCard = ({
           );
         })}
         {practice.ods.length > 3 && (
-          <span className="text-[9px] font-bold text-gray-400">
-            +{practice.ods.length - 3}
-          </span>
+          <OdsOverflowBadge hiddenOds={practice.ods.slice(3)} />
         )}
       </div>
 
