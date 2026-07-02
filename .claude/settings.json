@@ -2,7 +2,19 @@
   "permissions": {
     "allow": [
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(cat index.html)",
+      "Bash(cat tailwind.config.*)",
+      "Bash(which chromium-cli *)",
+      "Bash(npm run *)",
+      "Read(//tmp/**)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(curl -s http://localhost:3001/)",
+      "Bash(mkdir -p /tmp/pwcheck)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Read(//private/tmp/**)"
     ]
   }
 }
