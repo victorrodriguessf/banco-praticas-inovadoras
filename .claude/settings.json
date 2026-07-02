@@ -14,7 +14,8 @@
       "Bash(mkdir -p /tmp/pwcheck)",
       "Bash(npm init *)",
       "Bash(npm install *)",
-      "Read(//private/tmp/**)"
+      "Read(//private/tmp/**)",
+      "Bash(git revert *)"
     ]
   }
 }
