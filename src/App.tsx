@@ -116,14 +116,6 @@ export default function App() {
 
         <EbookSection onFilterByYear={handleFilterByYear} />
 
-        <div aria-hidden="true" className="relative h-10 md:h-14 bg-white overflow-hidden">
-          <div
-            className="absolute inset-0 bg-[#dbe3ee]"
-            style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }}
-          />
-        </div>
-
-        <section className="bg-[#dbe3ee]">
         <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
           {/* Mobile Filter Trigger */}
           <div className="lg:hidden mb-8">
@@ -402,7 +394,6 @@ export default function App() {
             </div>
           </div>
         </div>
-        </section>
       </main>
 
       {/* Footer */}
