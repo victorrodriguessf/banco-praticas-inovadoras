@@ -17,6 +17,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { DiagonalDivider } from './components/DiagonalDivider';
 import { EbookSection } from './components/EbookSection';
 import { Sidebar } from './components/Sidebar';
 import { PracticeCard } from './components/PracticeCard';
@@ -114,8 +115,13 @@ export default function App() {
       <main className="flex-grow">
         <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
+        <DiagonalDivider className="bg-white" />
+
         <EbookSection onFilterByYear={handleFilterByYear} />
 
+        <DiagonalDivider flip className="bg-surface" />
+
+        <section className="bg-surface">
         <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
           {/* Mobile Filter Trigger */}
           <div className="lg:hidden mb-8">
@@ -394,6 +400,7 @@ export default function App() {
             </div>
           </div>
         </div>
+        </section>
       </main>
 
       {/* Footer */}

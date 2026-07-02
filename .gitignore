@@ -22,3 +22,6 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Design references (not part of the app)
+mockup.png
