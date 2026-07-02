@@ -8,9 +8,9 @@ export const Hero = ({
   searchQuery: string;
   setSearchQuery: (q: string) => void;
 }) => (
-  <section className="bg-[#f0f4f8] border-b border-blue-100 py-16 px-4 relative overflow-hidden">
-    <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-senac-blue/5 rounded-full blur-3xl" />
-    <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-64 h-64 bg-senac-orange/5 rounded-full blur-3xl" />
+  <section className="bg-[#003366] py-16 px-4 relative overflow-hidden">
+    <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-64 h-64 bg-senac-orange/10 rounded-full blur-3xl" />
 
     <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
       <motion.div
@@ -19,12 +19,12 @@ export const Hero = ({
         transition={{ duration: 0.6 }}
         className="space-y-4"
       >
-        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-[#003366]">
+        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white">
           BANCO DE PRÁTICAS{' '} <br></br>
           <span className="text-senac-orange">EDUCAÇÃO INOVADORA</span>
         </h1>
 
-        <p className="text-gray-500 font-medium max-w-2xl mx-auto">
+        <p className="text-blue-100/80 font-medium max-w-2xl mx-auto">
           Explore, inspire-se e replique práticas pedagógicas dos docentes do
           Senac RN, selecionadas pelo edital Educação Inovadora, validadas por
           banca avaliadora e publicadas no e-book do programa.
@@ -63,5 +63,11 @@ export const Hero = ({
         </div>
       </motion.div>
     </div>
+
+    <div
+      aria-hidden="true"
+      className="absolute bottom-0 left-0 w-full h-10 md:h-14 bg-white"
+      style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }}
+    />
   </section>
 );
