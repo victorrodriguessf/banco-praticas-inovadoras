@@ -8,7 +8,7 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
     <header className="bg-[#ffb84d] border-b border-orange-300 sticky top-0 z-50 shadow-md">
       <div
         id="header-inner"
-        className="max-w-7xl mx-auto px-4 h-24 flex items-center justify-between"
+        className="max-w-7xl mx-auto px-4 h-[116px] flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
           <a href="/" className="flex items-center">
