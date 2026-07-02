@@ -1,6 +1,16 @@
 import { useState } from 'react';
 import { Menu, Send } from 'lucide-react';
 
+const navEntries = [
+  { label: 'Início', href: 'https://labs.rn.senac.br/' },
+  { label: 'EDUTECH', href: 'https://labs.rn.senac.br/edutech/' },
+  { label: 'CODE', href: 'https://labs.rn.senac.br/code/' },
+  { label: 'PERTENSER', href: 'https://labs.rn.senac.br/pertenser/' },
+  { label: 'Banco de Práticas', href: 'https://banco-praticas-inovadoras.vercel.app/' },
+  { label: 'Docentes', href: 'https://labs.rn.senac.br/docentes-destaques/' },
+  { label: 'Aconteceu', href: 'https://labs.rn.senac.br/aconteceu/' },
+];
+
 export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
   const [logoError, setLogoError] = useState(false);
 
@@ -32,25 +42,23 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
           </a>
         </div>
 
-        <nav className="hidden lg:flex items-center gap-10">
-          <a href="#" className="font-extrabold text-sm uppercase tracking-widest text-[#003366] hover:text-white transition-colors">
-            Início
-          </a>
-          <a href="#" className="font-extrabold text-sm uppercase tracking-widest text-[#003366] hover:text-white transition-colors">
-            Sobre
-          </a>
-          <a href="#" className="font-extrabold text-sm uppercase tracking-widest text-[#003366] hover:text-white transition-colors">
-            Edital
-          </a>
-          <a href="#" className="font-extrabold text-sm uppercase tracking-widest text-[#004a8d] border-b-2 border-[#004a8d] pb-1 transition-colors">
-            Práticas
-          </a>
-          <a href="#" className="font-extrabold text-sm uppercase tracking-widest text-[#003366] hover:text-white transition-colors">
-            E-books
-          </a>
-          <a href="#" className="font-extrabold text-sm uppercase tracking-widest text-[#003366] hover:text-white transition-colors">
-            Contato
-          </a>
+        <nav className="hidden lg:flex items-center">
+          {navEntries.map((entry, i) => (
+            <div key={entry.label} className="flex items-center">
+              {i > 0 && (
+                <span
+                  aria-hidden="true"
+                  className="h-4 w-px border-l border-dotted border-[#7A7A7A] mx-4"
+                />
+              )}
+              <a
+                href={entry.href}
+                className="font-bold text-sm text-[#2F3973] hover:text-[#B97919] transition-colors whitespace-nowrap"
+              >
+                {entry.label}
+              </a>
+            </div>
+          ))}
         </nav>
 
         {/* CTA — desktop */}

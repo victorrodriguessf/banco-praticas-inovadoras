@@ -28,7 +28,7 @@ export const EbookSection = ({ onFilterByYear }: EbookSectionProps) => (
         {EBOOKS.map(({ year, practices }) => (
           <div
             key={year}
-            className="relative rounded-xl md:rounded-2xl border border-senac-blue/20 bg-blue-50/30 hover:border-senac-blue/40 hover:shadow-md hover:shadow-senac-blue/5 overflow-hidden transition-all flex flex-row md:flex-col"
+            className="relative rounded-xl md:rounded-2xl border border-senac-blue/20 bg-blue-50/30 hover:border-senac-blue/40 hover:shadow-lg hover:shadow-senac-blue/10 hover:-translate-y-1 overflow-hidden transition-all duration-300 flex flex-row md:flex-col"
           >
             {/* Cover image — desktop: top strip, mobile: left strip */}
             <div className="relative shrink-0 w-20 md:w-full md:h-28 overflow-hidden">
