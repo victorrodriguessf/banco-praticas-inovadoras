@@ -47,14 +47,18 @@ export const EbookSection = ({ onFilterByYear }: EbookSectionProps) => {
               </div>
 
               {/* Texto */}
-              <p className="mt-4 text-senac-blue leading-snug">
-                <span className="font-black text-2xl">{practices}</span>
-                <span className="font-normal text-sm">
-                  {' '}
-                  práticas de Educação Inovadora do Senac RN -{' '}
+              <div className="mt-4 text-center">
+                <p className="text-senac-blue leading-tight">
+                  <span className="font-black text-3xl">{practices}</span>{' '}
+                  <span className="font-bold text-base">práticas</span>
+                </p>
+                <p className="text-sm text-gray-500 font-medium mt-1">
+                  Educação Inovadora do Senac RN
+                </p>
+                <span className="inline-block mt-2 text-xs font-black text-senac-blue bg-senac-blue/10 px-2.5 py-1 rounded-full tracking-wide">
+                  {year}
                 </span>
-                <span className="font-black text-sm">{year}</span>
-              </p>
+              </div>
 
               {/* Botões */}
               <div className="flex flex-col gap-2 mt-4">
