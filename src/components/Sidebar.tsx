@@ -124,6 +124,17 @@ const BRANDS = [
   'Visão crítica',
 ];
 
+const UNITS = [
+  'Alecrim',
+  'Assú',
+  'Barreira Roxa',
+  'Caicó',
+  'Centro',
+  'Mossoró',
+  'Zona Norte',
+  'Zona Sul',
+];
+
 const CRITERIA = [
   'Aprendizagem integradora',
   'Prática de inclusão',
@@ -139,6 +150,8 @@ interface SidebarProps {
   onSegmentChange: (s: string) => void;
   selectedBrands: string[];
   onBrandChange: (b: string) => void;
+  selectedUnits: string[];
+  onUnitChange: (u: string) => void;
   selectedCriteria: string[];
   onCriteriaChange: (c: string) => void;
   disabledOptions: Set<string>;
@@ -153,6 +166,8 @@ export const Sidebar = ({
   onSegmentChange,
   selectedBrands,
   onBrandChange,
+  selectedUnits,
+  onUnitChange,
   selectedCriteria,
   onCriteriaChange,
   disabledOptions,
@@ -207,6 +222,19 @@ export const Sidebar = ({
           checked={selectedBrands.includes(brand)}
           count={counts.brands[brand] ?? 0}
           onChange={() => onBrandChange(brand)}
+        />
+      ))}
+    </FilterSection>
+
+    <FilterSection title="Unidade" expanded={false}>
+      {UNITS.filter((u) => !disabledOptions.has(u)).map((unit) => (
+        <Checkbox
+          key={unit}
+          id={`unit-${unit}`}
+          label={unit}
+          checked={selectedUnits.includes(unit)}
+          count={counts.units[unit] ?? 0}
+          onChange={() => onUnitChange(unit)}
         />
       ))}
     </FilterSection>

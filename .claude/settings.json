@@ -17,7 +17,19 @@
       "Read(//private/tmp/**)",
       "Bash(git revert *)",
       "Bash(python3 -c \"import PIL; print\\(PIL.__version__\\)\")",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(python3 -c \"import docx; print\\('python-docx ok'\\)\")",
+      "Bash(pkill -f \"vite --port=3001\")",
+      "Bash(cp /tmp/doc_full.png \"/private/tmp/claude-501/-Users-victorrodrigues-Documents-Projeto-Pr-ticas-Inovadoras-senac-labs-local-pronto/300da18f-cd37-413f-9e92-a4191c1da5cf/scratchpad/doc_full.png\")",
+      "Bash(cp /tmp/doc_ebooks.png \"/private/tmp/claude-501/-Users-victorrodrigues-Documents-Projeto-Pr-ticas-Inovadoras-senac-labs-local-pronto/300da18f-cd37-413f-9e92-a4191c1da5cf/scratchpad/doc_ebooks.png\")",
+      "Bash(pandoc relatorio_commits.md -o relatorio_commits.docx --resource-path=.)",
+      "Bash(unzip -l relatorio_commits.docx)",
+      "Bash(rm -f \"/Users/victorrodrigues/Documents/Projeto Práticas Inovadoras/senac-labs-local-pronto/relatorio-ultimos-5-commits.docx\" *)",
+      "Bash(git -C \"/Users/victorrodrigues/Documents/Projeto Práticas Inovadoras/senac-labs-local-pronto\" status --short)",
+      "Bash(node -e ' *)"
+    ],
+    "additionalDirectories": [
+      "/Users/victorrodrigues/Documents/Projeto Práticas Inovadoras/senac-labs-local-pronto"
     ]
   }
 }

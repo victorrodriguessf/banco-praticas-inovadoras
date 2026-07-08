@@ -61,6 +61,7 @@ export default function App() {
     selectedYears,
     selectedSegments,
     selectedBrands,
+    selectedUnits,
     selectedCriteria,
     sortedPractices,
     activeFiltersCount,
@@ -68,6 +69,7 @@ export default function App() {
     handleYearChange,
     handleSegmentChange,
     handleBrandChange,
+    handleUnitChange,
     handleCriteriaChange,
     clearAllFilters,
     filterByYear,
@@ -158,6 +160,8 @@ export default function App() {
                 onSegmentChange={handleSegmentChange}
                 selectedBrands={selectedBrands}
                 onBrandChange={handleBrandChange}
+                selectedUnits={selectedUnits}
+                onUnitChange={handleUnitChange}
                 selectedCriteria={selectedCriteria}
                 onCriteriaChange={handleCriteriaChange}
                 disabledOptions={disabledOptions}
@@ -550,6 +554,8 @@ export default function App() {
                   onSegmentChange={handleSegmentChange}
                   selectedBrands={selectedBrands}
                   onBrandChange={handleBrandChange}
+                  selectedUnits={selectedUnits}
+                  onUnitChange={handleUnitChange}
                   selectedCriteria={selectedCriteria}
                   onCriteriaChange={handleCriteriaChange}
                   disabledOptions={disabledOptions}

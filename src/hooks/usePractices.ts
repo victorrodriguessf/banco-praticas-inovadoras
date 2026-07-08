@@ -100,6 +100,17 @@ const BRAND_MATCHERS: Record<string, (p: Practice) => boolean> = {
     p.formativeBrands.some((b) => b.toLowerCase() === 'visão crítica'),
 };
 
+const UNIT_MATCHERS: Record<string, (p: Practice) => boolean> = {
+  'Alecrim': (p) => /alecrim/i.test(p.unit),
+  'Assú': (p) => /ass[uú]/i.test(p.unit),
+  'Barreira Roxa': (p) => /barreira\s*roxa/i.test(p.unit),
+  'Caicó': (p) => /caic[oó]/i.test(p.unit),
+  'Centro': (p) => /centro/i.test(p.unit),
+  'Mossoró': (p) => /mossor[oó]/i.test(p.unit),
+  'Zona Norte': (p) => /zona\s*norte/i.test(p.unit),
+  'Zona Sul': (p) => /zona\s*sul/i.test(p.unit),
+};
+
 const CRITERIA_MATCHERS: Record<string, (p: Practice) => boolean> = {
   'Aprendizagem integradora': (p) => p.integrativeLearning,
   'Prática de inclusão': (p) => p.inclusivePractice,
@@ -112,6 +123,7 @@ export const FILTER_COUNTS = (() => {
   const years: Record<number, number> = {};
   const segments: Record<string, number> = {};
   const brands: Record<string, number> = {};
+  const units: Record<string, number> = {};
   const criteria: Record<string, number> = {};
 
   for (const p of PRACTICES) {
@@ -123,12 +135,15 @@ export const FILTER_COUNTS = (() => {
     for (const [brand, fn] of Object.entries(BRAND_MATCHERS)) {
       if (fn(p)) brands[brand] = (brands[brand] || 0) + 1;
     }
+    for (const [unit, fn] of Object.entries(UNIT_MATCHERS)) {
+      if (fn(p)) units[unit] = (units[unit] || 0) + 1;
+    }
     for (const [crit, fn] of Object.entries(CRITERIA_MATCHERS)) {
       if (fn(p)) criteria[crit] = (criteria[crit] || 0) + 1;
     }
   }
 
-  return { years, segments, brands, criteria };
+  return { years, segments, brands, units, criteria };
 })();
 
 export type FilterCounts = typeof FILTER_COUNTS;
@@ -139,6 +154,7 @@ export function usePractices() {
   const [selectedYears, setSelectedYears] = useState<number[]>([]);
   const [selectedSegments, setSelectedSegments] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedUnits, setSelectedUnits] = useState<string[]>([]);
   const [selectedCriteria, setSelectedCriteria] = useState<string[]>([]);
 
   // Temporal logic: hide options with 0 matches for the currently selected years
@@ -152,6 +168,9 @@ export function usePractices() {
     }
     for (const [brand, fn] of Object.entries(BRAND_MATCHERS)) {
       if (!yearPractices.some(fn)) disabled.add(brand);
+    }
+    for (const [unit, fn] of Object.entries(UNIT_MATCHERS)) {
+      if (!yearPractices.some(fn)) disabled.add(unit);
     }
     for (const [crit, fn] of Object.entries(CRITERIA_MATCHERS)) {
       if (!yearPractices.some(fn)) disabled.add(crit);
@@ -189,11 +208,21 @@ export function usePractices() {
       const matchesBrand =
         selectedBrands.length === 0 ||
         selectedBrands.some((brand) => BRAND_MATCHERS[brand]?.(practice) ?? false);
+      const matchesUnit =
+        selectedUnits.length === 0 ||
+        selectedUnits.some((unit) => UNIT_MATCHERS[unit]?.(practice) ?? false);
       const matchesCriteria =
         selectedCriteria.length === 0 ||
         selectedCriteria.some((crit) => CRITERIA_MATCHERS[crit]?.(practice) ?? false);
 
-      return matchesSearch && matchesYear && matchesSegment && matchesBrand && matchesCriteria;
+      return (
+        matchesSearch &&
+        matchesYear &&
+        matchesSegment &&
+        matchesBrand &&
+        matchesUnit &&
+        matchesCriteria
+      );
     });
 
     return [...filtered].sort((a, b) => {
@@ -201,12 +230,21 @@ export function usePractices() {
       if (sortBy === 'antigas') return a.year - b.year;
       return b.year - a.year;
     });
-  }, [searchQuery, selectedYears, selectedSegments, selectedBrands, selectedCriteria, sortBy]);
+  }, [
+    searchQuery,
+    selectedYears,
+    selectedSegments,
+    selectedBrands,
+    selectedUnits,
+    selectedCriteria,
+    sortBy,
+  ]);
 
   const activeFiltersCount =
     selectedYears.length +
     selectedSegments.length +
     selectedBrands.length +
+    selectedUnits.length +
     selectedCriteria.length;
 
   const handleYearChange = (year: number) => {
@@ -227,6 +265,12 @@ export function usePractices() {
     );
   };
 
+  const handleUnitChange = (unit: string) => {
+    setSelectedUnits((prev) =>
+      prev.includes(unit) ? prev.filter((u) => u !== unit) : [...prev, unit]
+    );
+  };
+
   const handleCriteriaChange = (crit: string) => {
     setSelectedCriteria((prev) =>
       prev.includes(crit) ? prev.filter((c) => c !== crit) : [...prev, crit]
@@ -238,6 +282,7 @@ export function usePractices() {
     setSelectedYears([]);
     setSelectedSegments([]);
     setSelectedBrands([]);
+    setSelectedUnits([]);
     setSelectedCriteria([]);
   };
 
@@ -253,6 +298,7 @@ export function usePractices() {
     selectedYears,
     selectedSegments,
     selectedBrands,
+    selectedUnits,
     selectedCriteria,
     sortedPractices,
     activeFiltersCount,
@@ -260,6 +306,7 @@ export function usePractices() {
     handleYearChange,
     handleSegmentChange,
     handleBrandChange,
+    handleUnitChange,
     handleCriteriaChange,
     clearAllFilters,
     filterByYear,
