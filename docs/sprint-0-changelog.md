@@ -101,10 +101,12 @@ persistentes nomeados (`db_data`, `storage_data`).
 **Arquivos novos:** `.env.example` (versionado) e `.env` (local, ignorado
 pelo `.gitignore` — já havia uma regra para `.env` no `.gitignore` existente).
 
-> ⚠️ **Não validado neste ambiente:** o Docker não está instalado no ambiente
-> onde a Sprint 0 foi executada, então `docker-compose up -d` não pôde ser
-> testado. Isso precisa ser verificado por quem revisar o PR, em uma máquina
-> com Docker Desktop (ou equivalente) instalado.
+> ✅ **Validado com Docker Desktop instalado:** `docker compose up -d` sobe os
+> dois containers (`praticas-inovadoras-db`, `praticas-inovadoras-storage`)
+> com sucesso. Confirmado `pg_isready` no Postgres e HTTP 200 na API
+> (`:9000/minio/health/live`) e no console (`:9001`) do MinIO. Containers
+> parados com `docker compose down` após o teste (não ficam rodando por
+> padrão).
 
 ---
 
@@ -167,7 +169,7 @@ Validado sintaticamente com `js-yaml`.
 | `cd backend && npm run dev` | ✅ Sobe em `:3333`; `GET /health` → `{"status":"ok"}` |
 | `cd frontend && npm run dev` | ✅ Sobe sem conflito de porta com o backend |
 | Histórico preservado (`git log --follow`) | ✅ Confirmado em `frontend/src/App.tsx` |
-| `docker-compose up -d` | ⚠️ Não testado — Docker não instalado neste ambiente |
+| `docker compose up -d` | ✅ `db` e `storage` sobem; Postgres `pg_isready` ok; MinIO API e console HTTP 200 |
 
 ---
 
@@ -192,11 +194,10 @@ Validado sintaticamente com `js-yaml`.
 
 ## Pendências / próximos passos sugeridos
 
-1. Validar `docker-compose up -d` em uma máquina com Docker instalado.
-2. Implementar de fato as 3 rotas do contrato de API no backend (hoje só
+1. Implementar de fato as 3 rotas do contrato de API no backend (hoje só
    existe `/health`).
-3. Conectar o backend ao PostgreSQL (ex.: Prisma ou outro ORM) e ao MinIO
+2. Conectar o backend ao PostgreSQL (ex.: Prisma ou outro ORM) e ao MinIO
    (SDK S3) — nenhuma dessas integrações foi feita nesta sprint, só a
    infraestrutura.
-4. Configurar MSW no frontend usando `docs/api-contract.yml` como referência.
-5. Revisar e mergear o [PR #1](https://github.com/EduTech-Labs/banco-praticas-inovadoras/pull/1) na `develop`.
+3. Configurar MSW no frontend usando `docs/api-contract.yml` como referência.
+4. Revisar e mergear o [PR #1](https://github.com/EduTech-Labs/banco-praticas-inovadoras/pull/1) na `develop`.
