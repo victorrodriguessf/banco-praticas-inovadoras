@@ -165,6 +165,7 @@ export default function Home() {
                 selectedUnits={selectedUnits}
                 onUnitChange={handleUnitChange}
                 selectedCriteria={selectedCriteria}
+                onCriteriaChange={handleCriteriaChange}
                 disabledOptions={disabledOptions}
                 counts={FILTER_COUNTS}
               />
