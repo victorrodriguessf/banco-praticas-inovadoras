@@ -173,6 +173,16 @@ Validado sintaticamente com `js-yaml`.
 
 ---
 
+## 7. Frontend — Roteamento e MSW
+
+Implementação da infraestrutura de roteamento e da fundação para desenvolvimento API-First no frontend:
+
+- **React Router:** Adicionado `react-router-dom` para suportar *Deep Linking* e preservar a intenção do usuário em formulários extensos. Refatoração do `App.tsx` para gerenciar as rotas (`/`, `/login`, `/submissao`) e extração do conteúdo original para `pages/Home.tsx`.
+- **MSW (Mock Service Worker):** Configurado para interceptar requisições. O endpoint `POST /auth/login` foi implementado em `src/mocks/handlers.ts` usando o contrato OpenAPI como referência.
+- **Telas:** Criação da `LoginPage` (interface de autenticação com validação via MSW) e `SubmissionPage` (stub para a próxima sprint). O botão "Submeta sua prática" agora direciona internamente para o fluxo de autenticação.
+
+---
+
 ## Resumo por arquivo
 
 | Arquivo/pasta | Natureza |
@@ -190,6 +200,8 @@ Validado sintaticamente com `js-yaml`.
 | `backend/package.json` | Novo — scripts `dev`/`build`/`start` |
 | `backend/tsconfig.json` | Novo — configuração TypeScript do backend |
 | `docs/api-contract.yml` | Novo — contrato OpenAPI 3.0 |
+| `frontend/src/pages/**` | Novo — telas da aplicação (Home, LoginPage, SubmissionPage) |
+| `frontend/src/mocks/**` | Novo — configuração e handlers do MSW |
 | `docs/sprint-0-changelog.md` | Este documento |
 
 ---
@@ -201,5 +213,5 @@ Validado sintaticamente com `js-yaml`.
 2. Conectar o backend ao PostgreSQL (ex.: Prisma ou outro ORM) e ao MinIO
    (SDK S3) — nenhuma dessas integrações foi feita nesta sprint, só a
    infraestrutura.
-3. Configurar MSW no frontend usando `docs/api-contract.yml` como referência.
+3. ~~Configurar MSW no frontend usando `docs/api-contract.yml` como referência.~~ *(Concluído)*
 4. Revisar e mergear o [PR #1](https://github.com/EduTech-Labs/banco-praticas-inovadoras/pull/1) na `develop`.
