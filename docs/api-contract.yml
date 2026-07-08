@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: Banco de Práticas Educação Inovadora — API
+  description: >
+    Contrato da API do backend do Banco de Práticas Educação Inovadora (Senac RN).
+    Definido de forma API-first (Sprint 0) para orientar o desenvolvimento do
+    backend e permitir que o frontend use mocks (MSW) enquanto as rotas reais
+    não estão prontas.
+  version: 0.1.0
+servers:
+  - url: http://localhost:3333
+    description: Ambiente de desenvolvimento local
+
+tags:
+  - name: Auth
+    description: Autenticação de usuários (docentes/administradores)
+  - name: Submissões
+    description: Envio de práticas educacionais para os editais
+  - name: Editais
+    description: Consulta de editais do programa Educação Inovadora
+
+paths:
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Autentica um usuário e retorna um token JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Autenticação bem-sucedida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Credenciais inválidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /submissoes:
+    post:
+      tags: [Submissões]
+      summary: Recebe os dados do formulário de submissão de uma prática
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmissaoRequest'
+      responses:
+        '201':
+          description: Submissão criada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Submissao'
+        '400':
+          description: Dados inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Não autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /editais/ativos:
+    get:
+      tags: [Editais]
+      summary: Lista os editais atualmente em andamento
+      responses:
+        '200':
+          description: Lista de editais ativos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Edital'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    LoginRequest:
+      type: object
+      required: [email, senha]
+      properties:
+        email:
+          type: string
+          format: email
+          example: docente@senac.br
+        senha:
+          type: string
+          format: password
+          example: minhaSenha123
+
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Token JWT para autenticação nas próximas requisições
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        usuario:
+          type: object
+          properties:
+            id:
+              type: string
+            nome:
+              type: string
+            email:
+              type: string
+
+    SubmissaoRequest:
+      type: object
+      required: [titulo, editalId, instrutor, segmento, descricao]
+      properties:
+        titulo:
+          type: string
+          example: Ecoponto Sustentável - Liderança e Inovação Alinhadas aos ODS
+        editalId:
+          type: string
+          example: edital-2026
+        instrutor:
+          type: string
+          example: Thalissa Vitória Pinto Soares
+        segmento:
+          type: string
+          example: Gestão - Qualificação em Serviços Comerciais
+        unidade:
+          type: string
+          example: Zona Norte
+        descricao:
+          type: string
+        ods:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+            maximum: 17
+        marcasFormativas:
+          type: array
+          items:
+            type: string
+
+    Submissao:
+      allOf:
+        - $ref: '#/components/schemas/SubmissaoRequest'
+        - type: object
+          properties:
+            id:
+              type: string
+            status:
+              type: string
+              enum: [recebida, em_analise, aprovada, reprovada]
+              example: recebida
+            criadaEm:
+              type: string
+              format: date-time
+
+    Edital:
+      type: object
+      properties:
+        id:
+          type: string
+          example: edital-2026
+        nome:
+          type: string
+          example: Educação Inovadora 2026
+        dataInicio:
+          type: string
+          format: date
+        dataFim:
+          type: string
+          format: date
+        status:
+          type: string
+          enum: [em_andamento, encerrado, planejado]
+          example: em_andamento
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Mensagem descritiva do erro
