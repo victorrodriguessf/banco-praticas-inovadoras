@@ -1,6 +1,6 @@
 # Sprint 0 — Fundação Conteinerizada e Monorepo
 
-Documentação das mudanças aplicadas a partir do `implementation_plan.md`, na
+Documentação das mudanças aplicadas a partir do plano [`docs/sprints/sprint_0.md`](sprints/sprint_0.md), na
 branch `feature/sprint-0-fundacao` (PR: [EduTech-Labs/banco-praticas-inovadoras#1](https://github.com/EduTech-Labs/banco-praticas-inovadoras/pull/1)).
 
 **Data:** 08/07/2026
@@ -180,7 +180,9 @@ Validado sintaticamente com `js-yaml`.
 | `frontend/**` | Movido da raiz via `git mv` (sem alteração de conteúdo, exceto o README) |
 | `frontend/README.md` | Editado — removidas seções de autoria/licença (agora só no README raiz) |
 | `README.md` (raiz) | Novo — documentação do monorepo |
-| `implementation_plan.md` | Novo — cópia do plano desta sprint, com a codificação de caracteres corrigida |
+| `docs/sprints/sprint_0.md` | Novo — cópia do plano desta sprint, com a codificação de caracteres corrigida |
+| `docs/sprints/README.md` | Novo — convenção de documentação de sprints (prompt vs. changelog) |
+| `CLAUDE.md` | Novo — instruções internas para o Claude Code consultar essa convenção |
 | `docker-compose.yml` | Novo — serviços `db` (Postgres) e `storage` (MinIO) |
 | `.env.example` | Novo — variáveis de ambiente de exemplo |
 | `.env` | Novo, local, não versionado (ignorado pelo `.gitignore`) |

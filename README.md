@@ -12,10 +12,13 @@ Este repositório reúne o **frontend** (aplicação já publicada) e, a partir 
 .
 ├── frontend/          # Aplicação React + Vite (catálogo de práticas) — já em produção
 ├── backend/           # API Node.js + Express + TypeScript (em construção)
-├── docs/              # Documentação técnica, incluindo o contrato de API (OpenAPI)
+├── docs/
+│   ├── sprints/           # Prompt/plano original de cada sprint (sprint_0.md, sprint_1.md, ...)
+│   ├── sprint-0-changelog.md # O que foi de fato implementado em cada sprint
+│   └── api-contract.yml      # Contrato de API (OpenAPI 3.0)
 ├── docker-compose.yml # Infraestrutura local: PostgreSQL + MinIO
 ├── .env.example       # Modelo de variáveis de ambiente
-└── implementation_plan.md # Plano de execução da Sprint 0
+└── CLAUDE.md          # Instruções internas para o Claude Code
 ```
 
 Cada pacote (`frontend/`, `backend/`) tem seu próprio `package.json`, dependências e scripts — não há workspaces compartilhados nesta etapa.
