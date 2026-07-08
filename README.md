@@ -1,7 +1,5 @@
 # Banco de Práticas Educação Inovadora — Senac RN
 
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
 Monorepo do projeto **Banco de Práticas Educação Inovadora**, catálogo interativo das melhores práticas educacionais desenvolvidas pelos docentes do Senac Rio Grande do Norte.
 
 Este repositório reúne o **frontend** (aplicação já publicada) e, a partir da Sprint 0, a **infraestrutura e o backend** que sustentarão as próximas features (submissão de práticas, autenticação, editais).
@@ -96,6 +94,8 @@ Senac - RN
 ---
 
 ## Licença
+
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 **CC BY-NC-SA 4.0**
 
