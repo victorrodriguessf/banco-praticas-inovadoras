@@ -115,6 +115,21 @@ Para mais informações sobre a política de privacidade do Senac RN, consulte o
 
 ---
 
+## Autoria
+
+- **Felipe Lemos** - Assistente I - Suporte On-line
+- **Victor Fonseca** - Estagiário
+
+Senac - RN
+
+---
+
 ## Licença
 
-© 2026 Senac RN — Todos os direitos reservados.
+**CC BY-NC-SA 4.0**
+
+Este projeto está licenciado sob a licença Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
+
+- **Compartilhar e Adaptar**: Você tem a liberdade de baixar, alterar e construir a partir desta obra.
+- **Uso Não-Comercial**: O uso do software para fins comerciais é estritamente proibido.
+- **Mesma Licença**: Modificações e obras derivadas devem ser distribuídas sob esta exata licença.
