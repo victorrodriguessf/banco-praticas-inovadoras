@@ -15,16 +15,18 @@ import {
   Send,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { DiagonalDivider } from './components/DiagonalDivider';
-import { EbookSection } from './components/EbookSection';
-import { Sidebar } from './components/Sidebar';
-import { PracticeCard } from './components/PracticeCard';
-import { PracticeSummaryModal } from './components/PracticeSummaryModal';
-import { usePractices, FILTER_COUNTS } from './hooks/usePractices';
-import type { Practice } from './types';
-import logoSenacLabs from './logo_senac_labs.png';
+import { Link } from 'react-router-dom';
+
+import { Header } from '../components/Header';
+import { Hero } from '../components/Hero';
+import { DiagonalDivider } from '../components/DiagonalDivider';
+import { EbookSection } from '../components/EbookSection';
+import { Sidebar } from '../components/Sidebar';
+import { PracticeCard } from '../components/PracticeCard';
+import { PracticeSummaryModal } from '../components/PracticeSummaryModal';
+import { usePractices, FILTER_COUNTS } from '../hooks/usePractices';
+import type { Practice } from '../types';
+import logoSenacLabs from '../logo_senac_labs.png';
 
 function getPageNumbers(current: number, total: number): (number | '...')[] {
   if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
@@ -43,7 +45,7 @@ function getPageNumbers(current: number, total: number): (number | '...')[] {
   return pages;
 }
 
-export default function App() {
+export default function Home() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false);
   const [selectedPractice, setSelectedPractice] = useState<Practice | null>(null);
@@ -491,15 +493,13 @@ export default function App() {
                 <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 text-center">
                   Exclusivo para docentes do Senac RN
                 </span>
-                <a
-                  href="https://labs.rn.senac.br/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/login"
                   className="flex items-center justify-center gap-2 bg-senac-blue text-white text-sm font-black uppercase tracking-wider px-4 py-3 rounded-xl shadow-md hover:bg-[#003366] transition-colors"
                 >
                   <Send size={14} />
                   Submeta sua prática
-                </a>
+                </Link>
                 <p className="text-[10px] text-gray-300 italic text-center mt-1">
                   &copy; 2026 Senac Labs RN
                 </p>

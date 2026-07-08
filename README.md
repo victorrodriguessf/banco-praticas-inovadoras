@@ -1,117 +1,86 @@
 # Banco de Práticas Educação Inovadora — Senac RN
 
-Catálogo interativo das melhores práticas educacionais desenvolvidas pelos docentes do Senac Rio Grande do Norte. A plataforma reúne **310 práticas** dos editais de 2022, 2023, 2024 e 2025, com busca em tempo real, filtros avançados e acesso direto aos e-books completos.
+Monorepo do projeto **Banco de Práticas Educação Inovadora**, catálogo interativo das melhores práticas educacionais desenvolvidas pelos docentes do Senac Rio Grande do Norte.
+
+Este repositório reúne o **frontend** (aplicação já publicada) e, a partir da Sprint 0, a **infraestrutura e o backend** que sustentarão as próximas features (submissão de práticas, autenticação, editais).
 
 ---
 
-## Funcionalidades
-
-- **Busca em tempo real** por título, docente, metodologia e tecnologia
-- **Filtros** por Ano do Edital, Marcas Formativas, Unidade (CEP) e Eixo/Segmento
-- **Ordenação** por mais recentes, mais antigas e A–Z
-- **Modal de resumo** com detalhes completos de cada prática (ODS, marcas formativas, situação de aprendizagem, elementos de competência)
-- **Visualização no e-book** — extrai e abre as páginas específicas da prática em PDF
-- **Download de e-books completos** por edição (2025 disponível; 2022–2024 em breve)
-- Layout totalmente responsivo com drawers mobile para navegação e filtros
-
----
-
-## Tecnologias
-
-| Camada | Tecnologia |
-|---|---|
-| Framework | React 19 + TypeScript |
-| Build | Vite 6 |
-| Estilização | Tailwind CSS 4 |
-| Animações | Framer Motion (motion/react) |
-| Ícones | Lucide React |
-| PDF | pdf-lib |
-
----
-
-## Estrutura do projeto
+## Estrutura do monorepo
 
 ```
-src/
-├── components/
-│   ├── Header.tsx               # Cabeçalho sticky com navegação
-│   ├── Hero.tsx                 # Seção de destaque e busca
-│   ├── EbookSection.tsx         # Faixa de download dos e-books completos
-│   ├── Sidebar.tsx              # Painel de filtros (desktop e mobile)
-│   ├── PracticeCard.tsx         # Card de cada prática
-│   └── PracticeSummaryModal.tsx # Modal com resumo completo
-├── hooks/
-│   └── usePractices.ts          # Lógica de filtro, busca e ordenação
-├── data/
-│   ├── catalogo_2022.json       # 40 práticas do edital 2022
-│   ├── catalogo_2023.json       # 75 práticas do edital 2023
-│   ├── catalogo_2024.json       # 91 práticas do edital 2024
-│   ├── catalogo_2025.json       # 104 práticas do edital 2025
-│   └── practicesAdapter.ts      # Normalização dos dados JSON → Practice
-├── utils/
-│   └── pdfPrint.ts              # Extração de páginas do e-book por prática
-├── types.ts                     # Interfaces TypeScript e dados dos 17 ODS
-└── App.tsx                      # Componente raiz e layout principal
+.
+├── frontend/          # Aplicação React + Vite (catálogo de práticas) — já em produção
+├── backend/           # API Node.js + Express + TypeScript (em construção)
+├── docs/
+│   ├── sprints/           # Prompt/plano original de cada sprint (sprint_0.md, sprint_1.md, ...)
+│   ├── sprint-0-changelog.md # O que foi de fato implementado em cada sprint
+│   └── api-contract.yml      # Contrato de API (OpenAPI 3.0)
+├── docker-compose.yml # Infraestrutura local: PostgreSQL + MinIO
+├── .env.example       # Modelo de variáveis de ambiente
+└── CLAUDE.md          # Instruções internas para o Claude Code
 ```
+
+Cada pacote (`frontend/`, `backend/`) tem seu próprio `package.json`, dependências e scripts — não há workspaces compartilhados nesta etapa.
 
 ---
 
-## Como rodar localmente
+## Como rodar o projeto localmente
 
-**Pré-requisitos:** Node.js 18+
+**Pré-requisitos:** Node.js 18+, Docker e Docker Compose.
+
+### 1. Subir a infraestrutura (PostgreSQL + MinIO)
 
 ```bash
-# Instalar dependências
+cp .env.example .env   # ajuste as variáveis se necessário
+docker-compose up -d
+```
+
+- PostgreSQL disponível em `localhost:5432`
+- MinIO (API) em `localhost:9000` e console em `localhost:9001`
+
+### 2. Rodar o backend
+
+```bash
+cd backend
 npm install
-
-# Iniciar servidor de desenvolvimento (porta 3000)
-npm run dev
-
-# Build de produção
-npm run build
-
-# Verificar tipos TypeScript
-npm run lint
+npm run dev   # http://localhost:3333 — checar em /health
 ```
+
+### 3. Rodar o frontend
+
+```bash
+cd frontend
+npm install
+npm run dev   # http://localhost:3000
+```
+
+Frontend e backend rodam em portas diferentes (3000 e 3333) e não conflitam entre si nem com a infraestrutura Docker (5432, 9000, 9001).
 
 ---
 
-## PDFs dos e-books
+## Frontend
 
-Os arquivos PDF devem estar em `public/pdfs/` com o seguinte padrão de nome:
+A documentação completa do catálogo de práticas (funcionalidades, tecnologias, dados, LGPD) está em [`frontend/README.md`](frontend/README.md).
 
-```
-public/pdfs/praticas-inovadoras-2025.pdf
-public/pdfs/praticas-inovadoras-2024.pdf
-```
+## Backend
 
-Os arquivos não são versionados no repositório por excederem o limite de tamanho do GitHub (100 MB). Para habilitar o download por prática e o download do e-book completo, adicione os PDFs localmente nessa pasta.
+API em Node.js + Express + TypeScript. Ainda em construção (Sprint 0 criou apenas a fundação: servidor Express com rota `/health`). O contrato das rotas planejadas está documentado em [`docs/api-contract.yml`](docs/api-contract.yml) (OpenAPI 3.0).
 
----
+## Infraestrutura
 
-## Dados
+- **PostgreSQL 16** — banco de dados relacional da aplicação.
+- **MinIO** — armazenamento de objetos compatível com S3, para arquivos enviados nas submissões de práticas.
 
-As práticas são armazenadas em JSON (`src/data/`) e normalizadas pelo adapter antes de serem exibidas. Cada prática contém:
-
-- Título, docente e orientação pedagógica
-- Unidade (CEP), eixo e segmento do curso
-- ODS relacionados (1–17)
-- Marcas formativas
-- Flags: aprendizagem integradora, prática inclusiva, fomento à inclusão
-- Situação de aprendizagem e elementos de competência
-- Páginas correspondentes no e-book
+Ambos definidos em [`docker-compose.yml`](docker-compose.yml), com credenciais configuráveis via `.env`.
 
 ---
 
-## LGPD
+## Fluxo de trabalho (Git Flow)
 
-Esta plataforma exibe dados de docentes do Senac RN (nome e orientação pedagógica) extraídos dos e-books institucionais oficiais, publicados pelo próprio Senac com finalidade de divulgação das práticas educacionais.
-
-- A aplicação **não coleta, armazena nem transmite** dados pessoais de usuários — não há cadastro, login, cookies de rastreamento ou formulários
-- Os dados exibidos são de caráter **profissional e público**, vinculados à atuação institucional dos docentes
-- Qualquer solicitação de correção, atualização ou remoção de dados pode ser encaminhada ao responsável pelo projeto
-
-Para mais informações sobre a política de privacidade do Senac RN, consulte o site institucional.
+- `main` — produção / estável.
+- `develop` — branch de integração.
+- `feature/*` — branches de trabalho, abertas a partir de `develop` e integradas via Pull Request.
 
 ---
 
