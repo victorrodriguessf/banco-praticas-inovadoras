@@ -207,9 +207,13 @@ Finalização das integrações essenciais para a Sprint 0:
 | `docker-compose.yml` | Novo — serviços `db` (Postgres) e `storage` (MinIO) |
 | `.env.example` | Novo — variáveis de ambiente de exemplo |
 | `.env` | Novo, local, não versionado (ignorado pelo `.gitignore`) |
-| `backend/src/server.ts` | Novo — servidor Express com rota `/health` |
+| `backend/src/server.ts` | Novo — servidor Express com rota `/health` e instâncias da API |
 | `backend/package.json` | Novo — scripts `dev`/`build`/`start` |
 | `backend/tsconfig.json` | Novo — configuração TypeScript do backend |
+| `backend/prisma/**` | Novo — Schema e migrações do Prisma ORM |
+| `backend/src/controllers/**` | Novo — Controladores de negócio (Autenticação, Editais, Submissões) |
+| `backend/src/routes/**` | Novo — Roteamento central da API |
+| `backend/src/services/**` | Novo — Integração de storage (AWS S3/MinIO) |
 | `docs/api-contract.yml` | Novo — contrato OpenAPI 3.0 |
 | `frontend/src/pages/**` | Novo — telas da aplicação (Home, LoginPage, SubmissionPage) |
 | `frontend/src/mocks/**` | Novo — configuração e handlers do MSW |
@@ -222,4 +226,4 @@ Finalização das integrações essenciais para a Sprint 0:
 1. ~~Implementar de fato as 3 rotas do contrato de API no backend (hoje só existe `/health`).~~ *(Concluído)*
 2. ~~Conectar o backend ao PostgreSQL (ex.: Prisma ou outro ORM) e ao MinIO (SDK S3) — nenhuma dessas integrações foi feita nesta sprint, só a infraestrutura.~~ *(Concluído)*
 3. ~~Configurar MSW no frontend usando `docs/api-contract.yml` como referência.~~ *(Concluído)*
-4. Revisar e mergear o [PR #1](https://github.com/EduTech-Labs/banco-praticas-inovadoras/pull/1) na `develop`.
+4. ~~Revisar e mergear o [PR #1](https://github.com/EduTech-Labs/banco-praticas-inovadoras/pull/1) na `develop`.~~ *(Concluído)*
