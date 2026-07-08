@@ -1,0 +1,48 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  DOCENTE // Envia práticas no formulário
+  ADMIN   // Pontua as práticas dentro das categorias
+  REVISOR // Faz a revisão ortográfica e final das práticas pontuadas pelo admin
+}
+
+model Usuario {
+  id        String   @id @default(uuid())
+  nome      String
+  email     String   @unique
+  senha     String   // Na vida real, usaremos bcrypt para hashear a senha
+  role      Role     @default(DOCENTE)
+  criadoEm  DateTime @default(now())
+}
+
+model Edital {
+  id          String      @id // Ex: "edital-2026"
+  nome        String
+  dataInicio  DateTime
+  dataFim     DateTime
+  status      String      // em_andamento, encerrado, planejado
+  submissoes  Submissao[]
+}
+
+model Submissao {
+  id               String   @id @default(uuid())
+  titulo           String
+  editalId         String
+  edital           Edital   @relation(fields: [editalId], references: [id])
+  instrutor        String
+  segmento         String
+  unidade          String?
+  descricao        String
+  ods              Int[]
+  marcasFormativas String[]
+  // Fluxo sugerido: recebida -> em_analise (Admin) -> pontuada (Admin) -> em_revisao (Revisor) -> aprovada / reprovada
+  status           String   @default("recebida") 
+  criadaEm         DateTime @default(now())
+}

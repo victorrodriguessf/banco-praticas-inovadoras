@@ -181,6 +181,17 @@ Implementação da infraestrutura de roteamento e da fundação para desenvolvim
 - **MSW (Mock Service Worker):** Configurado para interceptar requisições. O endpoint `POST /auth/login` foi implementado em `src/mocks/handlers.ts` usando o contrato OpenAPI como referência.
 - **Telas:** Criação da `LoginPage` (interface de autenticação com validação via MSW) e `SubmissionPage` (stub para a próxima sprint). O botão "Submeta sua prática" agora direciona internamente para o fluxo de autenticação.
 
+## 8. Backend — Banco de Dados e Integração API
+
+Finalização das integrações essenciais para a Sprint 0:
+
+- **Prisma ORM e PostgreSQL:** Integração com o Prisma (`v5`), configuração do schema de acordo com o Swagger e execução da migração inicial (tabelas `Usuario`, `Edital` e `Submissao`).
+- **AWS S3 / MinIO:** Criação do arquivo de serviço `storage.ts` configurado para comunicação local com MinIO utilizando `@aws-sdk/client-s3`.
+- **Rotas Reais Implementadas:** Substituição do stub inicial pelas 3 rotas requeridas:
+  - `POST /auth/login` - Autenticação JWT mockando a criação e retorno de Token.
+  - `GET /editais/ativos` - Consulta no PostgreSQL por editais `em_andamento`.
+  - `POST /submissoes` - Criação de registros de submissão vinculados a um Edital.
+
 ---
 
 ## Resumo por arquivo
@@ -208,10 +219,7 @@ Implementação da infraestrutura de roteamento e da fundação para desenvolvim
 
 ## Pendências / próximos passos sugeridos
 
-1. Implementar de fato as 3 rotas do contrato de API no backend (hoje só
-   existe `/health`).
-2. Conectar o backend ao PostgreSQL (ex.: Prisma ou outro ORM) e ao MinIO
-   (SDK S3) — nenhuma dessas integrações foi feita nesta sprint, só a
-   infraestrutura.
+1. ~~Implementar de fato as 3 rotas do contrato de API no backend (hoje só existe `/health`).~~ *(Concluído)*
+2. ~~Conectar o backend ao PostgreSQL (ex.: Prisma ou outro ORM) e ao MinIO (SDK S3) — nenhuma dessas integrações foi feita nesta sprint, só a infraestrutura.~~ *(Concluído)*
 3. ~~Configurar MSW no frontend usando `docs/api-contract.yml` como referência.~~ *(Concluído)*
 4. Revisar e mergear o [PR #1](https://github.com/EduTech-Labs/banco-praticas-inovadoras/pull/1) na `develop`.
