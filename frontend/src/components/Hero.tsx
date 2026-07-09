@@ -1,5 +1,9 @@
+import { useEffect, useRef, useState } from 'react';
 import { Search, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
+
+const SEARCH_PLACEHOLDER =
+  'Buscar por título, docente, metodologia ou tecnologia.';
 
 export const Hero = ({
   searchQuery,
@@ -7,7 +11,17 @@ export const Hero = ({
 }: {
   searchQuery: string;
   setSearchQuery: (q: string) => void;
-}) => (
+}) => {
+  const measureRef = useRef<HTMLSpanElement>(null);
+  const [inputWidth, setInputWidth] = useState<number>();
+
+  useEffect(() => {
+    if (measureRef.current) {
+      setInputWidth(measureRef.current.offsetWidth);
+    }
+  }, []);
+
+  return (
   <section className="bg-hero-navy py-20 md:py-28 px-4 relative overflow-hidden">
     <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
       <motion.div
@@ -37,15 +51,22 @@ export const Hero = ({
         <div className="inline-flex max-w-full items-center gap-3 bg-white rounded-full shadow-md shadow-black/10 h-14 px-5 focus-within:ring-4 focus-within:ring-white/20 transition-all">
           <Search className="text-gray-400 shrink-0" size={22} />
 
+          {/* Span invisível só para medir a largura exata do placeholder */}
+          <span
+            ref={measureRef}
+            aria-hidden="true"
+            className="absolute invisible whitespace-pre text-lg font-medium"
+          >
+            {SEARCH_PLACEHOLDER}
+          </span>
+
           <input
             type="text"
-            size={54}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Buscar por título, docente, metodologia ou tecnologia."
-            className={`min-w-0 h-full outline-none text-gray-800 placeholder:text-gray-400 text-lg font-medium bg-transparent ${
-              searchQuery ? 'text-left' : 'text-center'
-            }`}
+            placeholder={SEARCH_PLACEHOLDER}
+            style={inputWidth ? { width: inputWidth } : undefined}
+            className="min-w-0 max-w-full h-full outline-none text-gray-800 placeholder:text-gray-400 text-lg font-medium bg-transparent text-left"
           />
 
           {searchQuery && (
@@ -61,4 +82,5 @@ export const Hero = ({
       </motion.div>
     </div>
   </section>
-);
+  );
+};
