@@ -42,7 +42,9 @@ export const Hero = ({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Buscar por título, docente, metodologia ou tecnologia."
-            className="w-full h-full outline-none text-gray-800 placeholder:text-gray-400 text-lg font-medium bg-transparent"
+            className={`w-full h-full outline-none text-gray-800 placeholder:text-gray-400 text-lg font-medium bg-transparent ${
+              searchQuery ? 'text-left' : 'text-center'
+            }`}
           />
 
           {searchQuery && (
