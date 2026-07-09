@@ -1,8 +1,10 @@
-import { BookOpen, Download, ArrowRight } from 'lucide-react';
+import { BookOpen, Download, ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 
 type EbookSectionProps = {
   onFilterByYear: (year: number) => void;
+  expanded: boolean;
+  onToggleExpanded: () => void;
 };
 
 const EBOOKS = [
@@ -15,20 +17,54 @@ const EBOOKS = [
 const ebookTitle = (year: number) =>
   `E-book Educação Inovadora do Senac RN: Melhores Práticas – ${year}`;
 
-export const EbookSection = ({ onFilterByYear }: EbookSectionProps) => {
+export const EbookSection = ({
+  onFilterByYear,
+  expanded,
+  onToggleExpanded,
+}: EbookSectionProps) => {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="flex items-center gap-2 mb-6">
-          <BookOpen className="text-senac-orange" size={18} />
-          <h2 className="font-black text-xs uppercase tracking-[0.2em] text-[#003366]">
-            E-books Completos
-          </h2>
-        </div>
+    <section className={`transition-colors duration-300 ${expanded ? 'bg-white' : 'bg-surface'}`}>
+      <div className={`max-w-7xl mx-auto px-4 transition-[padding] duration-300 ${expanded ? 'py-6' : 'py-4'}`}>
+        <button
+          type="button"
+          onClick={onToggleExpanded}
+          aria-expanded={expanded}
+          aria-controls="ebooks-completos-content"
+          className="w-full flex items-center justify-between gap-2 py-2 -my-2 group/toggle"
+        >
+          <span className="flex items-center gap-2">
+            <BookOpen className="text-senac-orange" size={18} />
+            <h2 className="font-black text-xs uppercase tracking-[0.2em] text-[#003366]">
+              E-books Completos
+            </h2>
+          </span>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <span className="flex items-center gap-1.5 text-xs font-bold text-senac-blue/60 group-hover/toggle:text-senac-blue transition-colors">
+            {expanded ? 'Recolher' : 'Expandir'}
+            <ChevronDown
+              size={16}
+              className={`transition-transform duration-300 motion-reduce:transition-none ${
+                expanded ? 'rotate-180' : ''
+              }`}
+            />
+          </span>
+        </button>
+
+        <motion.div
+          id="ebooks-completos-content"
+          initial={false}
+          animate={{
+            height: expanded ? 'auto' : 0,
+            opacity: expanded ? 1 : 0,
+          }}
+          transition={
+            reduceMotion ? { duration: 0 } : { duration: 0.35, ease: 'easeInOut' }
+          }
+          className="overflow-hidden"
+        >
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 pt-6">
           {EBOOKS.map(({ year, practices }) => (
             <motion.div
               key={year}
@@ -83,6 +119,7 @@ export const EbookSection = ({ onFilterByYear }: EbookSectionProps) => {
             </motion.div>
           ))}
         </div>
+        </motion.div>
       </div>
     </section>
   );

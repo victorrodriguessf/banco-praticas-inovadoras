@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Menu, Send } from 'lucide-react';
 
@@ -62,10 +63,8 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
         </nav>
 
         {/* CTA — desktop */}
-        <a
-          href="https://labs.rn.senac.br/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/login"
           className="hidden lg:flex flex-col items-center gap-1 group"
         >
           <span className="text-[9px] font-black uppercase tracking-widest text-[#003366]/60 group-hover:text-[#003366] transition-colors">
@@ -75,7 +74,7 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
             <Send size={13} />
             Submeta sua prática
           </span>
-        </a>
+        </Link>
 
         <button
           type="button"
