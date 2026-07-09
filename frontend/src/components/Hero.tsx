@@ -32,17 +32,18 @@ export const Hero = ({
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="relative max-w-xl mx-auto"
+        className="relative w-full flex justify-center px-4 md:px-0"
       >
-        <div className="flex items-center gap-3 bg-white rounded-full shadow-md shadow-black/10 h-14 px-5 focus-within:ring-4 focus-within:ring-white/20 transition-all">
+        <div className="inline-flex max-w-full items-center gap-3 bg-white rounded-full shadow-md shadow-black/10 h-14 px-5 focus-within:ring-4 focus-within:ring-white/20 transition-all">
           <Search className="text-gray-400 shrink-0" size={22} />
 
           <input
             type="text"
+            size={54}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Buscar por título, docente, metodologia ou tecnologia."
-            className={`w-full h-full outline-none text-gray-800 placeholder:text-gray-400 text-lg font-medium bg-transparent ${
+            className={`min-w-0 h-full outline-none text-gray-800 placeholder:text-gray-400 text-lg font-medium bg-transparent ${
               searchQuery ? 'text-left' : 'text-center'
             }`}
           />
