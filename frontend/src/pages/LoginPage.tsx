@@ -128,10 +128,16 @@ export default function LoginPage() {
             </button>
           </form>
           
-          <div className="p-6 bg-gray-50 text-center border-t border-gray-100">
+          <div className="p-6 bg-gray-50 text-center border-t border-gray-100 space-y-3">
             <p className="text-xs text-gray-400">
               Dica para a validação (Mock): utilize <br/>
               <strong className="text-gray-600">docente@senac.br</strong> e <strong className="text-gray-600">minhaSenha123</strong>
+            </p>
+            <p className="text-sm text-gray-500">
+              Ainda não tem conta?{' '}
+              <Link to="/cadastro" className="text-[#003366] font-bold hover:underline">
+                Cadastre-se
+              </Link>
             </p>
           </div>
         </motion.div>

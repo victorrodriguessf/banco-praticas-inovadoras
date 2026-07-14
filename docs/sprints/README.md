@@ -25,3 +25,4 @@ trocada, uma etapa que não pôde ser validada no momento, etc.).
 | Sprint | Prompt | Changelog |
 |---|---|---|
 | 0 — Fundação Conteinerizada e Monorepo | [sprint_0.md](sprint_0.md) | [sprint-0-changelog.md](../sprint-0-changelog.md) |
+| 1 — Autenticação Segura (OTP) e Formulário de Submissão | [sprint_1.md](sprint_1.md) | [sprint-1-changelog.md](../sprint-1-changelog.md) |

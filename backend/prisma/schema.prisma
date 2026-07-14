@@ -14,12 +14,18 @@ enum Role {
 }
 
 model Usuario {
-  id        String   @id @default(uuid())
-  nome      String
-  email     String   @unique
-  senha     String   // Na vida real, usaremos bcrypt para hashear a senha
-  role      Role     @default(DOCENTE)
-  criadoEm  DateTime @default(now())
+  id                String    @id @default(uuid())
+  nome              String
+  email             String    @unique
+  senha             String    // Na vida real, usaremos bcrypt para hashear a senha
+  role              Role      @default(DOCENTE)
+  // Verificação de e-mail via OTP (Power Automate)
+  verificado        Boolean   @default(false)
+  codigoVerificacao String?
+  codigoExpiraEm    DateTime?
+  criadoEm          DateTime  @default(now())
+
+  submissoes        Submissao[]
 }
 
 model Edital {
@@ -34,15 +40,24 @@ model Edital {
 model Submissao {
   id               String   @id @default(uuid())
   titulo           String
+
   editalId         String
   edital           Edital   @relation(fields: [editalId], references: [id])
-  instrutor        String
-  segmento         String
-  unidade          String?
+
+  usuarioId        String
+  usuario          Usuario  @relation(fields: [usuarioId], references: [id])
+
+  autores          String[]
+  unidades         String[]
+  segmentos        String[]
+  cursos           String[]
+  categoria        String
   descricao        String
   ods              Int[]
   marcasFormativas String[]
+  termosAceitos    Boolean  @default(false)
+  anexos           String[] // URLs do MinIO
   // Fluxo sugerido: recebida -> em_analise (Admin) -> pontuada (Admin) -> em_revisao (Revisor) -> aprovada / reprovada
-  status           String   @default("recebida") 
+  status           String   @default("recebida")
   criadaEm         DateTime @default(now())
 }

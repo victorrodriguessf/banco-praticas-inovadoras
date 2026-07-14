@@ -44,6 +44,94 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /auth/register/request:
+    post:
+      tags: [Auth]
+      summary: Inicia o cadastro de um docente e envia um código OTP para o e-mail institucional
+      description: >
+        Valida que o e-mail termina em `@rn.senac.br`, gera um código de 6 dígitos e
+        aciona o Webhook do Power Automate para o envio do e-mail. A conta fica
+        criada como não-verificada até a confirmação em `/auth/register/verify`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: Código de verificação enviado
+        '400':
+          description: E-mail fora do domínio institucional ou dados inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/register/verify:
+    post:
+      tags: [Auth]
+      summary: Confirma o código OTP e finaliza o cadastro, retornando o JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterVerifyRequest'
+      responses:
+        '200':
+          description: Cadastro confirmado, usuário autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Código inválido ou expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /upload:
+    post:
+      tags: [Submissões]
+      summary: Envia um arquivo de evidência (imagem) para o MinIO
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                arquivo:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Arquivo enviado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: http://localhost:9000/praticas-uploads/uuid-imagem.png
+        '400':
+          description: Nenhum arquivo enviado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Não autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   /submissoes:
     post:
       tags: [Submissões]
@@ -128,9 +216,35 @@ components:
             email:
               type: string
 
+    RegisterRequest:
+      type: object
+      required: [nome, email, senha]
+      properties:
+        nome:
+          type: string
+          example: Thalissa Vitória Pinto Soares
+        email:
+          type: string
+          format: email
+          example: thalissa.soares@rn.senac.br
+        senha:
+          type: string
+          format: password
+
+    RegisterVerifyRequest:
+      type: object
+      required: [email, codigo]
+      properties:
+        email:
+          type: string
+          format: email
+        codigo:
+          type: string
+          example: '482913'
+
     SubmissaoRequest:
       type: object
-      required: [titulo, editalId, instrutor, segmento, descricao]
+      required: [titulo, editalId, autores, unidades, segmentos, categoria, descricao, termosAceitos]
       properties:
         titulo:
           type: string
@@ -138,15 +252,28 @@ components:
         editalId:
           type: string
           example: edital-2026
-        instrutor:
+        autores:
+          type: array
+          items:
+            type: string
+          example: [Thalissa Vitória Pinto Soares]
+        unidades:
+          type: array
+          items:
+            type: string
+          example: [Zona Norte]
+        segmentos:
+          type: array
+          items:
+            type: string
+          example: [Gestão - Qualificação em Serviços Comerciais]
+        cursos:
+          type: array
+          items:
+            type: string
+        categoria:
           type: string
-          example: Thalissa Vitória Pinto Soares
-        segmento:
-          type: string
-          example: Gestão - Qualificação em Serviços Comerciais
-        unidade:
-          type: string
-          example: Zona Norte
+          example: Sustentabilidade
         descricao:
           type: string
         ods:
@@ -159,6 +286,13 @@ components:
           type: array
           items:
             type: string
+        termosAceitos:
+          type: boolean
+        anexos:
+          type: array
+          items:
+            type: string
+          description: URLs dos arquivos enviados via /upload
 
     Submissao:
       allOf:

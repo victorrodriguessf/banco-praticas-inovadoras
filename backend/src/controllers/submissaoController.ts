@@ -3,10 +3,40 @@ import { prisma } from '../prismaClient';
 
 export const createSubmissao = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { titulo, editalId, instrutor, segmento, unidade, descricao, ods, marcasFormativas } = req.body;
+    const usuarioId = req.usuarioId;
+    if (!usuarioId) {
+      res.status(401).json({ message: 'Não autenticado' });
+      return;
+    }
 
-    // A validação completa deve ser feita aqui (omitida para brevidade no stub).
-    if (!titulo || !editalId || !instrutor || !segmento || !descricao) {
+    const {
+      titulo,
+      editalId,
+      autores,
+      unidades,
+      segmentos,
+      cursos,
+      categoria,
+      descricao,
+      ods,
+      marcasFormativas,
+      termosAceitos,
+      anexos,
+    } = req.body;
+
+    if (
+      !titulo ||
+      !editalId ||
+      !categoria ||
+      !descricao ||
+      !Array.isArray(autores) ||
+      autores.length === 0 ||
+      !Array.isArray(unidades) ||
+      unidades.length === 0 ||
+      !Array.isArray(segmentos) ||
+      segmentos.length === 0 ||
+      !termosAceitos
+    ) {
       res.status(400).json({ message: 'Faltam campos obrigatórios' });
       return;
     }
@@ -15,13 +45,18 @@ export const createSubmissao = async (req: Request, res: Response): Promise<void
       data: {
         titulo,
         editalId,
-        instrutor,
-        segmento,
-        unidade,
+        usuarioId,
+        autores,
+        unidades,
+        segmentos,
+        cursos: cursos || [],
+        categoria,
         descricao,
         ods: ods || [],
-        marcasFormativas: marcasFormativas || []
-      }
+        marcasFormativas: marcasFormativas || [],
+        termosAceitos,
+        anexos: anexos || [],
+      },
     });
 
     res.status(201).json(submissao);
