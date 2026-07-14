@@ -55,6 +55,8 @@ export default function Home() {
 
   const practicesSectionRef = useRef<HTMLDivElement>(null);
 
+  const [ebooksExpanded, setEbooksExpanded] = useState(true);
+
   const {
     sortBy,
     setSortBy,
@@ -89,6 +91,13 @@ export default function Home() {
     setCurrentPage(1);
   }, [sortedPractices]);
 
+  // A seção de e-books acompanha o campo de busca: digitou algo, recolhe;
+  // apagou tudo e voltou ao placeholder, expande de novo. O toggle manual
+  // (seta) continua funcionando enquanto o usuário não digitar de novo.
+  useEffect(() => {
+    setEbooksExpanded(searchQuery.trim() === '');
+  }, [searchQuery]);
+
   const totalPages =
     perPage === 'all' ? 1 : Math.ceil(sortedPractices.length / perPage);
 
@@ -119,11 +128,30 @@ export default function Home() {
       <main className="flex-grow">
         <Hero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-        <DiagonalDivider className="bg-white" />
+        <DiagonalDivider
+          className={`transition-colors duration-300 ${ebooksExpanded ? 'bg-white' : 'bg-surface'}`}
+        />
 
-        <EbookSection onFilterByYear={handleFilterByYear} />
+        <EbookSection
+          onFilterByYear={handleFilterByYear}
+          expanded={ebooksExpanded}
+          onToggleExpanded={() => setEbooksExpanded((v) => !v)}
+        />
 
-        <DiagonalDivider flip className="bg-surface" />
+        <AnimatePresence initial={false}>
+          {ebooksExpanded && (
+            <motion.div
+              key="ebooks-divider-bottom"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              <DiagonalDivider flip className="bg-surface" />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <section className="bg-surface">
         <div className="max-w-7xl mx-auto px-4 py-8 lg:py-12">
