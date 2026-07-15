@@ -2,7 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import { login, registerRequest, registerVerify } from '../controllers/authController';
 import { getEditaisAtivos } from '../controllers/editalController';
-import { createSubmissao } from '../controllers/submissaoController';
+import { createSubmissao, getMinhasSubmissoes } from '../controllers/submissaoController';
 import { uploadArquivo } from '../controllers/uploadController';
 import { authMiddleware } from '../middlewares/auth';
 
@@ -17,5 +17,6 @@ router.get('/editais/ativos', getEditaisAtivos);
 
 router.post('/upload', authMiddleware, upload.single('arquivo'), uploadArquivo);
 router.post('/submissoes', authMiddleware, createSubmissao);
+router.get('/submissoes/minhas', authMiddleware, getMinhasSubmissoes);
 
 export default router;

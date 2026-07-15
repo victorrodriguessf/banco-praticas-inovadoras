@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { ArrowLeft, User, Lock, Mail, KeyRound, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowLeft, User, Lock, Mail, KeyRound, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import { motion } from 'motion/react';
 import logoSenacLabs from '../logo_senac_labs.png';
 
@@ -17,7 +17,17 @@ const dadosSchema = z.object({
     .refine((value) => value.endsWith(DOMINIO_INSTITUCIONAL), {
       message: `Utilize seu e-mail institucional (${DOMINIO_INSTITUCIONAL})`,
     }),
-  senha: z.string().min(6, 'A senha deve ter ao menos 6 caracteres'),
+  senha: z
+    .string()
+    .min(6, 'A senha deve ter ao menos 6 caracteres')
+    .regex(
+      /^(?=.*[a-zA-Z])(?=.*[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/,
+      'A senha deve conter letras e ao menos um número ou caractere especial'
+    ),
+  confirmarSenha: z.string().min(6, 'A confirmação de senha é obrigatória'),
+}).refine((data) => data.senha === data.confirmarSenha, {
+  message: 'As senhas não coincidem',
+  path: ['confirmarSenha'],
 });
 
 const codigoSchema = z.object({
@@ -35,6 +45,8 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showSenha, setShowSenha] = useState(false);
+  const [showConfirmSenha, setShowConfirmSenha] = useState(false);
   const navigate = useNavigate();
 
   const dadosForm = useForm<DadosForm>({ resolver: zodResolver(dadosSchema) });
@@ -81,6 +93,22 @@ export default function RegisterPage() {
 
       if (response.ok) {
         localStorage.setItem('token', data.token);
+
+        try {
+          const subRes = await fetch('http://localhost:3333/submissoes/minhas', {
+            headers: { Authorization: `Bearer ${data.token}` }
+          });
+          if (subRes.ok) {
+            const submissoes = await subRes.json();
+            if (submissoes && submissoes.length > 0) {
+              navigate('/minhas-submissoes');
+              return;
+            }
+          }
+        } catch (e) {
+          // Ignore
+        }
+
         navigate('/submissao');
       } else {
         setError(data.message || 'Código inválido.');
@@ -181,16 +209,53 @@ export default function RegisterPage() {
                   <div className="relative">
                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                     <input
-                      type="password"
-                      placeholder="Crie uma senha"
+                      type={showSenha ? 'text' : 'password'}
+                      placeholder="Crie uma senha forte"
                       {...dadosForm.register('senha')}
-                      className={`w-full bg-gray-50 border rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
+                      className={`w-full bg-gray-50 border rounded-xl py-3 pl-12 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
                         dadosForm.formState.errors.senha ? 'border-red-500' : 'border-gray-200'
                       }`}
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowSenha(!showSenha)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                    >
+                      {showSenha ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
                   </div>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Mínimo de 6 caracteres, devendo conter letras e pelo menos um número ou caractere especial.
+                  </p>
                   {dadosForm.formState.errors.senha && (
                     <p className="text-red-500 text-sm mt-1">{dadosForm.formState.errors.senha.message}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
+                    Confirmar Senha
+                  </label>
+                  <div className="relative">
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    <input
+                      type={showConfirmSenha ? 'text' : 'password'}
+                      placeholder="Repita a sua senha"
+                      {...dadosForm.register('confirmarSenha')}
+                      className={`w-full bg-gray-50 border rounded-xl py-3 pl-12 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
+                        dadosForm.formState.errors.confirmarSenha ? 'border-red-500' : 'border-gray-200'
+                      }`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmSenha(!showConfirmSenha)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                    >
+                      {showConfirmSenha ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  </div>
+                  {dadosForm.formState.errors.confirmarSenha && (
+                    <p className="text-red-500 text-sm mt-1">{dadosForm.formState.errors.confirmarSenha.message}</p>
                   )}
                 </div>
               </div>

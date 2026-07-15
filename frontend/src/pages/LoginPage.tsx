@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Lock, Mail, Loader2, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Lock, Mail, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import { motion } from 'motion/react';
 import logoSenacLabs from '../logo_senac_labs.png';
 
@@ -9,6 +9,7 @@ export default function LoginPage() {
   const [senha, setSenha] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showSenha, setShowSenha] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -27,6 +28,22 @@ export default function LoginPage() {
 
       if (response.ok) {
         localStorage.setItem('token', data.token);
+
+        try {
+          const subRes = await fetch('http://localhost:3333/submissoes/minhas', {
+            headers: { Authorization: `Bearer ${data.token}` }
+          });
+          if (subRes.ok) {
+            const submissoes = await subRes.json();
+            if (submissoes && submissoes.length > 0) {
+              navigate('/minhas-submissoes');
+              return;
+            }
+          }
+        } catch (e) {
+          // Ignore and just navigate to /submissao
+        }
+
         navigate('/submissao');
       } else {
         setError(data.message || 'Erro ao realizar login.');
@@ -101,13 +118,20 @@ export default function LoginPage() {
                 <div className="relative">
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                   <input
-                    type="password"
+                    type={showSenha ? 'text' : 'password'}
                     required
                     placeholder="Sua senha"
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-12 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowSenha(!showSenha)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                  >
+                    {showSenha ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
                 </div>
               </div>
             </div>
@@ -129,10 +153,6 @@ export default function LoginPage() {
           </form>
           
           <div className="p-6 bg-gray-50 text-center border-t border-gray-100 space-y-3">
-            <p className="text-xs text-gray-400">
-              Dica para a validação (Mock): utilize <br/>
-              <strong className="text-gray-600">docente@senac.br</strong> e <strong className="text-gray-600">minhaSenha123</strong>
-            </p>
             <p className="text-sm text-gray-500">
               Ainda não tem conta?{' '}
               <Link to="/cadastro" className="text-[#003366] font-bold hover:underline">

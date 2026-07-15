@@ -32,12 +32,14 @@ function TagInput({
   onChange,
   error,
   placeholder,
+  hint,
 }: {
   label: string;
   values: string[];
   onChange: (values: string[]) => void;
   error?: string;
   placeholder: string;
+  hint?: string;
 }) {
   const [draft, setDraft] = useState('');
 
@@ -65,8 +67,8 @@ function TagInput({
               addTag();
             }
           }}
-          className={`flex-1 bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
-            error ? 'border-red-500' : 'border-gray-200'
+          className={`flex-1 bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
+            error ? 'border-red-300' : 'border-gray-200'
           }`}
         />
         <button
@@ -95,7 +97,13 @@ function TagInput({
           ))}
         </div>
       )}
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      {hint && !error && <p className="text-gray-400 text-xs mt-1.5">{hint}</p>}
+      {error && (
+        <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+          <AlertCircle size={14} />
+          {error}
+        </div>
+      )}
     </div>
   );
 }
@@ -124,14 +132,14 @@ function CheckboxGroup({
       <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
         {label}
       </label>
-      <div className={`flex flex-wrap gap-2 p-3 rounded-xl border ${error ? 'border-red-500' : 'border-gray-200'} bg-gray-50`}>
+      <div className={`flex flex-wrap gap-2 p-3 rounded-xl border ${error ? 'border-red-300 bg-red-50/30' : 'border-gray-200 bg-gray-50'}`}>
         {options.map((option) => (
           <label
             key={option}
-            className={`flex items-center gap-2 text-sm px-3 py-1.5 rounded-lg cursor-pointer border transition-colors ${
+            className={`flex items-center gap-2 text-sm px-3 py-1.5 rounded-lg cursor-pointer border transition-all ${
               values.includes(option)
-                ? 'bg-[#003366] text-white border-[#003366]'
-                : 'bg-white text-gray-600 border-gray-200 hover:border-[#ffb84d]'
+                ? 'bg-[#003366] text-white border-[#003366] shadow-md'
+                : 'bg-white/80 text-gray-600 border-gray-200 hover:border-[#003366]/30 hover:bg-white'
             }`}
           >
             <input
@@ -303,10 +311,10 @@ export default function SubmissionPage() {
             </p>
 
             <Link
-              to="/"
+              to="/minhas-submissoes"
               className="inline-flex items-center justify-center gap-2 bg-[#003366] hover:bg-[#002244] text-white font-black uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg transition-all"
             >
-              Retornar à página inicial
+              Ver minhas submissões
             </Link>
           </motion.div>
         </main>
@@ -315,8 +323,8 @@ export default function SubmissionPage() {
   }
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col font-sans">
-      <header className="bg-[#ffb84d] border-b border-orange-300 p-4 shadow-sm flex items-center justify-between">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-orange-100 flex flex-col font-sans">
+      <header className="bg-[#ffb84d] border-b border-orange-300 p-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 text-[#003366] hover:bg-white/20 p-2 rounded-lg transition-colors font-bold text-sm">
           <ArrowLeft size={18} />
           Voltar ao Início
@@ -335,13 +343,13 @@ export default function SubmissionPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl shadow-xl w-full max-w-3xl overflow-hidden border border-gray-100"
+          className="bg-white/40 rounded-3xl shadow-xl shadow-blue-900/10 w-full max-w-3xl overflow-hidden"
         >
           <div className="bg-[#003366] p-8 text-center">
-            <h1 className="text-2xl font-black text-white uppercase tracking-wider">
+            <h1 className="text-2xl font-black text-white uppercase tracking-wider drop-shadow-md">
               Submeter Prática Inovadora
             </h1>
-            <p className="text-blue-200 mt-2 text-sm">
+            <p className="text-blue-100 mt-2 text-sm font-medium">
               Preencha os dados da prática para submissão ao edital
             </p>
           </div>
@@ -362,11 +370,16 @@ export default function SubmissionPage() {
                 type="text"
                 placeholder="Ex: Ecoponto Sustentável"
                 {...register('titulo')}
-                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
-                  errors.titulo ? 'border-red-500' : 'border-gray-200'
+                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
+                  errors.titulo ? 'border-red-300' : 'border-gray-200'
                 }`}
               />
-              {errors.titulo && <p className="text-red-500 text-sm mt-1">{errors.titulo.message}</p>}
+              {errors.titulo && (
+                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                  <AlertCircle size={14} />
+                  {errors.titulo.message}
+                </div>
+              )}
             </div>
 
             <div>
@@ -375,8 +388,8 @@ export default function SubmissionPage() {
               </label>
               <select
                 {...register('editalId')}
-                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
-                  errors.editalId ? 'border-red-500' : 'border-gray-200'
+                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
+                  errors.editalId ? 'border-red-300' : 'border-gray-200'
                 }`}
               >
                 <option value="">Selecione um edital</option>
@@ -386,7 +399,12 @@ export default function SubmissionPage() {
                   </option>
                 ))}
               </select>
-              {errors.editalId && <p className="text-red-500 text-sm mt-1">{errors.editalId.message}</p>}
+              {errors.editalId && (
+                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                  <AlertCircle size={14} />
+                  {errors.editalId.message}
+                </div>
+              )}
             </div>
 
             <TagInput
@@ -394,7 +412,8 @@ export default function SubmissionPage() {
               values={autores}
               onChange={(values) => setValue('autores', values, { shouldValidate: true })}
               error={errors.autores?.message}
-              placeholder="Nome do autor e Enter"
+              placeholder="Digite o nome do autor"
+              hint="Pressione Enter ou clique no + para adicionar à lista"
             />
 
             <CheckboxGroup
@@ -418,7 +437,8 @@ export default function SubmissionPage() {
               values={cursos}
               onChange={(values) => setValue('cursos', values, { shouldValidate: true })}
               error={errors.cursos?.message}
-              placeholder="Nome do curso e Enter"
+              placeholder="Digite o nome do curso"
+              hint="Pressione Enter ou clique no + para adicionar à lista"
             />
 
             <div>
@@ -427,8 +447,8 @@ export default function SubmissionPage() {
               </label>
               <select
                 {...register('categoria')}
-                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
-                  errors.categoria ? 'border-red-500' : 'border-gray-200'
+                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
+                  errors.categoria ? 'border-red-300' : 'border-gray-200'
                 }`}
               >
                 <option value="">Selecione uma categoria</option>
@@ -438,7 +458,12 @@ export default function SubmissionPage() {
                   </option>
                 ))}
               </select>
-              {errors.categoria && <p className="text-red-500 text-sm mt-1">{errors.categoria.message}</p>}
+              {errors.categoria && (
+                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                  <AlertCircle size={14} />
+                  {errors.categoria.message}
+                </div>
+              )}
             </div>
 
             <div>
@@ -449,11 +474,16 @@ export default function SubmissionPage() {
                 rows={5}
                 placeholder="Descreva a prática, seus objetivos e resultados"
                 {...register('descricao')}
-                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
-                  errors.descricao ? 'border-red-500' : 'border-gray-200'
+                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
+                  errors.descricao ? 'border-red-300' : 'border-gray-200'
                 }`}
               />
-              {errors.descricao && <p className="text-red-500 text-sm mt-1">{errors.descricao.message}</p>}
+              {errors.descricao && (
+                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                  <AlertCircle size={14} />
+                  {errors.descricao.message}
+                </div>
+              )}
             </div>
 
             <div>
@@ -464,10 +494,10 @@ export default function SubmissionPage() {
                 {Object.values(ODS_DATA).map((item) => (
                   <label
                     key={item.id}
-                    className={`flex items-center gap-2 text-xs px-3 py-2 rounded-lg cursor-pointer border transition-colors ${
+                    className={`flex items-center gap-2 text-xs px-3 py-2 rounded-lg cursor-pointer border transition-all ${
                       ods.includes(item.id)
-                        ? 'text-white border-transparent'
-                        : 'bg-white text-gray-600 border-gray-200 hover:border-[#ffb84d]'
+                        ? 'text-white border-transparent shadow-md opacity-100'
+                        : 'bg-white text-gray-600 border-gray-200 hover:border-[#003366]/30 hover:bg-gray-50 opacity-80 hover:opacity-100'
                     }`}
                     style={ods.includes(item.id) ? { backgroundColor: item.color } : undefined}
                   >
@@ -500,8 +530,8 @@ export default function SubmissionPage() {
               <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
                 Evidências (imagens)
               </label>
-              <label className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-300 rounded-xl py-8 cursor-pointer hover:border-[#ffb84d] transition-colors">
-                <UploadCloud className="text-gray-400" size={28} />
+              <label className="flex flex-col items-center justify-center gap-2 bg-white/40 backdrop-blur-sm border-2 border-dashed border-gray-300 rounded-xl py-8 cursor-pointer hover:border-[#003366]/40 hover:bg-white/70 transition-all">
+                <UploadCloud className="text-[#003366]/50" size={32} />
                 <span className="text-sm text-gray-500">
                   {uploading ? 'Enviando...' : 'Clique para subir imagens/evidências'}
                 </span>
@@ -546,14 +576,17 @@ export default function SubmissionPage() {
                 </span>
               </label>
               {errors.termosAceitos && (
-                <p className="text-red-500 text-sm mt-1">{errors.termosAceitos.message}</p>
+                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                  <AlertCircle size={14} />
+                  {errors.termosAceitos.message}
+                </div>
               )}
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting || uploading}
-              className="w-full bg-[#ffb84d] hover:bg-[#ffa31a] text-[#003366] font-black uppercase tracking-wider py-4 rounded-xl shadow-lg shadow-orange-500/20 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full bg-[#003366] hover:bg-[#002244] text-white font-black uppercase tracking-wider py-4 rounded-xl shadow-[0_4px_20px_rgba(0,51,102,0.3)] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:-translate-y-0.5"
             >
               {isSubmitting ? (
                 <>

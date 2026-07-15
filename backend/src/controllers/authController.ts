@@ -37,24 +37,12 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Procura o usuário, se não existir e for o mock, a gente cria.
-    let user = await prisma.usuario.findUnique({ where: { email } });
+    const emailLower = email.toLowerCase().trim();
+    let user = await prisma.usuario.findUnique({ where: { email: emailLower } });
 
     if (!user) {
-      if (email === 'docente@senac.br' && senha === 'minhaSenha123') {
-        const hashed = await bcrypt.hash(senha, 10);
-        user = await prisma.usuario.create({
-          data: {
-            nome: 'Docente Senac',
-            email: email,
-            senha: hashed,
-            role: 'DOCENTE'
-          }
-        });
-      } else {
-        res.status(401).json({ message: 'Credenciais inválidas' });
-        return;
-      }
+      res.status(401).json({ message: 'Credenciais inválidas' });
+      return;
     }
 
     const isValidPassword = await bcrypt.compare(senha, user.senha);
@@ -92,12 +80,14 @@ export const registerRequest = async (req: Request, res: Response): Promise<void
       return;
     }
 
-    if (!email.endsWith(EMAIL_DOMINIO_INSTITUCIONAL)) {
+    const emailLower = email.toLowerCase().trim();
+
+    if (!emailLower.endsWith(EMAIL_DOMINIO_INSTITUCIONAL)) {
       res.status(400).json({ message: `Utilize um e-mail institucional (${EMAIL_DOMINIO_INSTITUCIONAL})` });
       return;
     }
 
-    const existente = await prisma.usuario.findUnique({ where: { email } });
+    const existente = await prisma.usuario.findUnique({ where: { email: emailLower } });
     if (existente?.verificado) {
       res.status(400).json({ message: 'Já existe uma conta verificada com este e-mail' });
       return;
@@ -109,14 +99,14 @@ export const registerRequest = async (req: Request, res: Response): Promise<void
 
     if (existente) {
       await prisma.usuario.update({
-        where: { email },
+        where: { email: emailLower },
         data: { nome, senha: senhaHash, codigoVerificacao: codigoOtp, codigoExpiraEm },
       });
     } else {
       await prisma.usuario.create({
         data: {
           nome,
-          email,
+          email: emailLower,
           senha: senhaHash,
           verificado: false,
           codigoVerificacao: codigoOtp,
@@ -125,7 +115,7 @@ export const registerRequest = async (req: Request, res: Response): Promise<void
       });
     }
 
-    await enviarEmailOtp(nome, email, codigoOtp);
+    await enviarEmailOtp(nome, emailLower, codigoOtp);
 
     res.status(201).json({ message: 'Código de verificação enviado para o e-mail institucional' });
   } catch (error) {
@@ -143,7 +133,8 @@ export const registerVerify = async (req: Request, res: Response): Promise<void>
       return;
     }
 
-    const user = await prisma.usuario.findUnique({ where: { email } });
+    const emailLower = email.toLowerCase().trim();
+    const user = await prisma.usuario.findUnique({ where: { email: emailLower } });
 
     if (!user || !user.codigoVerificacao || !user.codigoExpiraEm) {
       res.status(400).json({ message: 'Nenhuma verificação pendente para este e-mail' });
@@ -161,7 +152,7 @@ export const registerVerify = async (req: Request, res: Response): Promise<void>
     }
 
     const userVerificado = await prisma.usuario.update({
-      where: { email },
+      where: { email: emailLower },
       data: { verificado: true, codigoVerificacao: null, codigoExpiraEm: null },
     });
 

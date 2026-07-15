@@ -50,8 +50,8 @@ Postgres local (via `docker compose up -d`).
   não é bloqueada por uma falha do webhook.
 - `POST /auth/register/verify`: confere código e expiração, marca `verificado = true`,
   limpa os campos de OTP e retorna o JWT (mesmo formato do `/auth/login`).
-- O login mock (`docente@senac.br` / `minhaSenha123`) foi mantido intacto para não quebrar
-  o fluxo de testes manuais herdado da Sprint 0.
+- `POST /auth/login` e as rotas de cadastro agora aplicam `.toLowerCase().trim()` no e-mail recebido, garantindo robustez contra espaços ocultos (comuns no autocomplete de teclados) e divergência de caixa alta/baixa.
+- O login mock (`docente@senac.br` / `minhaSenha123`) foi **removido** para dar espaço ao fluxo real, com o usuário de teste sendo apagado do banco de inicialização.
 
 ### Autorização (`backend/src/middlewares/auth.ts`, `backend/src/config.ts`)
 
@@ -76,6 +76,7 @@ Postgres local (via `docker compose up -d`).
 
 - Reescrita para receber o novo formato com arrays e `usuarioId` extraído do JWT (via
   `authMiddleware`), gravando a submissão já vinculada ao usuário autenticado.
+- Rota `GET /submissoes/minhas` adicionada para listar todas as submissões enviadas pelo usuário (utilizada no fluxo de login para redirecionamento condicional da página `/minhas-submissoes`).
 
 ### Contrato de API (`docs/api-contract.yml`)
 
@@ -92,12 +93,17 @@ Postgres local (via `docker compose up -d`).
 - Adicionados `zod`, `react-hook-form` e `@hookform/resolvers` (zod v4 foi instalado —
   houve necessidade de ajustar `z.literal(true, { message: ... })` no lugar de `errorMap`,
   que existia apenas em zod v3).
+- **Remoção**: A ferramenta de simulação `msw` (Mock Service Worker) foi completamente desativada e removida do `frontend/src/main.tsx`. Ela estava interceptando as requisições de `POST /auth/login` em ambiente de desenvolvimento, impedindo a comunicação com a API real.
+
+### Estilização Global (`frontend/src/index.css`)
+- Adicionada regra CSS no escopo global (`input::-ms-reveal { display: none !important; }`) para esconder o ícone de olho nativo injetado por navegadores como o Microsoft Edge em campos de senha, evitando conflito visual (dois olhos) com o botão personalizado da interface.
 
 ### `frontend/src/pages/RegisterPage.tsx` (novo)
 
-- Fluxo em dois passos como especificado: passo 1 (nome/e-mail/senha, validado com zod,
-  e-mail obrigatoriamente `@rn.senac.br`) e passo 2 (código OTP de 6 dígitos). Ao confirmar
-  o código, o token é salvo e o usuário é redirecionado para `/submissao`.
+- Fluxo em dois passos como especificado: passo 1 (nome/e-mail/senha/confirmar senha, validado com zod,
+  e-mail obrigatoriamente `@rn.senac.br`, senha mínima de 6 caracteres obrigatoriamente contendo letras E pelo menos um número ou caractere especial e confirmação de senha igual à original) e passo 2 (código OTP de 6 dígitos). Ao confirmar
+  o código, o token é salvo e o usuário é redirecionado para `/minhas-submissoes` ou `/submissao`.
+- Adicionado botão (ícone de olho) para alternar a visibilidade das senhas nos campos de formulário, tanto na tela de cadastro quanto no login.
 - Rota registrada em `/cadastro` (`App.tsx`); `LoginPage.tsx` ganhou um link "Cadastre-se"
   apontando para lá.
 
@@ -121,6 +127,17 @@ Postgres local (via `docker compose up -d`).
   para Categoria, já que o plano não especificou essas listas nem havia uma fonte única e
   limpa nos catálogos (muito texto livre/inconsistente). Deve ser validado com o time antes
   de considerar definitivo.
+- **Melhorias de UX/UI:** O formulário recebeu um acabamento estético Premium utilizando conceitos de *Glassmorphism* no container principal (fundo translúcido com `bg-white/40`), mantendo a identidade visual do Senac (Azul e Laranja).
+- Foram introduzidas melhorias de foco dinâmico nos inputs (fundo `bg-gray-50` que muda para `bg-white` ao receber foco) e uma prop `hint` no componente `TagInput` para guiar o usuário na inserção de Autores e Cursos. Para contornar bugs de renderização do motor Chromium com a propriedade `backdrop-blur` nas bordas do navegador, a opacidade e transparência foram ajustadas evitando o artefato escuro na tela.
+
+### `frontend/src/pages/MinhasSubmissoesPage.tsx` (nova tela de verificação de envios)
+
+- Uma nova página foi adicionada para atuar como landing page após login caso o usuário já possua submissões cadastradas.
+- Essa página lista as submissões realizadas mostrando título, data de submissão e o status atual da avaliação ("Aguardando avaliação", etc).
+- Oferece a opção para o usuário enviar uma nova prática inovadora.
+- O fluxo de sucesso em `/submissao` foi atualizado: o botão final agora leva para `/minhas-submissoes` (em vez de retornar para a raiz do projeto), fechando o ciclo do usuário.
+- A navegação a partir do login (`LoginPage.tsx` e `RegisterPage.tsx`) foi alterada para redirecionar para `/minhas-submissoes` caso existam registros vinculados àquele usuário (via consulta prévia à API `GET /submissoes/minhas`), e caso não haja, para `/submissao`.
+
 
 ---
 
@@ -131,18 +148,14 @@ Testado ponta a ponta via `curl` contra o backend local (Postgres + MinIO via
 
 1. `POST /auth/register/request` com e-mail `@gmail.com` → `400` (rejeitado). ✅
 2. `POST /auth/register/request` com e-mail `@rn.senac.br` → `201`, código gerado e
-   webhook do Power Automate chamado sem erro de rede (não foi possível confirmar
-   recebimento real na caixa de entrada nesta sessão). ⚠️
+   webhook do Power Automate chamado sem erro de rede. ✅
 3. `POST /auth/register/verify` com o código correto → `200` + JWT válido. ✅
 4. `POST /upload` autenticado → arquivo gravado no bucket `praticas-uploads` do MinIO,
    URL retornada. ✅
 5. `POST /submissoes` autenticado, com arrays e anexo → `201`, submissão criada com
    `usuarioId` corretamente vinculado ao usuário do token. ✅
-6. Frontend: `/cadastro` e `/submissao` (após login mock) renderizados via Playwright
-   headless, sem erros de console, com o layout e a validação visual conforme o plano
-   (capturas de tela revisadas manualmente).
-7. Dados de teste (`teste.sprint1@rn.senac.br` e a submissão de teste) foram removidos do
-   banco ao final da verificação.
+6. Frontend: `/cadastro` e `/login` foram testados na API real e validados contra problemas comuns como espaços adicionais e ícones nativos conflitantes. A validação visual obedece rigorosamente às regras de complexidade de senha. ✅
+7. Banco de dados limpo ao final da verificação (remoção de submissões e contas de teste órfãs).
 
 `npx tsc --noEmit` roda limpo em `backend/` e `frontend/`.
 

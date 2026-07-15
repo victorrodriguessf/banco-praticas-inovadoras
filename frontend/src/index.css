@@ -24,3 +24,9 @@
     cursor: pointer;
   }
 }
+
+/* Hide native Edge/IE password reveal icon */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+}

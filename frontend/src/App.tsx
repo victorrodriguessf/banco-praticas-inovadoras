@@ -4,6 +4,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import SubmissionPage from './pages/SubmissionPage';
 
+import MinhasSubmissoesPage from './pages/MinhasSubmissoesPage';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -12,6 +14,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<RegisterPage />} />
         <Route path="/submissao" element={<SubmissionPage />} />
+        <Route path="/minhas-submissoes" element={<MinhasSubmissoesPage />} />
       </Routes>
     </BrowserRouter>
   );

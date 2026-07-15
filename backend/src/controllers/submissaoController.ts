@@ -65,3 +65,29 @@ export const createSubmissao = async (req: Request, res: Response): Promise<void
     res.status(500).json({ message: 'Erro interno do servidor ao criar submissão' });
   }
 };
+
+export const getMinhasSubmissoes = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const usuarioId = req.usuarioId;
+    if (!usuarioId) {
+      res.status(401).json({ message: 'Não autenticado' });
+      return;
+    }
+
+    const submissoes = await prisma.submissao.findMany({
+      where: { usuarioId },
+      orderBy: { criadaEm: 'desc' },
+      select: {
+        id: true,
+        titulo: true,
+        status: true,
+        criadaEm: true
+      }
+    });
+
+    res.json(submissoes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erro ao buscar submissões' });
+  }
+};
