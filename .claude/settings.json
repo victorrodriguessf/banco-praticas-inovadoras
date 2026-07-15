@@ -54,7 +54,11 @@
       "Bash(docker info *)",
       "Bash(curl -s -o /dev/null -w \"MinIO console HTTP %{http_code}\\\\n\" http://localhost:9001/)",
       "Bash(curl -s http://localhost:9000/minio/health/live -o /dev/null -w \"MinIO API health HTTP %{http_code}\\\\n\")",
-      "Bash(gh pr edit 1 --repo EduTech-Labs/banco-praticas-inovadoras --body ' *)"
+      "Bash(gh pr edit 1 --repo EduTech-Labs/banco-praticas-inovadoras --body ' *)",
+      "Bash(node check_search2.mjs)",
+      "Bash(git fetch *)",
+      "Bash(git merge edutech/feature/sprint-0-fundacao -m ' *)",
+      "Bash(pkill -f \"vite\")"
     ],
     "additionalDirectories": [
       "/Users/victorrodrigues/Documents/Projeto Práticas Inovadoras/senac-labs-local-pronto"
