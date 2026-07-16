@@ -92,6 +92,49 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /auth/forgot-password/request:
+    post:
+      tags: [Auth]
+      summary: Solicita a recuperação de senha, enviando um código OTP para o e-mail informado
+      description: >
+        Resposta sempre genérica (200), exista o e-mail ou não, para não permitir
+        enumeração de contas. Se o e-mail pertencer a uma conta verificada, um
+        código de 6 dígitos é gerado e enviado via Webhook do Power Automate
+        (mesmo mecanismo do cadastro, com `contexto: "RECUPERACAO_SENHA"`).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequest'
+      responses:
+        '200':
+          description: Se o e-mail existir, um código de recuperação foi enviado
+
+  /auth/forgot-password/reset:
+    post:
+      tags: [Auth]
+      summary: Confirma o código OTP e define uma nova senha, retornando o JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordResetRequest'
+      responses:
+        '200':
+          description: Senha redefinida, usuário autenticado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Código inválido/expirado ou senha fora do padrão exigido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
   /upload:
     post:
       tags: [Submissões]
@@ -241,6 +284,29 @@ components:
         codigo:
           type: string
           example: '482913'
+
+    ForgotPasswordRequest:
+      type: object
+      required: [email]
+      properties:
+        email:
+          type: string
+          format: email
+          example: thalissa.soares@rn.senac.br
+
+    ForgotPasswordResetRequest:
+      type: object
+      required: [email, codigo, novaSenha]
+      properties:
+        email:
+          type: string
+          format: email
+        codigo:
+          type: string
+          example: '482913'
+        novaSenha:
+          type: string
+          format: password
 
     SubmissaoRequest:
       type: object

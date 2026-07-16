@@ -6,6 +6,9 @@ import { z } from 'zod';
 import { ArrowLeft, User, Lock, Mail, KeyRound, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import { motion } from 'motion/react';
 import logoSenacLabs from '../logo_senac_labs.png';
+import { senhaSchema, codigoSchema } from '../schemas/passwordSchema';
+import { PasswordStrengthMeter } from '../components/PasswordStrengthMeter';
+import { OtpResendTimer } from '../components/OtpResendTimer';
 
 const DOMINIO_INSTITUCIONAL = '@rn.senac.br';
 
@@ -17,24 +20,11 @@ const dadosSchema = z.object({
     .refine((value) => value.endsWith(DOMINIO_INSTITUCIONAL), {
       message: `Utilize seu e-mail institucional (${DOMINIO_INSTITUCIONAL})`,
     }),
-  senha: z
-    .string()
-    .min(6, 'A senha deve ter ao menos 6 caracteres')
-    .regex(
-      /^(?=.*[a-zA-Z])(?=.*[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).*$/,
-      'A senha deve conter letras e ao menos um número ou caractere especial'
-    ),
-  confirmarSenha: z.string().min(6, 'A confirmação de senha é obrigatória'),
+  senha: senhaSchema,
+  confirmarSenha: z.string().min(8, 'A confirmação de senha é obrigatória'),
 }).refine((data) => data.senha === data.confirmarSenha, {
   message: 'As senhas não coincidem',
   path: ['confirmarSenha'],
-});
-
-const codigoSchema = z.object({
-  codigo: z
-    .string()
-    .length(6, 'O código tem 6 dígitos')
-    .regex(/^\d{6}$/, 'O código deve conter apenas números'),
 });
 
 type DadosForm = z.infer<typeof dadosSchema>;
@@ -43,6 +33,8 @@ type CodigoForm = z.infer<typeof codigoSchema>;
 export default function RegisterPage() {
   const [step, setStep] = useState<1 | 2>(1);
   const [email, setEmail] = useState('');
+  const [dadosSubmetidos, setDadosSubmetidos] = useState<DadosForm | null>(null);
+  const [otpResetKey, setOtpResetKey] = useState(0);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showSenha, setShowSenha] = useState(false);
@@ -51,6 +43,7 @@ export default function RegisterPage() {
 
   const dadosForm = useForm<DadosForm>({ resolver: zodResolver(dadosSchema) });
   const codigoForm = useForm<CodigoForm>({ resolver: zodResolver(codigoSchema) });
+  const senhaDigitada = dadosForm.watch('senha');
 
   const onSubmitDados = async (dados: DadosForm) => {
     setIsLoading(true);
@@ -67,6 +60,8 @@ export default function RegisterPage() {
 
       if (response.ok) {
         setEmail(dados.email);
+        setDadosSubmetidos(dados);
+        setOtpResetKey((key) => key + 1);
         setStep(2);
       } else {
         setError(data.message || 'Erro ao solicitar cadastro.');
@@ -75,6 +70,29 @@ export default function RegisterPage() {
       setError('Erro de conexão com o servidor.');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleReenviarCodigo = async () => {
+    if (!dadosSubmetidos) return;
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost:3333/auth/register/request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dadosSubmetidos),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setOtpResetKey((key) => key + 1);
+      } else {
+        setError(data.message || 'Erro ao reenviar o código.');
+      }
+    } catch (err) {
+      setError('Erro de conexão com o servidor.');
     }
   };
 
@@ -160,7 +178,7 @@ export default function RegisterPage() {
           )}
 
           {step === 1 ? (
-            <form onSubmit={dadosForm.handleSubmit(onSubmitDados)} className="p-8 space-y-6">
+            <form key="step-1" onSubmit={dadosForm.handleSubmit(onSubmitDados)} className="p-8 space-y-6">
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
@@ -224,8 +242,9 @@ export default function RegisterPage() {
                       {showSenha ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
                   </div>
+                  <PasswordStrengthMeter senha={senhaDigitada ?? ''} />
                   <p className="text-xs text-gray-400 mt-2">
-                    Mínimo de 6 caracteres, devendo conter letras e pelo menos um número ou caractere especial.
+                    Mínimo de 8 caracteres, devendo conter letras e pelo menos um número ou caractere especial.
                   </p>
                   {dadosForm.formState.errors.senha && (
                     <p className="text-red-500 text-sm mt-1">{dadosForm.formState.errors.senha.message}</p>
@@ -283,7 +302,7 @@ export default function RegisterPage() {
               </p>
             </form>
           ) : (
-            <form onSubmit={codigoForm.handleSubmit(onSubmitCodigo)} className="p-8 space-y-6">
+            <form key="step-2" onSubmit={codigoForm.handleSubmit(onSubmitCodigo)} className="p-8 space-y-6">
               <div>
                 <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
                   Código de verificação
@@ -293,9 +312,14 @@ export default function RegisterPage() {
                   <input
                     type="text"
                     inputMode="numeric"
+                    autoComplete="one-time-code"
                     maxLength={6}
                     placeholder="000000"
-                    {...codigoForm.register('codigo')}
+                    {...codigoForm.register('codigo', {
+                      onChange: (e) => {
+                        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
+                      },
+                    })}
                     className={`w-full bg-gray-50 border rounded-xl py-3 pl-12 pr-4 text-sm tracking-[0.5em] font-bold focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all ${
                       codigoForm.formState.errors.codigo ? 'border-red-500' : 'border-gray-200'
                     }`}
@@ -304,6 +328,7 @@ export default function RegisterPage() {
                 {codigoForm.formState.errors.codigo && (
                   <p className="text-red-500 text-sm mt-1">{codigoForm.formState.errors.codigo.message}</p>
                 )}
+                <OtpResendTimer ativo={step === 2} resetKey={otpResetKey} onReenviar={handleReenviarCodigo} />
               </div>
 
               <button

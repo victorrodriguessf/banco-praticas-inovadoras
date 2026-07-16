@@ -1,6 +1,19 @@
 import { Request, Response } from 'express';
 import { prisma } from '../prismaClient';
 
+const MAX_ITENS_ARRAY = 50;
+const MAX_LEN_TITULO = 300;
+const MAX_LEN_CATEGORIA = 100;
+const MAX_LEN_DESCRICAO = 10000;
+const MAX_LEN_ITEM = 500;
+
+const arrayStringValido = (valor: unknown, obrigatorio: boolean): valor is string[] => {
+  if (!Array.isArray(valor)) return !obrigatorio && valor === undefined;
+  if (obrigatorio && valor.length === 0) return false;
+  if (valor.length > MAX_ITENS_ARRAY) return false;
+  return valor.every((item) => typeof item === 'string' && item.length <= MAX_LEN_ITEM);
+};
+
 export const createSubmissao = async (req: Request, res: Response): Promise<void> => {
   try {
     const usuarioId = req.usuarioId;
@@ -25,19 +38,20 @@ export const createSubmissao = async (req: Request, res: Response): Promise<void
     } = req.body;
 
     if (
-      !titulo ||
-      !editalId ||
-      !categoria ||
-      !descricao ||
-      !Array.isArray(autores) ||
-      autores.length === 0 ||
-      !Array.isArray(unidades) ||
-      unidades.length === 0 ||
-      !Array.isArray(segmentos) ||
-      segmentos.length === 0 ||
-      !termosAceitos
+      typeof titulo !== 'string' || titulo.trim() === '' || titulo.length > MAX_LEN_TITULO ||
+      typeof editalId !== 'string' || editalId.trim() === '' ||
+      typeof categoria !== 'string' || categoria.trim() === '' || categoria.length > MAX_LEN_CATEGORIA ||
+      typeof descricao !== 'string' || descricao.trim() === '' || descricao.length > MAX_LEN_DESCRICAO ||
+      !arrayStringValido(autores, true) ||
+      !arrayStringValido(unidades, true) ||
+      !arrayStringValido(segmentos, true) ||
+      !arrayStringValido(cursos, false) ||
+      !arrayStringValido(marcasFormativas, false) ||
+      !arrayStringValido(anexos, false) ||
+      (ods !== undefined && (!Array.isArray(ods) || ods.length > MAX_ITENS_ARRAY || !ods.every((n) => Number.isInteger(n) && n >= 1 && n <= 17))) ||
+      termosAceitos !== true
     ) {
-      res.status(400).json({ message: 'Faltam campos obrigatórios' });
+      res.status(400).json({ message: 'Dados inválidos ou campos obrigatórios ausentes' });
       return;
     }
 

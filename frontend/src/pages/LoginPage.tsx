@@ -133,6 +133,11 @@ export default function LoginPage() {
                     {showSenha ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
+                <p className="text-right mt-2">
+                  <Link to="/esqueci-senha" className="text-xs text-gray-500 hover:text-[#003366] hover:underline">
+                    Esqueci minha senha
+                  </Link>
+                </p>
               </div>
             </div>
 

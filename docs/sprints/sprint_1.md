@@ -111,7 +111,8 @@ model Submissao {
 #### [NEW/MODIFY] Rotas no Express (`backend/src/`)
 - A IA **NÃO** deve instalar `nodemailer`. A IA utilizará o `fetch` ou `axios` interno do Node.
 - Adicionar no arquivo `.env` a seguinte variável de ambiente (já contendo a URL final e a chave de assinatura):
-  `POWER_AUTOMATE_WEBHOOK_URL="<REDIGIDO-webhook-revogado>"`
+  `POWER_AUTOMATE_WEBHOOK_URL="<REDIGIDO — segredo movido para o .env, ver docs/sprint-1-changelog.md §9>"`
+  > ⚠️ A URL real do webhook (com a assinatura `sig=`) **não** deve ser versionada. Ela vive apenas no `.env` (gitignored). O valor que constava aqui foi revogado/rotacionado por ter vazado no histórico do git.
 - **Rota `register/request`:** Verifica se o e-mail termina com `@rn.senac.br` e gera um código aleatório de 6 dígitos. Salva no banco (como usuário não-verificado). Em seguida, faz um `POST` para `process.env.POWER_AUTOMATE_WEBHOOK_URL` enviando o JSON `{ "nomeDestinatario": "...", "emailDestino": "...", "codigoOtp": "..." }`.
 - **Rota `register/verify`:** Recebe o código do front, confere se bate com o do banco e se não expirou. Muda `verificado` para `true` e gera o Token JWT de login.
 - **Rota `upload`:** Utiliza o `s3Client` existente e a lib `multer` para upar o arquivo pro MinIO local e devolver a URL formatada (`http://localhost:9000/banco-de-praticas/...`).
@@ -142,3 +143,78 @@ model Submissao {
 3. **Testar Formulário:** Na rota `/submissao`, deixar campos vazios e observar o feedback visual idêntico ao Bootstrap.
 4. **Testar Upload e Relacionamento:** Preencher o formulário, subir imagens. Checar se as URLs aparecem no MinIO e se o Prisma Studio mostra a Submissão perfeitamente atrelada ao usuário logado.
 5. **Finalização:** Efetuar o `git commit` com todas as funcionalidades e dar `git push origin feature/sprint-1-auth-submissao`.
+
+---
+
+## Complemento: Esqueci Minha Senha (Forgot Password)
+
+> Recebido como complemento da Sprint 1, após a implementação inicial de cadastro/OTP e submissão.
+
+### Contexto
+
+O fluxo de autenticação até aqui só cobria cadastro (com OTP institucional via Power Automate) e login. Não existia caminho para o docente recuperar o acesso se esquecesse a senha. Esta feature adiciona um botão "Esqueci minha senha" no login, reaproveitando a infraestrutura de OTP que já existe e está validada.
+
+Decisões já validadas com o usuário:
+- Resposta da API para "esqueci senha" é sempre genérica (200 mesmo se o e-mail não existir ou não estiver verificado) — evita enumeração de contas.
+- Depois de confirmar o código e a nova senha, o usuário é logado automaticamente, sem precisar digitar a senha de novo em `/login`.
+
+### User Review Required / Open Questions
+
+> [!IMPORTANT]
+> **Condicional de E-mail no Power Automate:** Para diferenciar se o e-mail a ser disparado é de Boas-vindas/Cadastro ou de Recuperação de Senha, o Backend passará a enviar uma variável "contexto" no JSON do Webhook (valores: "CADASTRO" ou "RECUPERACAO_SENHA").
+
+### Proposed Changes
+
+#### Backend
+
+**backend/src/controllers/authController.ts**
+- Alterar o helper `enviarEmailOtp` (que chama o Webhook) para aceitar um quarto parâmetro: `contexto: 'CADASTRO' | 'RECUPERACAO_SENHA'`.
+- O payload do fetch para o Power Automate deve ficar: `{ nomeDestinatario: nome, emailDestino: email, codigoOtp: codigo, contexto }`.
+- O método `registerRequest` existente deve chamar `enviarEmailOtp(..., 'CADASTRO')`.
+- Criar `forgotPasswordRequest` (`POST /auth/forgot-password/request`, body `{ email }`):
+  - Normaliza e-mail.
+  - Busca o usuário. Se não existir OU `verificado === false`, não retorna erro — apenas não gera código e devolve a resposta genérica.
+  - Se existir e estiver verificado: gera novo `codigoOtp`/`codigoExpiraEm`, grava no usuário, e chama `enviarEmailOtp(user.nome, emailLower, codigoOtp, 'RECUPERACAO_SENHA')`.
+  - Resposta única: `200 { message: 'Se o e-mail existir, um código de recuperação foi enviado.' }`.
+- Criar `forgotPasswordReset` (`POST /auth/forgot-password/reset`, body `{ email, codigo, novaSenha }`):
+  - Valida código e expiração.
+  - Se válido: hash da `novaSenha` com bcrypt (aplicar a mesma regex de segurança no backend também), atualiza senha, limpa código do banco.
+  - Retorna o JWT para login automático.
+
+**backend/src/routes/index.ts**
+- Adicionar as rotas (sem `authMiddleware`):
+  - `router.post('/auth/forgot-password/request', forgotPasswordRequest);`
+  - `router.post('/auth/forgot-password/reset', forgotPasswordReset);`
+
+**docs/api-contract.yml**
+- Adicionar os dois novos paths e schemas (`ForgotPasswordRequest` e `ForgotPasswordResetRequest`).
+
+#### Frontend
+
+**Extrair a validação de senha forte para reuso**
+- Mover a regex de senha forte de `RegisterPage.tsx` para `frontend/src/schemas/passwordSchema.ts` (`senhaSchema = z.string().min(6).regex(...)`).
+- Importar esse novo schema tanto no `RegisterPage` quanto no novo fluxo.
+
+**frontend/src/pages/ForgotPasswordPage.tsx (novo)**
+- Estrutura de 2 passos:
+  - Passo 1: campo de e-mail (schema com `.email()`). Submete para `POST /auth/forgot-password/request`. Recebendo 200, avança para o passo 2.
+  - Passo 2: campos `codigo`, `novaSenha` e `confirmarSenha` (reusando `senhaSchema`). Submete para `POST /auth/forgot-password/reset`. Em caso de sucesso: salva o token e decide o roteamento baseado no mesmo critério do `LoginPage`.
+- Usar botões `Eye`/`EyeOff` nos campos de senha.
+
+**frontend/src/pages/LoginPage.tsx**
+- Adicionar link "Esqueci minha senha" apontando para `/esqueci-senha`.
+
+**frontend/src/App.tsx**
+- Adicionar a rota `<Route path="/esqueci-senha" element={<ForgotPasswordPage />} />`.
+
+### Verification Plan (complemento)
+
+1. **Testar Webhook (Backend):**
+   - Disparar `registerRequest` -> Verificar se o Power Automate recebe `contexto: 'CADASTRO'`.
+   - Disparar `forgotPasswordRequest` -> Verificar se o Power Automate recebe `contexto: 'RECUPERACAO_SENHA'`.
+2. **Teste Negativo (Segurança):**
+   - Tentar reset em e-mail inexistente -> Deve retornar 200, banco intacto.
+3. **Teste de Reset Completo:**
+   - E-mail válido -> Recebe código -> Tenta reset com senha fraca (backend e frontend devem barrar 400).
+   - Tenta reset com senha forte -> Retorna 200 + JWT. Login com senha antiga falha, login com nova senha funciona.
+4. **Documentação:** O trabalho deve ser registrado como complemento da sprint 1.
