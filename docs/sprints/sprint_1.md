@@ -114,7 +114,7 @@ model Submissao {
   `POWER_AUTOMATE_WEBHOOK_URL="<REDIGIDO-webhook-revogado>"`
 - **Rota `register/request`:** Verifica se o e-mail termina com `@rn.senac.br` e gera um código aleatório de 6 dígitos. Salva no banco (como usuário não-verificado). Em seguida, faz um `POST` para `process.env.POWER_AUTOMATE_WEBHOOK_URL` enviando o JSON `{ "nomeDestinatario": "...", "emailDestino": "...", "codigoOtp": "..." }`.
 - **Rota `register/verify`:** Recebe o código do front, confere se bate com o do banco e se não expirou. Muda `verificado` para `true` e gera o Token JWT de login.
-- **Rota `upload`:** Utiliza o `s3Client` existente e a lib `multer` para upar o arquivo pro MinIO local e devolver a URL formatada (`http://localhost:9000/praticas-uploads/...`).
+- **Rota `upload`:** Utiliza o `s3Client` existente e a lib `multer` para upar o arquivo pro MinIO local e devolver a URL formatada (`http://localhost:9000/banco-de-praticas/...`).
 - **Rota `submissoes`:** Conecta o `usuarioId` da requisição logada (obtido via JWT) aos dados recebidos e os salva no Postgres.
 
 ---

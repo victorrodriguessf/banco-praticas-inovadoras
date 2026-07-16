@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { s3Client } from '../services/storage';
 
-const BUCKET = 'praticas-uploads';
+const BUCKET = 'banco-de-praticas';
 const PUBLIC_BASE_URL = 'http://localhost:9000';
 
 export const uploadArquivo = async (req: Request, res: Response): Promise<void> => {

@@ -65,12 +65,10 @@ Postgres local (via `docker compose up -d`).
 ### Upload (`backend/src/controllers/uploadController.ts`)
 
 - Usa `multer` com `memoryStorage` (já era dependência do projeto) e o `s3Client` existente
-  em `backend/src/services/storage.ts` para enviar o arquivo ao bucket `praticas-uploads`
-  no MinIO, retornando a URL pública `http://localhost:9000/praticas-uploads/<uuid>-<nome>`.
-- O bucket `praticas-uploads` foi criado manualmente no MinIO local (`mc mb` +
-  `mc anonymous set download`) — não existe automação de criação de bucket no
-  `docker-compose.yml` ainda; isso deveria entrar como tarefa de infraestrutura em uma
-  sprint futura (ex.: script de bootstrap do MinIO).
+  em `backend/src/services/storage.ts` para enviar o arquivo ao bucket `banco-de-praticas`
+  no MinIO, retornando a URL pública `http://localhost:9000/banco-de-praticas/<uuid>-<nome>`.
+- O bucket `banco-de-praticas` agora é criado e configurado automaticamente (permissão pública de download)
+  no `docker-compose.yml` através do contêiner de inicialização `storage-init`.
 
 ### Submissões (`backend/src/controllers/submissaoController.ts`)
 
@@ -169,7 +167,7 @@ de destino, fora do escopo desta verificação automatizada.
 
 - Confirmar com o time as listas definitivas de Unidades/Segmentos/Categoria/Marcas
   Formativas usadas no formulário de submissão.
-- Automatizar a criação do bucket `praticas-uploads` no MinIO (script de bootstrap ou
-  `docker-compose` init container), hoje feita manualmente via `mc`.
+- [x] Automatizada a criação e configuração (permissão pública) do bucket `banco-de-praticas` no MinIO via
+  `docker-compose` (serviço `storage-init`).
 - Validar recebimento real do e-mail OTP via Power Automate com alguém que tenha acesso à
   caixa de entrada institucional.

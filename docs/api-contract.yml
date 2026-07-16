@@ -118,7 +118,7 @@ paths:
                 properties:
                   url:
                     type: string
-                    example: http://localhost:9000/praticas-uploads/uuid-imagem.png
+                    example: http://localhost:9000/banco-de-praticas/uuid-imagem.png
         '400':
           description: Nenhum arquivo enviado
           content:
