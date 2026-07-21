@@ -1,5 +1,6 @@
 import { BookOpen, Download, ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
+import { asset } from '../utils/asset';
 
 type EbookSectionProps = {
   onFilterByYear: (year: number) => void;
@@ -75,7 +76,7 @@ export const EbookSection = ({
               {/* Capa */}
               <div className="relative rounded-2xl shadow-md group-hover:shadow-2xl group-hover:shadow-senac-blue/25 transition-shadow duration-300 overflow-hidden">
                 <img
-                  src={`/covers/capa-${year}.jpg`}
+                  src={asset(`covers/capa-${year}.jpg`)}
                   alt={ebookTitle(year)}
                   className="w-full aspect-video object-cover rounded-2xl transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:-rotate-1 motion-reduce:transform-none motion-reduce:transition-none"
                 />
@@ -99,7 +100,7 @@ export const EbookSection = ({
               {/* Botões */}
               <div className="flex flex-col gap-2 mt-4">
                 <a
-                  href={`/pdfs/praticas-inovadoras-${year}.pdf`}
+                  href={asset(`pdfs/praticas-inovadoras-${year}.pdf`)}
                   download={`ebook-educacao-inovadora-senac-rn-melhores-praticas-${year}.pdf`}
                   className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg bg-senac-blue text-white text-sm font-bold hover:bg-[#003366] transition-colors"
                 >

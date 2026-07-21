@@ -43,6 +43,22 @@ services:
       exit 0;
       "
 
+  frontend:
+    build:
+      context: ./frontend
+      target: dev
+    container_name: praticas-inovadoras-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      # Código do host montado para hot-reload
+      - ./frontend:/app
+      # Volume anônimo: preserva o node_modules do container (Linux) e evita
+      # que o node_modules do host (macOS) o sobrescreva — os binários nativos
+      # do esbuild/Vite são específicos de plataforma.
+      - /app/node_modules
+
 volumes:
   db_data:
   storage_data:

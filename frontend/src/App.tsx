@@ -7,9 +7,13 @@ import SubmissionPage from './pages/SubmissionPage';
 
 import MinhasSubmissoesPage from './pages/MinhasSubmissoesPage';
 
+// BASE_URL é '/' no dev e '/bancodepraticas/' no build de produção.
+// Removemos a barra final para usar como basename do react-router.
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />

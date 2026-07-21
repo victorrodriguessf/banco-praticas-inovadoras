@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Menu, Send } from 'lucide-react';
+import { asset } from '../utils/asset';
 
 const navEntries = [
   { label: 'Início', href: 'https://labs.rn.senac.br/' },
@@ -22,10 +23,10 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
         className="max-w-7xl mx-auto px-4 h-[116px] flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             {!logoError ? (
               <img
-                src="/logo_senac_labs.png"
+                src={asset('logo_senac_labs.png')}
                 alt="Senac Labs"
                 className="h-14 w-auto object-contain"
                 onError={() => setLogoError(true)}
@@ -40,7 +41,7 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
                 </span>
               </div>
             )}
-          </a>
+          </Link>
         </div>
 
         <nav className="hidden lg:flex items-center">
@@ -62,19 +63,23 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
           ))}
         </nav>
 
-        {/* CTA — desktop */}
-        <Link
-          to="/login"
-          className="hidden lg:flex flex-col items-center gap-1 group"
+        {/* CTA — desktop (mock: submissão em breve) */}
+        <div
+          className="hidden lg:flex flex-col items-center gap-1 opacity-70 cursor-not-allowed select-none"
+          aria-disabled="true"
+          title="Submissão de práticas em breve"
         >
-          <span className="text-[9px] font-black uppercase tracking-widest text-[#003366]/60 group-hover:text-[#003366] transition-colors">
+          <span className="text-[9px] font-black uppercase tracking-widest text-[#003366]/60">
             Exclusivo para docentes do Senac RN
           </span>
-          <span className="flex items-center gap-2 bg-[#003366] text-white text-xs font-black uppercase tracking-wider px-4 py-2 rounded-xl border-2 border-[#003366] hover:bg-white hover:text-[#003366] transition-all shadow-md">
+          <span className="flex items-center gap-2 bg-[#003366] text-white text-xs font-black uppercase tracking-wider px-4 py-2 rounded-xl border-2 border-[#003366] shadow-md">
             <Send size={13} />
             Submeta sua prática
+            <span className="ml-1 bg-[#B97919] text-white text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded">
+              Em breve
+            </span>
           </span>
-        </Link>
+        </div>
 
         <button
           type="button"

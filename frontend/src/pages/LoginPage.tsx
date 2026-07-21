@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Lock, Mail, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import { motion } from 'motion/react';
 import logoSenacLabs from '../logo_senac_labs.png';
+import { asset } from '../utils/asset';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -72,7 +73,10 @@ export default function LoginPage() {
           className="bg-white rounded-3xl shadow-xl w-full max-w-md overflow-hidden border border-gray-100"
         >
           <div className="bg-[#003366] p-8 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('/diagonal_pattern.svg')] opacity-10"></div>
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{ backgroundImage: `url(${asset('diagonal_pattern.svg')})` }}
+            ></div>
             <h1 className="text-2xl font-black text-white uppercase tracking-wider relative z-10">
               Acesso Docente
             </h1>
