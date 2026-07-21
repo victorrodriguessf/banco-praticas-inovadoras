@@ -51,7 +51,9 @@ o contexto de build.
 
 ### 2.4 `docker-compose.yml` (dev local)
 
-Adicionado o serviço **`frontend`** (`target: dev`, porta 3000) com hot-reload.
+Adicionado o serviço **`banco-de-praticas-frontend`** (`target: dev`, porta 3000)
+com hot-reload. O nome é específico (e não apenas `frontend`) para não colidir
+com outros serviços/containers no servidor.
 Usa um **volume anônimo em `/app/node_modules`** para preservar o `node_modules`
 do container (Linux) — sem isso, o `node_modules` do host (macOS) o
 sobrescreveria e quebraria os binários nativos do esbuild/Vite.

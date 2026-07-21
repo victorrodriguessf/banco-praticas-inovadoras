@@ -43,11 +43,11 @@ services:
       exit 0;
       "
 
-  frontend:
+  banco-de-praticas-frontend:
     build:
       context: ./frontend
       target: dev
-    container_name: praticas-inovadoras-frontend
+    container_name: banco-de-praticas-frontend
     restart: unless-stopped
     ports:
       - "3000:3000"
