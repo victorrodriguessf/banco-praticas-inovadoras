@@ -52,7 +52,7 @@ jobs:
       - name: Configurar Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Constrói o estágio "production" (nginx não-root) e publica no GHCR
+      # Constrói o estágio "production" (Node/Express não-root) e publica no GHCR
       - name: Construir e publicar a imagem
         uses: docker/build-push-action@v6
         with:

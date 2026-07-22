@@ -21,7 +21,10 @@ Data: 2026-07-21 · Branch de origem: `feature/sprint-1-auth-submissao`
 
 ### 2.1 `frontend/Dockerfile` (multistage)
 
-Três estágios:
+> **Nota:** esta seção descreve o estágio `production` original, baseado em
+> nginx. Ele foi substituído por um servidor Node/Express — ver §9.
+
+Três estágios (histórico, ver §9 para o estágio `production` atual):
 
 | Estágio      | Base                                   | Usuário        | Porta | Uso                                   |
 |--------------|----------------------------------------|----------------|-------|---------------------------------------|
@@ -36,7 +39,10 @@ Três estágios:
   problema de `alias` + `location` regex).
 - O pipeline mira o estágio `production` via `target: production`.
 
-### 2.2 `frontend/nginx.conf`
+### 2.2 `frontend/nginx.conf` (removido — ver §9)
+
+> Este arquivo não existe mais no repositório. Documentado aqui apenas como
+> histórico da configuração original.
 
 - Escuta na porta **8080** (padrão da imagem não-root).
 - Serve a app sob `location /bancodepraticas/` com **fallback de SPA**
@@ -121,7 +127,7 @@ Imagem final: `ghcr.io/<owner>/banco-praticas-inovadoras-frontend:latest`
    onde a `main` receber o push (`victorrodriguessf` ou `EduTech-Labs`).
 4. **Proxy do Coolify**: confirmar que a rota `/bancodepraticas` é encaminhada ao
    container **sem remover** o prefixo, e que o container é exposto na porta
-   **8080**.
+   **3000** (atualizado — era 8080 na versão com nginx; ver §9).
 
 ## 7. Verificação realizada
 
@@ -141,3 +147,77 @@ Imagem final: `ghcr.io/<owner>/banco-praticas-inovadoras-frontend:latest`
 - **API fixa em `http://localhost:3333`** (pendente) nas páginas de
   auth/submissão — só relevante quando o backend for publicado; não afeta a
   landing.
+
+## 9. Remoção do nginx — servidor Node/Express
+
+O estágio `production` do `Dockerfile`, que servia os estáticos via
+**nginx** (`nginxinc/nginx-unprivileged`, porta 8080), foi substituído por um
+**servidor Node/Express** (`frontend/server.js`), eliminando a dependência de
+uma camada web server externa. `express` já constava em `dependencies` do
+projeto e não era usado.
+
+### 9.1 Por quê
+
+Reduzir o número de tecnologias na imagem de produção (um único runtime
+Node, sem nginx) e manter a configuração de servir estáticos em JavaScript,
+junto do resto do projeto, em vez de um DSL de config separado
+(`nginx.conf`).
+
+### 9.2 Novo fluxo
+
+- **`frontend/server.js`** (novo): servidor Express mínimo que replica o
+  comportamento do nginx.conf removido:
+  - `express.static` monta o `dist/` sob o prefixo `/bancodepraticas` (os
+    arquivos do build já saem prefixados porque `vite.config.ts` usa
+    `base: '/bancodepraticas/'`; não há necessidade de replicar a estrutura
+    de pastas que o nginx usava — `dist/` fica na raiz da imagem).
+  - `/` → redirect 301 para `/bancodepraticas/`.
+  - `/bancodepraticas` (sem barra) → redirect 301 para `/bancodepraticas/`.
+  - Fallback de SPA: qualquer rota sob `/bancodepraticas/*` que não bata em
+    um arquivo estático cai no `index.html` (equivalente ao
+    `try_files ... /bancodepraticas/index.html` do nginx).
+  - `GET /healthz` → `200 "ok"` em texto plano (paridade com o healthcheck
+    anterior).
+  - Cache longo e imutável (`Cache-Control: public, max-age=31536000,
+    immutable`) para assets com hash no nome (js/css/fontes/imagens).
+  - Escuta em `process.env.PORT || 3000` e `0.0.0.0`.
+- **`frontend/package.json`**: novo script `"start": "node server.js"`.
+- **`frontend/Dockerfile`** — estágio `production` reescrito: base
+  `node:20-alpine`, copia `dist/`, `package*.json` e `server.js` do estágio
+  `build`, roda `npm ci --omit=dev`, usuário não-root **`node`** (paridade de
+  segurança com o `nginx-unprivileged` anterior), `EXPOSE 3000`,
+  `CMD ["npm", "start"]`. Os estágios `build` e `dev` **não foram alterados**.
+- **`frontend/nginx.conf`**: removido do repositório (`git rm`).
+- **`.github/workflows/publish-ghcr.yml`**: sem mudanças funcionais — o
+  workflow builda `target: production`, que continua existindo com o mesmo
+  nome; só um comentário desatualizado (mencionava nginx) foi corrigido.
+
+### 9.3 Impacto na porta exposta pelo container
+
+A porta do container **mudou de 8080 para 3000**. Isso exige ajuste manual
+no Coolify: atualizar a porta configurada em "Ports Exposes" (ou equivalente)
+de `8080` para **`3000`**, e fazer Redeploy. Sem esse ajuste, o Traefik volta
+a apontar para a porta errada e o site retorna 502 novamente (mesmo sintoma
+documentado em §6 antes da correção original de porta).
+
+### 9.4 Verificação realizada
+
+- `npm run build` — gera `dist/` com assets prefixados por `/bancodepraticas/`.
+- `node server.js` local após o build, testado manualmente (via `curl`) em:
+  `/` (301), `/bancodepraticas` (301), `/bancodepraticas/` (200, index.html),
+  uma rota profunda do react-router (200, cai no index.html), um asset
+  estático com `Cache-Control` de cache longo, e `/healthz` (200 "ok").
+- Durante esse teste foi encontrado e corrigido um bug: por padrão o Express
+  ignora a barra final ao casar rotas, então a rota de redirect de
+  `/bancodepraticas` também interceptava `/bancodepraticas/` (que deveria
+  servir o `index.html`). Corrigido com `app.set('strict routing', true)`
+  (não afeta o `express.static`, que usa `app.use` e continua casando por
+  prefixo normalmente).
+- `docker build --target production` e `docker run` **não foram executados**
+  nesta verificação — Docker Desktop indisponível no ambiente usado. Rodar
+  manualmente antes do deploy:
+  ```
+  docker build --target production -t banco-praticas-frontend:test ./frontend
+  docker run --rm -p 3000:3000 banco-praticas-frontend:test
+  ```
+  e repetir os mesmos testes de path acima contra `localhost:3000`.

@@ -36,17 +36,21 @@ EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
 # ============================================================
-# Estágio 3 — production: nginx não-root servindo os estáticos
+# Estágio 3 — production: servidor Node/Express servindo os estáticos
 # ============================================================
-FROM nginxinc/nginx-unprivileged:1.27-alpine AS production
+FROM node:20-alpine AS production
+WORKDIR /app
+ENV NODE_ENV=production
 
-# Configuração que serve a SPA sob /bancodepraticas/ (porta 8080).
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json /app/package-lock.json ./
+COPY --from=build /app/server.js ./
 
-# O build é copiado para o subdiretório que espelha o subpath, de modo que
-# o `root` do nginx resolva /bancodepraticas/... para os arquivos corretos.
-COPY --from=build /app/dist /usr/share/nginx/html/bancodepraticas
+RUN npm ci --omit=dev
 
-# A imagem nginx-unprivileged já roda como uid 101 (usuário nginx, não-root)
-# e escuta na porta 8080 por padrão.
-EXPOSE 8080
+# Roda como usuário não-root "node" (já existe na imagem oficial), mantendo
+# a mesma postura de segurança do estágio nginx-unprivileged anterior.
+USER node
+
+EXPOSE 3000
+CMD ["npm", "start"]
