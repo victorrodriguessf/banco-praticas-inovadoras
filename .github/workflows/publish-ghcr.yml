@@ -3,10 +3,10 @@
 name: Publicar imagem do frontend no GHCR
 
 on:
-  # Executa a cada push na main
+  # Executa a cada push na branch 
   push:
     branches:
-      - main
+      - deploy-frontend-server
   # Permite disparar manualmente pela aba Actions
   workflow_dispatch:
 
