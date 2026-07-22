@@ -42,6 +42,8 @@ Três estágios:
 - Serve a app sob `location /bancodepraticas/` com **fallback de SPA**
   (`try_files ... /bancodepraticas/index.html`) — necessário para as rotas do
   react-router funcionarem em refresh/deep-link.
+- Redireciona a **raiz `/` → `/bancodepraticas/`** (senão o domínio cru mostra o
+  `index.html` padrão "Welcome to nginx" que sobra em `/usr/share/nginx/html`).
 - Cache longo e imutável para assets versionados; endpoint `/healthz`.
 
 ### 2.3 `frontend/.dockerignore`
