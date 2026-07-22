@@ -68,9 +68,15 @@ sobrescreveria e quebraria os binários nativos do esbuild/Vite.
 
 ## 3. Subpath `/bancodepraticas`
 
-Servidor/proxy **mantém** o prefixo `/bancodepraticas` ao encaminhar para o
-container (padrão do Traefik/Coolify por prefixo de path). Três ajustes
-coordenados:
+> **Correção (ver §9.5):** a premissa original desta seção — de que o
+> proxy mantém o prefixo ao encaminhar para o container — estava **errada**.
+> O Traefik/Caddy do Coolify na verdade **removem** o prefixo antes de
+> encaminhar (`stripprefix`/`handle_path`). Os itens 1–3 abaixo (build com
+> `base: '/bancodepraticas/'`, `basename` do router, helper `asset()`)
+> continuam corretos e necessários — é o **servidor** (`server.js`) que
+> precisa tratar as requisições como se estivesse na raiz. Detalhes em §9.5.
+
+Três ajustes coordenados:
 
 1. **`vite.config.ts`** — `base: command === 'build' ? '/bancodepraticas/' : '/'`.
    Ou seja: subpath **só no build de produção**; no `dev` local segue na raiz.
@@ -125,9 +131,11 @@ Imagem final: `ghcr.io/<owner>/banco-praticas-inovadoras-frontend:latest`
    no GHCR com um PAT (`read:packages`).
 3. **Qual remote é o oficial do deploy**: a imagem fica sob o owner do repositório
    onde a `main` receber o push (`victorrodriguessf` ou `EduTech-Labs`).
-4. **Proxy do Coolify**: confirmar que a rota `/bancodepraticas` é encaminhada ao
-   container **sem remover** o prefixo, e que o container é exposto na porta
-   **3000** (atualizado — era 8080 na versão com nginx; ver §9).
+4. **Proxy do Coolify**: confirmado (ver §9.5) que o Traefik/Caddy **removem** o
+   prefixo `/bancodepraticas` antes de encaminhar para o container
+   (`stripprefix`/`handle_path`) — o `server.js` já trata isso. Confirmar
+   apenas que o container é exposto na porta **3000** (atualizado — era 8080
+   na versão com nginx).
 
 ## 7. Verificação realizada
 
@@ -166,16 +174,13 @@ junto do resto do projeto, em vez de um DSL de config separado
 ### 9.2 Novo fluxo
 
 - **`frontend/server.js`** (novo): servidor Express mínimo que replica o
-  comportamento do nginx.conf removido:
-  - `express.static` monta o `dist/` sob o prefixo `/bancodepraticas` (os
-    arquivos do build já saem prefixados porque `vite.config.ts` usa
-    `base: '/bancodepraticas/'`; não há necessidade de replicar a estrutura
-    de pastas que o nginx usava — `dist/` fica na raiz da imagem).
-  - `/` → redirect 301 para `/bancodepraticas/`.
-  - `/bancodepraticas` (sem barra) → redirect 301 para `/bancodepraticas/`.
-  - Fallback de SPA: qualquer rota sob `/bancodepraticas/*` que não bata em
-    um arquivo estático cai no `index.html` (equivalente ao
-    `try_files ... /bancodepraticas/index.html` do nginx).
+  comportamento do nginx.conf removido. **Importante:** serve tudo a partir
+  da **raiz** (`/`), não sob `/bancodepraticas` — ver §9.5 para o motivo
+  (o proxy do Coolify já remove esse prefixo antes de encaminhar).
+  - `express.static` monta o `dist/` na raiz do servidor.
+  - Fallback de SPA: qualquer rota que não bata em um arquivo estático cai
+    no `index.html` (equivalente ao `try_files ... /index.html` do nginx,
+    já sem o prefixo).
   - `GET /healthz` → `200 "ok"` em texto plano (paridade com o healthcheck
     anterior).
   - Cache longo e imutável (`Cache-Control: public, max-age=31536000,
@@ -203,16 +208,13 @@ documentado em §6 antes da correção original de porta).
 ### 9.4 Verificação realizada
 
 - `npm run build` — gera `dist/` com assets prefixados por `/bancodepraticas/`.
-- `node server.js` local após o build, testado manualmente (via `curl`) em:
-  `/` (301), `/bancodepraticas` (301), `/bancodepraticas/` (200, index.html),
-  uma rota profunda do react-router (200, cai no index.html), um asset
-  estático com `Cache-Control` de cache longo, e `/healthz` (200 "ok").
-- Durante esse teste foi encontrado e corrigido um bug: por padrão o Express
-  ignora a barra final ao casar rotas, então a rota de redirect de
-  `/bancodepraticas` também interceptava `/bancodepraticas/` (que deveria
-  servir o `index.html`). Corrigido com `app.set('strict routing', true)`
-  (não afeta o `express.static`, que usa `app.use` e continua casando por
-  prefixo normalmente).
+- `node server.js` local após o build, testado manualmente (via `curl`)
+  **contra a raiz** (simulando o que o container recebe depois que o Traefik
+  remove o prefixo — ver §9.5, não testar `/bancodepraticas/...` direto no
+  container): `/` (200, index.html), `/assets/<arquivo>.js` (200, com
+  `Cache-Control` de cache longo), uma rota profunda tipo `/praticas/123`
+  (200, cai no index.html), um asset da pasta `public/` (200), e `/healthz`
+  (200 "ok").
 - `docker build --target production` e `docker run` **não foram executados**
   nesta verificação — Docker Desktop indisponível no ambiente usado. Rodar
   manualmente antes do deploy:
@@ -220,4 +222,43 @@ documentado em §6 antes da correção original de porta).
   docker build --target production -t banco-praticas-frontend:test ./frontend
   docker run --rm -p 3000:3000 banco-praticas-frontend:test
   ```
-  e repetir os mesmos testes de path acima contra `localhost:3000`.
+  e testar contra `localhost:3000/` (raiz), **não** `localhost:3000/bancodepraticas/`
+  — esse prefixo só existe do lado do navegador/Traefik, nunca chega ao
+  container (ver §9.5).
+
+### 9.5 Descoberta crítica: o proxy do Coolify remove o prefixo (`stripprefix`)
+
+A premissa original deste documento (§3) — de que o proxy **mantém** o
+prefixo `/bancodepraticas` ao encaminhar para o container — estava
+**errada**. As labels reais geradas pelo Coolify para este serviço mostram:
+
+```
+traefik.http.middlewares.https-...-stripprefix.stripprefix.prefixes=/bancodepraticas
+caddy_0.handle_path=/bancodepraticas*
+```
+
+`stripprefix` (Traefik) e `handle_path` (Caddy) **removem** o prefixo da
+URL antes de encaminhar a requisição para o container. Ou seja: o navegador
+pede `https://dominio/bancodepraticas/assets/x.js`, mas o container recebe
+apenas `GET /assets/x.js` — o prefixo nunca chega até ele.
+
+**Sintoma observado:** com o `server.js` original (que montava tudo sob
+`/bancodepraticas` e redirecionava `/` → `/bancodepraticas/`), isso causava
+um **loop de redirecionamento infinito**: o navegador pedia
+`/bancodepraticas/`, o Traefik removia o prefixo e mandava `GET /` para o
+container, o container respondia com redirect para `/bancodepraticas/`, o
+navegador pedia de novo a mesma URL, e assim por diante.
+
+**Correção aplicada em `server.js`:** o servidor agora serve o `dist/` e o
+fallback de SPA a partir da **raiz** (`/`), não mais sob `/bancodepraticas`.
+As rotas de redirect (`/` e `/bancodepraticas` sem barra) foram removidas —
+deixaram de fazer sentido, já que o container nunca recebe uma requisição
+literal para `/bancodepraticas` (o Traefik intercepta antes).
+
+**O que NÃO muda:** `vite.config.ts` continua com
+`base: '/bancodepraticas/'`, e `App.tsx` continua derivando o `basename` de
+`BASE_URL`. Isso é intencional — o **navegador** precisa continuar vendo
+URLs com o prefixo `/bancodepraticas` (é o que faz a regra `PathPrefix` do
+Traefik rotear a requisição para este serviço); só o servidor dentro do
+container é que não deve mais esperar esse prefixo, pois ele já foi
+removido antes de chegar até ali.
