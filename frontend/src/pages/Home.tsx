@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-import { Header } from '../components/Header';
+import { Header, navEntries } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { DiagonalDivider } from '../components/DiagonalDivider';
 import { EbookSection } from '../components/EbookSection';
@@ -499,22 +499,16 @@ export default function Home() {
               </div>
 
               <nav className="flex-grow p-8 space-y-6">
-                {['Início', 'Sobre', 'Edital', 'Práticas', 'E-books', 'Contato'].map(
-                  (item) => (
-                    <a
-                      key={item}
-                      href="#"
-                      onClick={() => setNavMenuOpen(false)}
-                      className={`block font-black text-xl uppercase tracking-tighter transition-colors ${
-                        item === 'Práticas'
-                          ? 'text-senac-orange'
-                          : 'text-senac-blue hover:text-senac-orange'
-                      }`}
-                    >
-                      {item}
-                    </a>
-                  )
-                )}
+                {navEntries.map((entry) => (
+                  <a
+                    key={entry.label}
+                    href={entry.href}
+                    onClick={() => setNavMenuOpen(false)}
+                    className="block font-black text-xl uppercase tracking-tighter text-senac-blue hover:text-senac-orange transition-colors"
+                  >
+                    {entry.label}
+                  </a>
+                ))}
               </nav>
 
               <div className="p-6 border-t border-gray-100 flex flex-col gap-1.5">
@@ -524,11 +518,11 @@ export default function Home() {
                 <div
                   aria-disabled="true"
                   title="Submissão de práticas em breve"
-                  className="flex items-center justify-center gap-2 bg-senac-blue text-white text-sm font-black uppercase tracking-wider px-4 py-3 rounded-xl shadow-md opacity-70 cursor-not-allowed select-none"
+                  className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 bg-senac-blue text-white text-sm font-black uppercase tracking-wider px-4 py-3 rounded-xl shadow-md opacity-70 cursor-not-allowed select-none"
                 >
-                  <Send size={14} />
-                  Submeta sua prática
-                  <span className="bg-senac-orange text-white text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded">
+                  <Send size={14} className="shrink-0" />
+                  <span className="whitespace-nowrap">Submeta sua prática</span>
+                  <span className="bg-senac-orange text-white text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded whitespace-nowrap">
                     Em breve
                   </span>
                 </div>

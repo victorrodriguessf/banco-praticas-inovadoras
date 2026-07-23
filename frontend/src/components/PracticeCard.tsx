@@ -185,7 +185,7 @@ export const PracticeCard = ({
                   <span
                     key={odsId}
                     style={{ backgroundColor: ods.color }}
-                    className="text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full"
+                    className="text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full whitespace-nowrap shrink-0"
                   >
                     ODS {odsId}
                   </span>
@@ -261,7 +261,7 @@ export const PracticeCard = ({
             <span
               key={odsId}
               style={{ backgroundColor: ods.color }}
-              className="text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full flex items-center gap-0.5"
+              className="text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full flex items-center gap-0.5 whitespace-nowrap shrink-0"
             >
               <Globe size={9} />
               ODS {odsId}

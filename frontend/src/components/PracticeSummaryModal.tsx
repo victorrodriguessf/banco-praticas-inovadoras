@@ -151,7 +151,7 @@ export const PracticeSummaryModal = ({
                   {practice.odsDetails.map((ods) => (
                     <span
                       key={`${practice.id}-${ods.tag}`}
-                      className="text-xs font-bold bg-senac-blue text-white px-3 py-1.5 rounded-full"
+                      className="text-xs font-bold bg-senac-blue text-white px-3 py-1.5 rounded-full whitespace-nowrap"
                     >
                       ODS {ods.numero} — {ods.nome}
                     </span>

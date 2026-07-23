@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { Menu, Send } from 'lucide-react';
 import { asset } from '../utils/asset';
 
-const navEntries = [
+export const navEntries = [
   { label: 'Início', href: 'https://labs.rn.senac.br/' },
   { label: 'EDUTECH', href: 'https://labs.rn.senac.br/edutech/' },
   { label: 'CODE', href: 'https://labs.rn.senac.br/code/' },
   { label: 'PERTENSER', href: 'https://labs.rn.senac.br/pertenser/' },
-  { label: 'Banco de Práticas', href: 'https://banco-praticas-inovadoras.vercel.app/' },
+  { label: 'Banco de Práticas', href: 'https://selecao.rn.senac.br/bancodepraticas/' },
   { label: 'Docentes', href: 'https://labs.rn.senac.br/docentes-destaques/' },
   { label: 'Aconteceu', href: 'https://labs.rn.senac.br/aconteceu/' },
 ];
@@ -44,7 +44,7 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
           </Link>
         </div>
 
-        <nav className="hidden lg:flex items-center">
+        <nav className="hidden lg:flex items-center mx-6 xl:mx-10">
           {navEntries.map((entry, i) => (
             <div key={entry.label} className="flex items-center">
               {i > 0 && (
@@ -73,9 +73,9 @@ export const Header = ({ onOpenMenu }: { onOpenMenu: () => void }) => {
             Exclusivo para docentes do Senac RN
           </span>
           <span className="flex items-center gap-2 bg-[#003366] text-white text-xs font-black uppercase tracking-wider px-4 py-2 rounded-xl border-2 border-[#003366] shadow-md">
-            <Send size={13} />
-            Submeta sua prática
-            <span className="ml-1 bg-[#B97919] text-white text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded">
+            <Send size={13} className="shrink-0" />
+            <span className="whitespace-nowrap">Submeta sua prática</span>
+            <span className="ml-1 bg-[#B97919] text-white text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded whitespace-nowrap">
               Em breve
             </span>
           </span>
