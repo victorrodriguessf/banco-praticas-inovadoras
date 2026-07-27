@@ -6,12 +6,45 @@ const MAX_LEN_TITULO = 300;
 const MAX_LEN_CATEGORIA = 100;
 const MAX_LEN_DESCRICAO = 10000;
 const MAX_LEN_ITEM = 500;
+const MAX_ANEXOS = 3;
 
-const arrayStringValido = (valor: unknown, obrigatorio: boolean): valor is string[] => {
+const arrayStringValido = (
+  valor: unknown,
+  obrigatorio: boolean,
+  maxItens: number = MAX_ITENS_ARRAY
+): valor is string[] => {
   if (!Array.isArray(valor)) return !obrigatorio && valor === undefined;
   if (obrigatorio && valor.length === 0) return false;
-  if (valor.length > MAX_ITENS_ARRAY) return false;
+  if (valor.length > maxItens) return false;
   return valor.every((item) => typeof item === 'string' && item.length <= MAX_LEN_ITEM);
+};
+
+// Ids válidos por critério do Quadro 2 do edital — ver
+// frontend/src/data/autoavaliacaoOptions.ts (mesma fonte de verdade).
+const IDS_APRENDIZAGEM_INTEGRADORA = ['areas-conhecimento', 'cursos'];
+const IDS_PROTAGONISMO_ESTUDANTE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
+const IDS_AUTONOMIA_DIGITAL = ['a', 'b', 'c', 'd'];
+const IDS_COLABORACAO_COMUNICACAO = ['a', 'b'];
+const IDS_PRATICA_INCLUSIVA = ['a', 'b'];
+
+const arrayDeIdsValido = (valor: unknown, idsPermitidos: string[]): boolean =>
+  Array.isArray(valor) && valor.every((item) => typeof item === 'string' && idsPermitidos.includes(item));
+
+const autoavaliacaoValida = (valor: unknown): boolean => {
+  if (typeof valor !== 'object' || valor === null) return false;
+  const a = valor as Record<string, unknown>;
+
+  return (
+    (a.contextualizacaoRealidade === 0 || a.contextualizacaoRealidade === 1.5 || a.contextualizacaoRealidade === 3) &&
+    arrayDeIdsValido(a.aprendizagemIntegradora, IDS_APRENDIZAGEM_INTEGRADORA) &&
+    arrayDeIdsValido(a.protagonismoEstudante, IDS_PROTAGONISMO_ESTUDANTE) &&
+    typeof a.visaoCritica === 'boolean' &&
+    arrayDeIdsValido(a.autonomiaDigital, IDS_AUTONOMIA_DIGITAL) &&
+    arrayDeIdsValido(a.colaboracaoComunicacao, IDS_COLABORACAO_COMUNICACAO) &&
+    typeof a.criatividadeEmpreendedora === 'boolean' &&
+    arrayDeIdsValido(a.praticaInclusiva, IDS_PRATICA_INCLUSIVA) &&
+    typeof a.impactoSocial === 'boolean'
+  );
 };
 
 export const createSubmissao = async (req: Request, res: Response): Promise<void> => {
@@ -32,7 +65,7 @@ export const createSubmissao = async (req: Request, res: Response): Promise<void
       categoria,
       descricao,
       ods,
-      marcasFormativas,
+      autoavaliacao,
       termosAceitos,
       anexos,
     } = req.body;
@@ -44,11 +77,11 @@ export const createSubmissao = async (req: Request, res: Response): Promise<void
       typeof descricao !== 'string' || descricao.trim() === '' || descricao.length > MAX_LEN_DESCRICAO ||
       !arrayStringValido(autores, true) ||
       !arrayStringValido(unidades, true) ||
-      !arrayStringValido(segmentos, true) ||
+      !arrayStringValido(segmentos, false) ||
       !arrayStringValido(cursos, false) ||
-      !arrayStringValido(marcasFormativas, false) ||
-      !arrayStringValido(anexos, false) ||
+      !arrayStringValido(anexos, true, MAX_ANEXOS) ||
       (ods !== undefined && (!Array.isArray(ods) || ods.length > MAX_ITENS_ARRAY || !ods.every((n) => Number.isInteger(n) && n >= 1 && n <= 17))) ||
+      !autoavaliacaoValida(autoavaliacao) ||
       termosAceitos !== true
     ) {
       res.status(400).json({ message: 'Dados inválidos ou campos obrigatórios ausentes' });
@@ -62,14 +95,14 @@ export const createSubmissao = async (req: Request, res: Response): Promise<void
         usuarioId,
         autores,
         unidades,
-        segmentos,
+        segmentos: segmentos || [],
         cursos: cursos || [],
         categoria,
         descricao,
         ods: ods || [],
-        marcasFormativas: marcasFormativas || [],
+        autoavaliacao,
         termosAceitos,
-        anexos: anexos || [],
+        anexos,
       },
     });
 

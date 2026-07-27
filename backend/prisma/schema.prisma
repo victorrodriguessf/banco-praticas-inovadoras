@@ -54,7 +54,7 @@ model Submissao {
   categoria        String
   descricao        String
   ods              Int[]
-  marcasFormativas String[]
+  autoavaliacao    Json
   termosAceitos    Boolean  @default(false)
   anexos           String[] // URLs do MinIO
   // Fluxo sugerido: recebida -> em_analise (Admin) -> pontuada (Admin) -> em_revisao (Revisor) -> aprovada / reprovada

@@ -79,6 +79,9 @@ export default function LoginPage() {
             <p className="text-blue-200 mt-2 text-sm relative z-10">
               Autentique-se para submeter sua prática inovadora
             </p>
+            <p className="text-blue-200/70 mt-1 text-xs relative z-10">
+              Apenas para docentes do Senac RN
+            </p>
           </div>
 
           <form onSubmit={handleLogin} className="p-8 space-y-6">
@@ -103,7 +106,7 @@ export default function LoginPage() {
                   <input
                     type="email"
                     required
-                    placeholder="docente@senac.br"
+                    placeholder="docente@rn.senac.br"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#ffb84d] focus:border-transparent transition-all"

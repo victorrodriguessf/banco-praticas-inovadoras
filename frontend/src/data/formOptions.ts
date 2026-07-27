@@ -11,36 +11,17 @@ export const UNIDADES = [
 ] as const;
 
 export const SEGMENTOS = [
-  'Aprendizagem',
-  'Artes e Design',
-  'Asseio, Conservação e Zeladoria',
-  'Beleza',
-  'Comércio',
-  'Comunicação',
-  'Ensino Médio Técnico',
-  'Gastronomia',
-  'Gestão e Negócios',
-  'Idiomas',
-  'Moda',
-  'Saúde',
-  'Tecnologia da Informação',
-  'Turismo e Hospitalidade',
+  'Beleza e Moda',
+  'Saúde, Segurança, Meio Ambiente',
+  'Idiomas e Educacional',
+  'TI, Comunicação, Artes e Design',
+  'Gestão, Comércio e Zeladoria',
+  'Gastronomia e Produção de A&B',
+  'Turismo, Hospitalidade e Lazer',
+  'Ensino Médio Integrado ao Técnico',
+  'Ensino Superior',
 ] as const;
 
-export const CATEGORIAS = [
-  'Sustentabilidade',
-  'Inclusão e Diversidade',
-  'Inovação Pedagógica',
-  'Empreendedorismo',
-  'Tecnologia Educacional',
-  'Metodologias Ativas',
-] as const;
-
-export const MARCAS_FORMATIVAS = [
-  'Atitude criativa e empreendedora',
-  'Atitude sustentável',
-  'Autonomia digital',
-  'Comunicação e colaboração',
-  'Domínio técnico-científico',
-  'Visão crítica',
-] as const;
+// Placeholder — o número exato de caracteres da Situação de aprendizagem
+// ainda será definido; troque só este valor quando confirmado.
+export const MAX_DESCRICAO_LENGTH = 3000;
