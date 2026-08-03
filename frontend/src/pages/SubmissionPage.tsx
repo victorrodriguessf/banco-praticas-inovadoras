@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowLeft,
   LogOut,
@@ -18,14 +18,9 @@ import { submissionSchema, type SubmissionFormData } from '../schemas/submission
 import { UNIDADES, SEGMENTOS, MAX_DESCRICAO_LENGTH } from '../data/formOptions';
 import {
   CATEGORIAS,
-  CONTEXTUALIZACAO_OPCOES,
-  APRENDIZAGEM_INTEGRADORA_ITENS,
   PROTAGONISMO_ESTUDANTE_ITENS,
-  AUTONOMIA_DIGITAL_ITENS,
-  COLABORACAO_COMUNICACAO_ITENS,
   PRATICA_INCLUSIVA_ITENS,
 } from '../data/autoavaliacaoOptions';
-import { computeAutoavaliacaoScore, isAtitudeSustentavelAtendida } from '../utils/autoavaliacaoScore';
 import { ODS_DATA } from '../types';
 
 const API_URL = 'http://localhost:3333';
@@ -190,13 +185,11 @@ function CheckboxGroup({
 // de pills usado para Unidades/Segmentos).
 function CriterioCheckboxGroup({
   title,
-  pontosLabel,
   options,
   values,
   onChange,
 }: {
   title: string;
-  pontosLabel: string;
   options: readonly { id: string; label: string }[];
   values: string[];
   onChange: (values: string[]) => void;
@@ -207,12 +200,7 @@ function CriterioCheckboxGroup({
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-4">
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <h4 className="font-bold text-sm text-[#003366]">{title}</h4>
-        <span className="shrink-0 text-[10px] font-black uppercase tracking-widest text-senac-orange bg-senac-orange/10 px-2 py-1 rounded-full">
-          {pontosLabel}
-        </span>
-      </div>
+      <h4 className="font-bold text-sm text-[#003366] mb-3">{title}</h4>
       <div className="space-y-2">
         {options.map((option) => (
           <label
@@ -233,89 +221,32 @@ function CriterioCheckboxGroup({
   );
 }
 
-// Escolha única em escala (usado pela "Contextualização com a realidade prática")
-function RadioScale({
-  title,
-  options,
-  value,
-  onChange,
-}: {
-  title: string;
-  options: readonly { value: number; label: string }[];
-  value: number;
-  onChange: (value: number) => void;
-}) {
-  return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4">
-      <h4 className="font-bold text-sm text-[#003366] mb-3">{title}</h4>
-      <div className="space-y-2">
-        {options.map((option) => (
-          <label
-            key={option.value}
-            className="flex items-center gap-2.5 text-sm text-gray-600 cursor-pointer hover:text-[#003366] transition-colors"
-          >
-            <input
-              type="radio"
-              checked={value === option.value}
-              onChange={() => onChange(option.value)}
-            />
-            {option.label}
-            <span className="text-[10px] font-black text-senac-orange">
-              ({option.value.toString().replace('.', ',')} pts)
-            </span>
-          </label>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Critério booleano simples (usado por Visão Crítica, Criatividade e Atitude
-// Empreendedoras, Impacto Social)
+// Critério booleano simples (usado pela maioria dos critérios de
+// autoavaliação — ver "2) Alinhamento com o Modelo Pedagógico do Senac")
 function Toggle({
   title,
   description,
-  pontosLabel,
   checked,
   onChange,
 }: {
   title: string;
-  description: string;
-  pontosLabel?: string;
+  description?: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
 }) {
   return (
-    <label className="flex items-start gap-3 bg-white rounded-xl border border-gray-200 p-4 cursor-pointer hover:border-[#003366]/30 transition-colors">
+    <label className="flex items-center gap-3 bg-white rounded-xl border border-gray-200 p-4 cursor-pointer hover:border-[#003366]/30 transition-colors">
       <input
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="mt-1 shrink-0"
+        className="shrink-0"
       />
       <div>
-        <div className="flex items-center gap-2 mb-1">
-          <h4 className="font-bold text-sm text-[#003366]">{title}</h4>
-          {pontosLabel && (
-            <span className="shrink-0 text-[10px] font-black uppercase tracking-widest text-senac-orange bg-senac-orange/10 px-2 py-1 rounded-full">
-              {pontosLabel}
-            </span>
-          )}
-        </div>
-        <p className="text-sm text-gray-500">{description}</p>
+        <h4 className={`font-bold text-sm text-[#003366] ${description ? 'mb-1' : ''}`}>{title}</h4>
+        {description && <p className="text-sm text-gray-500">{description}</p>}
       </div>
     </label>
-  );
-}
-
-// Card informativo, sem input — para critérios que não pontuam manualmente
-// (Estruturação e evidência da prática / Domínio Técnico-científico)
-function InfoCard({ title, description }: { title: string; description: string }) {
-  return (
-    <div className="bg-gray-50 rounded-xl border border-gray-200 p-4">
-      <h4 className="font-bold text-sm text-gray-600 mb-1">{title}</h4>
-      <p className="text-sm text-gray-400">{description}</p>
-    </div>
   );
 }
 
@@ -345,12 +276,13 @@ export default function SubmissionPage() {
       categoria: '',
       descricao: '',
       autoavaliacao: {
-        contextualizacaoRealidade: 0,
-        aprendizagemIntegradora: [],
+        contextualizacaoRealidade: false,
+        aprendizagemIntegradora: false,
         protagonismoEstudante: [],
         visaoCritica: false,
-        autonomiaDigital: [],
-        colaboracaoComunicacao: [],
+        autonomiaDigital: false,
+        colaboracaoComunicacao: false,
+        atitudeSustentavel: false,
         criatividadeEmpreendedora: false,
         praticaInclusiva: [],
         impactoSocial: false,
@@ -368,7 +300,6 @@ export default function SubmissionPage() {
   const autoavaliacao = watch('autoavaliacao');
   const anexos = watch('anexos');
   const descricao = watch('descricao');
-  const pontuacaoEstimada = computeAutoavaliacaoScore(autoavaliacao, ods);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -382,6 +313,17 @@ export default function SubmissionPage() {
       .then(setEditais)
       .catch(() => setEditais([]));
   }, [navigate]);
+
+  // Pré-seleciona o edital assim que a lista (e as <option> correspondentes)
+  // já estiverem renderizadas — fazer isso no mesmo tick do fetch falha
+  // silenciosamente, porque o <select> ainda não teria a <option> no DOM.
+  // O endpoint já retorna só editais em andamento, então usamos o primeiro
+  // (na prática, sempre há apenas um edital ativo por vez).
+  useEffect(() => {
+    if (editais.length > 0) {
+      setValue('editalId', editais[0].id, { shouldValidate: true });
+    }
+  }, [editais, setValue]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -547,171 +489,16 @@ export default function SubmissionPage() {
               </div>
             )}
 
-            <div>
-              <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
-                Título da prática
-                <RequiredMark />
-              </label>
-              <input
-                type="text"
-                placeholder="Ex: Ecoponto Sustentável"
-                {...register('titulo')}
-                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
-                  errors.titulo ? 'border-red-300' : 'border-gray-200'
-                }`}
-              />
-              {errors.titulo && (
-                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
-                  <AlertCircle size={14} />
-                  {errors.titulo.message}
-                </div>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
-                Edital
-                <RequiredMark />
-              </label>
-              <select
-                {...register('editalId')}
-                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
-                  errors.editalId ? 'border-red-300' : 'border-gray-200'
-                }`}
-              >
-                <option value="">Selecione um edital</option>
-                {editais.map((edital) => (
-                  <option key={edital.id} value={edital.id}>
-                    {edital.nome}
-                  </option>
-                ))}
-              </select>
-              {errors.editalId && (
-                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
-                  <AlertCircle size={14} />
-                  {errors.editalId.message}
-                </div>
-              )}
-            </div>
-
-            <TagInput
-              label="Autores"
-              required
-              values={autores}
-              onChange={(values) => setValue('autores', values, { shouldValidate: true })}
-              error={errors.autores?.message}
-              placeholder="Digite o nome do autor"
-              hint="Pressione Enter ou clique no + para adicionar à lista"
-            />
-
-            <CheckboxGroup
-              label="Unidades"
-              required
-              options={UNIDADES}
-              values={unidades}
-              onChange={(values) => setValue('unidades', values, { shouldValidate: true })}
-              error={errors.unidades?.message}
-            />
-
-            <CheckboxGroup
-              label="Segmentos/Eixos:"
-              options={SEGMENTOS}
-              values={segmentos}
-              onChange={(values) => setValue('segmentos', values, { shouldValidate: true })}
-              error={errors.segmentos?.message}
-              hint="Selecione um ou mais segmentos, se for o caso"
-            />
-
-            <TagInput
-              label="Cursos"
-              values={cursos}
-              onChange={(values) => setValue('cursos', values, { shouldValidate: true })}
-              error={errors.cursos?.message}
-              placeholder="Digite o nome do curso"
-              hint="Pressione Enter ou clique no + para adicionar à lista"
-            />
-
-            <div>
-              <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
-                Situação de aprendizagem
-                <RequiredMark />
-              </label>
-              <textarea
-                rows={5}
-                maxLength={MAX_DESCRICAO_LENGTH}
-                placeholder="Descreva sua prática inovadora de forma que evidencie como todos os critérios do edital foram utilizados; Os critérios só irão pontuar se estiverem descritos nesse campo e/ou através das evidências anexadas."
-                {...register('descricao')}
-                className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
-                  errors.descricao ? 'border-red-300' : 'border-gray-200'
-                }`}
-              />
-              <p className="text-right text-xs text-gray-400 mt-1">
-                {(descricao ?? '').length} / {MAX_DESCRICAO_LENGTH} caracteres
-              </p>
-              {errors.descricao && (
-                <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
-                  <AlertCircle size={14} />
-                  {errors.descricao.message}
-                </div>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
-                ODS relacionados
-              </label>
-              <p className="text-gray-400 text-xs mb-2">
-                Selecione uma ou mais ODS, correspondente a sua prática
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {Object.values(ODS_DATA).map((item) => {
-                  const isOds4 = item.id === 4;
-                  return (
-                    <label
-                      key={item.id}
-                      className={`flex items-center gap-2 text-xs px-3 py-2 rounded-lg border transition-all ${
-                        isOds4 ? 'cursor-not-allowed' : 'cursor-pointer'
-                      } ${
-                        ods.includes(item.id)
-                          ? 'text-white border-transparent shadow-md opacity-100'
-                          : 'bg-white text-gray-600 border-gray-200 hover:border-[#003366]/30 hover:bg-gray-50 opacity-80 hover:opacity-100'
-                      }`}
-                      style={ods.includes(item.id) ? { backgroundColor: item.color } : undefined}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={ods.includes(item.id)}
-                        disabled={isOds4}
-                        onChange={() =>
-                          setValue(
-                            'ods',
-                            ods.includes(item.id) ? ods.filter((n) => n !== item.id) : [...ods, item.id],
-                            { shouldValidate: true }
-                          )
-                        }
-                        className="hidden"
-                      />
-                      {item.id}. {item.label}
-                    </label>
-                  );
-                })}
-              </div>
-            </div>
-
             <section className="space-y-4">
-              <div className="border-t border-gray-100 pt-6">
+              <div className="pt-2">
                 <h3 className="text-lg font-black text-[#003366] uppercase tracking-tight mb-1">
-                  Critérios da avaliação – Autoavaliação
+                  Dados de Identificação da Prática
                 </h3>
-                <p className="text-sm text-gray-400 mb-4">
-                  Avalie sua própria prática segundo os critérios oficiais do edital. Isso ajuda
-                  a identificar oportunidades de fortalecer a proposta antes do envio.
-                </p>
               </div>
 
               <div>
                 <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
-                  Categoria
+                  Sua prática irá concorrer a qual categoria?
                   <RequiredMark />
                 </label>
                 <div className="space-y-2">
@@ -743,40 +530,225 @@ export default function SubmissionPage() {
                 )}
               </div>
 
-              <InfoCard
-                title="1) Estruturação e evidência da prática"
-                description="Organização e clareza na apresentação da proposta, com todos os elementos requeridos e evidências que comprovem os critérios do edital. Esse item é condição para a inscrição ser aceita — por isso o anexo de evidências é obrigatório neste formulário."
+              <div>
+                <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
+                  Título da prática
+                  <RequiredMark />
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ex: Ecoponto Sustentável"
+                  {...register('titulo')}
+                  className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
+                    errors.titulo ? 'border-red-300' : 'border-gray-200'
+                  }`}
+                />
+                {errors.titulo && (
+                  <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                    <AlertCircle size={14} />
+                    {errors.titulo.message}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
+                  Edital
+                  <RequiredMark />
+                </label>
+                <select
+                  {...register('editalId')}
+                  disabled
+                  className="w-full bg-gray-100 border border-gray-200 rounded-xl py-3 px-4 text-sm opacity-70 cursor-not-allowed"
+                >
+                  <option value="">Selecione um edital</option>
+                  {editais.map((edital) => (
+                    <option key={edital.id} value={edital.id}>
+                      {edital.nome}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-gray-400 text-xs mt-1.5">
+                  Edital atual — selecionado automaticamente
+                </p>
+                {errors.editalId && (
+                  <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                    <AlertCircle size={14} />
+                    {errors.editalId.message}
+                  </div>
+                )}
+              </div>
+
+              <TagInput
+                label="Autores"
+                required
+                values={autores}
+                onChange={(values) => setValue('autores', values, { shouldValidate: true })}
+                error={errors.autores?.message}
+                placeholder="Digite o nome do autor"
+                hint="Pressione Enter ou clique no + para adicionar à lista"
               />
+
+              <CheckboxGroup
+                label="Unidades"
+                required
+                options={UNIDADES}
+                values={unidades}
+                onChange={(values) => setValue('unidades', values, { shouldValidate: true })}
+                error={errors.unidades?.message}
+              />
+
+              <CheckboxGroup
+                label="Segmentos/Eixos:"
+                options={SEGMENTOS}
+                values={segmentos}
+                onChange={(values) => setValue('segmentos', values, { shouldValidate: true })}
+                error={errors.segmentos?.message}
+                hint="Selecione um ou mais segmentos, se for o caso"
+              />
+
+              <TagInput
+                label="Cursos"
+                values={cursos}
+                onChange={(values) => setValue('cursos', values, { shouldValidate: true })}
+                error={errors.cursos?.message}
+                placeholder="Digite o nome do curso"
+                hint="Pressione Enter ou clique no + para adicionar à lista"
+              />
+            </section>
+
+            <section className="space-y-4">
+              <div className="border-t border-gray-100 pt-6">
+                <h3 className="text-lg font-black text-[#003366] uppercase tracking-tight mb-1">
+                  Relato da Prática
+                </h3>
+              </div>
+
+              <div>
+                <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
+                  Situação de aprendizagem
+                  <RequiredMark />
+                </label>
+                <textarea
+                  rows={5}
+                  maxLength={MAX_DESCRICAO_LENGTH}
+                  placeholder="Descreva sua prática inovadora de forma que evidencie como todos os critérios do edital foram utilizados; Os critérios só irão pontuar se estiverem descritos nesse campo e/ou através das evidências anexadas."
+                  {...register('descricao')}
+                  className={`w-full bg-gray-50 border rounded-xl py-3 px-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#003366]/20 focus:border-[#003366] transition-all hover:border-[#003366]/30 ${
+                    errors.descricao ? 'border-red-300' : 'border-gray-200'
+                  }`}
+                />
+                <p className="text-right text-xs text-gray-400 mt-1">
+                  {(descricao ?? '').length} / {MAX_DESCRICAO_LENGTH} caracteres
+                </p>
+                {errors.descricao && (
+                  <div className="text-red-500/90 text-xs mt-1.5 flex items-center gap-1.5">
+                    <AlertCircle size={14} />
+                    {errors.descricao.message}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
+                  Evidências (imagens)
+                  <RequiredMark />
+                </label>
+                <p className="text-gray-400 text-xs mb-2">
+                  Formatos aceitos: JPG, PNG, WEBP ou GIF — até {MAX_ANEXOS} imagens, 5 MB cada
+                </p>
+                {anexos.length < MAX_ANEXOS ? (
+                  <label
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      if (!uploading) setIsDraggingOver(true);
+                    }}
+                    onDragLeave={() => setIsDraggingOver(false)}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      setIsDraggingOver(false);
+                      if (!uploading) handleFilesSelected(e.dataTransfer.files);
+                    }}
+                    className={`flex flex-col items-center justify-center gap-2 backdrop-blur-sm border-2 border-dashed rounded-xl py-8 cursor-pointer transition-all ${
+                      isDraggingOver
+                        ? 'border-[#003366] bg-[#003366]/10'
+                        : 'bg-white/40 border-gray-300 hover:border-[#003366]/40 hover:bg-white/70'
+                    }`}
+                  >
+                    <UploadCloud className="text-[#003366]/50" size={32} />
+                    <span className="text-sm text-gray-500">
+                      {uploading ? 'Enviando...' : 'Clique ou arraste aqui para subir imagens/evidências'}
+                    </span>
+                    <input
+                      type="file"
+                      multiple
+                      accept={ACCEPTED_IMAGE_TYPES}
+                      className="hidden"
+                      disabled={uploading}
+                      onChange={(e) => handleFilesSelected(e.target.files)}
+                    />
+                  </label>
+                ) : (
+                  <p className="text-center text-sm text-gray-400 bg-gray-50 border border-dashed border-gray-200 rounded-xl py-4">
+                    Limite de {MAX_ANEXOS} evidências atingido
+                  </p>
+                )}
+                {anexos.length > 0 && (
+                  <div className="flex flex-wrap gap-3 mt-3">
+                    {anexos.map((url, index) => (
+                      <div key={url} className="relative w-20 h-20 shrink-0">
+                        <img
+                          src={url}
+                          alt={`Evidência ${index + 1}`}
+                          className="w-20 h-20 object-cover rounded-lg border border-gray-200"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setValue('anexos', anexos.filter((_, i) => i !== index), { shouldValidate: true })}
+                          className="absolute -top-2 -right-2 bg-[#003366] text-white rounded-full p-1 shadow-md hover:bg-[#002244] transition-colors"
+                        >
+                          <X size={12} />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </section>
+
+            <section className="space-y-4">
+              <div className="border-t border-gray-100 pt-6">
+                <h3 className="text-lg font-black text-[#003366] uppercase tracking-tight mb-1">
+                  Critérios de avaliação do edital
+                </h3>
+                <p className="text-sm text-gray-400 mb-4">
+                  Selecione os critérios presentes na sua prática
+                </p>
+              </div>
 
               <div>
                 <h4 className="text-xs font-black uppercase text-gray-400 tracking-widest mb-2">
                   2) Alinhamento com o Modelo Pedagógico do Senac
                 </h4>
                 <div className="space-y-3">
-                  <RadioScale
+                  <Toggle
                     title="Contextualização com a realidade prática"
-                    options={CONTEXTUALIZACAO_OPCOES}
-                    value={autoavaliacao.contextualizacaoRealidade}
-                    onChange={(value) =>
-                      setValue('autoavaliacao.contextualizacaoRealidade', value as 0 | 1.5 | 3, {
-                        shouldValidate: true,
-                      })
+                    checked={autoavaliacao.contextualizacaoRealidade}
+                    onChange={(checked) =>
+                      setValue('autoavaliacao.contextualizacaoRealidade', checked, { shouldValidate: true })
                     }
                   />
 
-                  <CriterioCheckboxGroup
+                  <Toggle
                     title="Aprendizagem Integradora"
-                    pontosLabel="3 pts por item"
-                    options={APRENDIZAGEM_INTEGRADORA_ITENS}
-                    values={autoavaliacao.aprendizagemIntegradora}
-                    onChange={(values) =>
-                      setValue('autoavaliacao.aprendizagemIntegradora', values, { shouldValidate: true })
+                    checked={autoavaliacao.aprendizagemIntegradora}
+                    onChange={(checked) =>
+                      setValue('autoavaliacao.aprendizagemIntegradora', checked, { shouldValidate: true })
                     }
                   />
 
                   <CriterioCheckboxGroup
                     title="Protagonismo do estudante a partir do uso de metodologias e/ou tecnologias inovadoras"
-                    pontosLabel="3 pts por item"
                     options={PROTAGONISMO_ESTUDANTE_ITENS}
                     values={autoavaliacao.protagonismoEstudante}
                     onChange={(values) =>
@@ -784,72 +756,97 @@ export default function SubmissionPage() {
                     }
                   />
 
-                  <InfoCard
-                    title="Marca Formativa Domínio Técnico-científico"
-                    description="Não pontua, pois todas as aulas do Senac necessariamente devem seguir esse princípio pedagógico."
-                  />
-
                   <Toggle
                     title="Marca Formativa Visão Crítica"
-                    description="A prática promove a análise de situações, informações e atitudes e a tomada de decisões de forma fundamentada e objetiva."
-                    pontosLabel="3 pts"
                     checked={autoavaliacao.visaoCritica}
                     onChange={(checked) =>
                       setValue('autoavaliacao.visaoCritica', checked, { shouldValidate: true })
                     }
                   />
 
-                  <CriterioCheckboxGroup
+                  <Toggle
                     title="Marca Formativa Autonomia Digital"
-                    pontosLabel="3 pts se qualquer item"
-                    options={AUTONOMIA_DIGITAL_ITENS}
-                    values={autoavaliacao.autonomiaDigital}
-                    onChange={(values) =>
-                      setValue('autoavaliacao.autonomiaDigital', values, { shouldValidate: true })
+                    checked={autoavaliacao.autonomiaDigital}
+                    onChange={(checked) =>
+                      setValue('autoavaliacao.autonomiaDigital', checked, { shouldValidate: true })
                     }
                   />
 
-                  <CriterioCheckboxGroup
+                  <Toggle
                     title="Marca Formativa Colaboração e Comunicação"
-                    pontosLabel="3 pts por item"
-                    options={COLABORACAO_COMUNICACAO_ITENS}
-                    values={autoavaliacao.colaboracaoComunicacao}
-                    onChange={(values) =>
-                      setValue('autoavaliacao.colaboracaoComunicacao', values, { shouldValidate: true })
+                    checked={autoavaliacao.colaboracaoComunicacao}
+                    onChange={(checked) =>
+                      setValue('autoavaliacao.colaboracaoComunicacao', checked, { shouldValidate: true })
                     }
                   />
 
-                  <div
-                    className={`rounded-xl border p-4 flex items-center justify-between gap-3 ${
-                      isAtitudeSustentavelAtendida(ods)
-                        ? 'border-green-200 bg-green-50'
-                        : 'border-gray-200 bg-gray-50'
-                    }`}
-                  >
-                    <div>
-                      <h4 className="font-bold text-sm text-[#003366]">
-                        Marca Formativa Atitude Sustentável
-                      </h4>
-                      <p className="text-sm text-gray-500 mt-1">
-                        Calculado automaticamente a partir da seção ODS: pontua com 2 ou mais ODS
-                        selecionados, além do ODS 4.
-                      </p>
-                    </div>
-                    <span
-                      className={`shrink-0 text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full ${
-                        isAtitudeSustentavelAtendida(ods)
-                          ? 'bg-green-500 text-white'
-                          : 'bg-gray-200 text-gray-500'
-                      }`}
-                    >
-                      {isAtitudeSustentavelAtendida(ods) ? 'Atendido' : 'Não atendido'}
-                    </span>
+                  <div>
+                    <Toggle
+                      title="Marca Formativa Atitude Sustentável"
+                      checked={autoavaliacao.atitudeSustentavel}
+                      onChange={(checked) => {
+                        setValue('autoavaliacao.atitudeSustentavel', checked, { shouldValidate: true });
+                        if (!checked) {
+                          setValue('ods', [4], { shouldValidate: true });
+                        }
+                      }}
+                    />
+                    <AnimatePresence initial={false}>
+                      {autoavaliacao.atitudeSustentavel && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: 'easeInOut' }}
+                          className="overflow-hidden"
+                        >
+                          <div className="bg-white rounded-xl border border-gray-200 p-4 mt-3">
+                            <p className="text-gray-400 text-xs mb-2">
+                              Selecione uma ou mais ODS, correspondente a sua prática
+                            </p>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                              {Object.values(ODS_DATA).map((item) => {
+                                const isOds4 = item.id === 4;
+                                return (
+                                  <label
+                                    key={item.id}
+                                    className={`flex items-center gap-2 text-xs px-3 py-2 rounded-lg border transition-all ${
+                                      isOds4 ? 'cursor-not-allowed' : 'cursor-pointer'
+                                    } ${
+                                      ods.includes(item.id)
+                                        ? 'text-white border-transparent shadow-md opacity-100'
+                                        : 'bg-white text-gray-600 border-gray-200 hover:border-[#003366]/30 hover:bg-gray-50 opacity-80 hover:opacity-100'
+                                    }`}
+                                    style={ods.includes(item.id) ? { backgroundColor: item.color } : undefined}
+                                  >
+                                    <input
+                                      type="checkbox"
+                                      checked={ods.includes(item.id)}
+                                      disabled={isOds4}
+                                      onChange={() =>
+                                        setValue(
+                                          'ods',
+                                          ods.includes(item.id)
+                                            ? ods.filter((n) => n !== item.id)
+                                            : [...ods, item.id],
+                                          { shouldValidate: true }
+                                        )
+                                      }
+                                      className="hidden"
+                                    />
+                                    {item.id}. {item.label}
+                                  </label>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   <Toggle
                     title="Marca Formativa Criatividade e Atitude Empreendedoras"
-                    description="A prática visou desenvolver, propor e utilizar diferentes estratégias diante de desafios, com vista a implementar mudanças no ambiente de trabalho ou em uma comunidade, criando ou não novos negócios."
-                    pontosLabel="3 pts"
                     checked={autoavaliacao.criatividadeEmpreendedora}
                     onChange={(checked) =>
                       setValue('autoavaliacao.criatividadeEmpreendedora', checked, { shouldValidate: true })
@@ -864,7 +861,6 @@ export default function SubmissionPage() {
                 </h4>
                 <CriterioCheckboxGroup
                   title="Prática pedagógica inclusiva"
-                  pontosLabel="3 pts por item"
                   options={PRATICA_INCLUSIVA_ITENS}
                   values={autoavaliacao.praticaInclusiva}
                   onChange={(values) =>
@@ -886,78 +882,7 @@ export default function SubmissionPage() {
                   }
                 />
               </div>
-
-              <div className="bg-[#003366] rounded-xl p-4 flex items-center justify-between">
-                <span className="text-white font-bold text-sm">
-                  Pontuação estimada desta autoavaliação
-                </span>
-                <span className="text-white font-black text-2xl">{pontuacaoEstimada} pts</span>
-              </div>
             </section>
-
-            <div>
-              <label className="block text-xs font-black uppercase text-gray-500 mb-2 tracking-widest">
-                Evidências (imagens)
-                <RequiredMark />
-              </label>
-              <p className="text-gray-400 text-xs mb-2">
-                Formatos aceitos: JPG, PNG, WEBP ou GIF — até {MAX_ANEXOS} imagens, 5 MB cada
-              </p>
-              {anexos.length < MAX_ANEXOS ? (
-                <label
-                  onDragOver={(e) => {
-                    e.preventDefault();
-                    if (!uploading) setIsDraggingOver(true);
-                  }}
-                  onDragLeave={() => setIsDraggingOver(false)}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    setIsDraggingOver(false);
-                    if (!uploading) handleFilesSelected(e.dataTransfer.files);
-                  }}
-                  className={`flex flex-col items-center justify-center gap-2 backdrop-blur-sm border-2 border-dashed rounded-xl py-8 cursor-pointer transition-all ${
-                    isDraggingOver
-                      ? 'border-[#003366] bg-[#003366]/10'
-                      : 'bg-white/40 border-gray-300 hover:border-[#003366]/40 hover:bg-white/70'
-                  }`}
-                >
-                  <UploadCloud className="text-[#003366]/50" size={32} />
-                  <span className="text-sm text-gray-500">
-                    {uploading ? 'Enviando...' : 'Clique ou arraste aqui para subir imagens/evidências'}
-                  </span>
-                  <input
-                    type="file"
-                    multiple
-                    accept={ACCEPTED_IMAGE_TYPES}
-                    className="hidden"
-                    disabled={uploading}
-                    onChange={(e) => handleFilesSelected(e.target.files)}
-                  />
-                </label>
-              ) : (
-                <p className="text-center text-sm text-gray-400 bg-gray-50 border border-dashed border-gray-200 rounded-xl py-4">
-                  Limite de {MAX_ANEXOS} evidências atingido
-                </p>
-              )}
-              {anexos.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {anexos.map((url, index) => (
-                    <span
-                      key={url}
-                      className="inline-flex items-center gap-2 bg-blue-50 text-[#003366] text-xs font-bold px-3 py-1.5 rounded-full"
-                    >
-                      Evidência {index + 1}
-                      <button
-                        type="button"
-                        onClick={() => setValue('anexos', anexos.filter((_, i) => i !== index), { shouldValidate: true })}
-                      >
-                        <X size={12} />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
 
             <div>
               <label className="flex items-start gap-3 cursor-pointer">

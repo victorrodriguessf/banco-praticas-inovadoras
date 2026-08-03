@@ -19,12 +19,12 @@ const arrayStringValido = (
   return valor.every((item) => typeof item === 'string' && item.length <= MAX_LEN_ITEM);
 };
 
-// Ids válidos por critério do Quadro 2 do edital — ver
-// frontend/src/data/autoavaliacaoOptions.ts (mesma fonte de verdade).
-const IDS_APRENDIZAGEM_INTEGRADORA = ['areas-conhecimento', 'cursos'];
+// Ids válidos por critério com sub-itens do Quadro 2 do edital — ver
+// frontend/src/data/autoavaliacaoOptions.ts (mesma fonte de verdade). A
+// maioria dos critérios virou um checkbox simples (booleano); só
+// "Protagonismo do estudante" e "Prática pedagógica inclusiva" mantêm lista
+// de sub-itens.
 const IDS_PROTAGONISMO_ESTUDANTE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'];
-const IDS_AUTONOMIA_DIGITAL = ['a', 'b', 'c', 'd'];
-const IDS_COLABORACAO_COMUNICACAO = ['a', 'b'];
 const IDS_PRATICA_INCLUSIVA = ['a', 'b'];
 
 const arrayDeIdsValido = (valor: unknown, idsPermitidos: string[]): boolean =>
@@ -35,12 +35,13 @@ const autoavaliacaoValida = (valor: unknown): boolean => {
   const a = valor as Record<string, unknown>;
 
   return (
-    (a.contextualizacaoRealidade === 0 || a.contextualizacaoRealidade === 1.5 || a.contextualizacaoRealidade === 3) &&
-    arrayDeIdsValido(a.aprendizagemIntegradora, IDS_APRENDIZAGEM_INTEGRADORA) &&
+    typeof a.contextualizacaoRealidade === 'boolean' &&
+    typeof a.aprendizagemIntegradora === 'boolean' &&
     arrayDeIdsValido(a.protagonismoEstudante, IDS_PROTAGONISMO_ESTUDANTE) &&
     typeof a.visaoCritica === 'boolean' &&
-    arrayDeIdsValido(a.autonomiaDigital, IDS_AUTONOMIA_DIGITAL) &&
-    arrayDeIdsValido(a.colaboracaoComunicacao, IDS_COLABORACAO_COMUNICACAO) &&
+    typeof a.autonomiaDigital === 'boolean' &&
+    typeof a.colaboracaoComunicacao === 'boolean' &&
+    typeof a.atitudeSustentavel === 'boolean' &&
     typeof a.criatividadeEmpreendedora === 'boolean' &&
     arrayDeIdsValido(a.praticaInclusiva, IDS_PRATICA_INCLUSIVA) &&
     typeof a.impactoSocial === 'boolean'

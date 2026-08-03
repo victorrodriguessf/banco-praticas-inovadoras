@@ -3,15 +3,19 @@ import { MAX_DESCRICAO_LENGTH } from '../data/formOptions';
 
 // Espelha o Quadro 2 (critérios de avaliação) do edital. Ver
 // frontend/src/data/autoavaliacaoOptions.ts para os textos/ids de cada item.
-// "Atitude Sustentável" não tem campo aqui: é derivada da seleção de ODS
-// (ver frontend/src/utils/autoavaliacaoScore.ts).
+// A pedido da PO, a maioria dos critérios virou um checkbox simples (só
+// título, sem sub-itens/escala) — só "Protagonismo do estudante" e "Prática
+// pedagógica inclusiva" mantêm a lista de sub-itens. "Atitude Sustentável"
+// é um checkbox que, quando marcado, revela o seletor de ODS (ver
+// SubmissionPage.tsx).
 export const autoavaliacaoSchema = z.object({
-  contextualizacaoRealidade: z.union([z.literal(0), z.literal(1.5), z.literal(3)]),
-  aprendizagemIntegradora: z.array(z.string()),
+  contextualizacaoRealidade: z.boolean(),
+  aprendizagemIntegradora: z.boolean(),
   protagonismoEstudante: z.array(z.string()),
   visaoCritica: z.boolean(),
-  autonomiaDigital: z.array(z.string()),
-  colaboracaoComunicacao: z.array(z.string()),
+  autonomiaDigital: z.boolean(),
+  colaboracaoComunicacao: z.boolean(),
+  atitudeSustentavel: z.boolean(),
   criatividadeEmpreendedora: z.boolean(),
   praticaInclusiva: z.array(z.string()),
   impactoSocial: z.boolean(),
